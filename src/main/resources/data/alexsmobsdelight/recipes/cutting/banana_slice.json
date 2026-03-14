@@ -1,0 +1,20 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "alexsmobs:banana"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "alexsmobsdelight:banana_slice"
+    },
+    {
+      "item": "alexsmobs:banana_peel"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

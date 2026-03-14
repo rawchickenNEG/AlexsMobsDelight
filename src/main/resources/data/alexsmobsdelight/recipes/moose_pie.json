@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "alexsmobsdelight:cooked_moose_meat"
+    },
+    {
+      "tag": "alexsmobsdelight:cooked_moose_meat"
+    },
+    {
+      "tag": "forge:crops/onion"
+    },
+    {
+      "item": "farmersdelight:pie_crust"
+    }
+  ],
+  "result": {
+    "item": "alexsmobsdelight:moose_pie"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "alexsmobsdelight:cooked_tusklin_meat"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "alexsmobsdelight:cooked_tusklin_meat_piece"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

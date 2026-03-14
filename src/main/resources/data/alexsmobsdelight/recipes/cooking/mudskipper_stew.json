@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    [
+      {
+        "item": "alexsmobsdelight:raw_mudskipper"
+      },
+      {
+        "item": "alexsmobsdelight:raw_mudskipper_slice"
+      }
+    ],
+    {
+      "item": "minecraft:mangrove_propagule"
+    },
+    {
+      "tag": "forge:crops/onion"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "alexsmobsdelight:mudskipper_stew"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    [
+      {
+        "item": "alexsmobsdelight:raw_devils_hole_pupfish"
+      },
+      {
+        "item": "alexsmobsdelight:raw_devils_hole_pupfish_slice"
+      }
+    ],
+    {
+      "item": "minecraft:moss_block"
+    },
+    {
+      "tag": "forge:crops/onion"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "alexsmobsdelight:devils_hole_pupfish_stew"
+  }
+}

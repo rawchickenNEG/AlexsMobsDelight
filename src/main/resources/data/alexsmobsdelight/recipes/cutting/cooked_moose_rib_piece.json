@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "alexsmobs:cooked_moose_ribs"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "alexsmobsdelight:cooked_moose_rib_piece"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

@@ -1,0 +1,171 @@
+package io.github.rcneg.alexsmobsdelight.init;
+
+import io.github.rcneg.alexsmobsdelight.AlexsMobsDelight;
+import io.github.rcneg.alexsmobsdelight.items.*;
+import io.github.rcneg.alexsmobsdelight.tier.ItemTier;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.food.Foods;
+import net.minecraft.world.item.*;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+import vectorwing.farmersdelight.common.FoodValues;
+import vectorwing.farmersdelight.common.item.ConsumableItem;
+import vectorwing.farmersdelight.common.item.KnifeItem;
+
+public class ItemRegistry {
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, AlexsMobsDelight.MODID);
+    //食材
+    public static final RegistryObject<Item> RAW_BEAR_MEAT = ITEMS.register("raw_bear_meat", () -> new Item(foodBuilder(AMDFoodValues.RAW_BEAR_MEAT)));
+    public static final RegistryObject<Item> RAW_BEAR_MEAT_SLICE = ITEMS.register("raw_bear_meat_slice", () -> new Item(foodBuilder(AMDFoodValues.RAW_BEAR_MEAT_SLICE)));
+    public static final RegistryObject<Item> COOKED_BEAR_MEAT = ITEMS.register("cooked_bear_meat", () -> new Item(foodBuilder(AMDFoodValues.COOKED_BEAR_MEAT)));
+    public static final RegistryObject<Item> COOKED_BEAR_MEAT_SLICE = ITEMS.register("cooked_bear_meat_slice", () -> new Item(foodBuilder(AMDFoodValues.COOKED_BEAR_MEAT_SLICE)));
+    public static final RegistryObject<Item> RAW_BISON_MEAT = ITEMS.register("raw_bison_meat", () -> new Item(foodBuilder(AMDFoodValues.RAW_BISON_MEAT)));
+    public static final RegistryObject<Item> RAW_BISON_MEAT_CUBES = ITEMS.register("raw_bison_meat_cubes", () -> new Item(foodBuilder(AMDFoodValues.RAW_BISON_MEAT_CUBES)));
+    public static final RegistryObject<Item> COOKED_BISON_MEAT = ITEMS.register("cooked_bison_meat", () -> new Item(foodBuilder(AMDFoodValues.COOKED_BISON_MEAT)));
+    public static final RegistryObject<Item> COOKED_BISON_MEAT_CUBES = ITEMS.register("cooked_bison_meat_cubes", () -> new Item(foodBuilder(AMDFoodValues.COOKED_BISON_MEAT_CUBES)));
+    public static final RegistryObject<Item> RAW_KANGAROO_MEAT_SLICE = ITEMS.register("raw_kangaroo_meat_slice", () -> new Item(foodBuilder(AMDFoodValues.RAW_KANGAROO_MEAT_SLICE)));
+    public static final RegistryObject<Item> COOKED_KANGAROO_MEAT_SLICE = ITEMS.register("cooked_kangaroo_meat_slice", () -> new Item(foodBuilder(AMDFoodValues.COOKED_KANGAROO_MEAT_SLICE)));
+    public static final RegistryObject<Item> RAW_MOOSE_RIB_PIECE = ITEMS.register("raw_moose_rib_piece", () -> new Item(foodBuilder(AMDFoodValues.RAW_MOOSE_RIB_PIECE)));
+    public static final RegistryObject<Item> COOKED_MOOSE_RIB_PIECE = ITEMS.register("cooked_moose_rib_piece", () -> new Item(foodBuilder(AMDFoodValues.COOKED_MOOSE_RIB_PIECE)));
+    public static final RegistryObject<Item> RAW_SEAGULL = ITEMS.register("raw_seagull", () -> new Item(foodBuilder(AMDFoodValues.RAW_SEAGULL)));
+    public static final RegistryObject<Item> COOKED_SEAGULL = ITEMS.register("cooked_seagull", () -> new Item(foodBuilder(AMDFoodValues.COOKED_SEAGULL)));
+    public static final RegistryObject<Item> MANTIS_SHRIMP_TAIL_RED = ITEMS.register("mantis_shrimp_tail_red", () -> new Item(foodBuilder(AMDFoodValues.MANTIS_SHRIMP_TAIL)));
+    public static final RegistryObject<Item> MANTIS_SHRIMP_TAIL_GREEN = ITEMS.register("mantis_shrimp_tail_green", () -> new Item(foodBuilder(AMDFoodValues.MANTIS_SHRIMP_TAIL)));
+    public static final RegistryObject<Item> MANTIS_SHRIMP_TAIL_LIME = ITEMS.register("mantis_shrimp_tail_lime", () -> new Item(foodBuilder(AMDFoodValues.MANTIS_SHRIMP_TAIL)));
+    public static final RegistryObject<Item> MANTIS_SHRIMP_TAIL_WHITE = ITEMS.register("mantis_shrimp_tail_white", () -> new Item(foodBuilder(AMDFoodValues.MANTIS_SHRIMP_TAIL)));
+    public static final RegistryObject<Item> COOKED_MANTIS_SHRIMP_TAIL = ITEMS.register("cooked_mantis_shrimp_tail", () -> new Item(foodBuilder(AMDFoodValues.COOKED_MANTIS_SHRIMP_TAIL)));
+    public static final RegistryObject<Item> RAW_TUSKLIN_MEAT = ITEMS.register("raw_tusklin_meat", () -> new Item(foodBuilder(AMDFoodValues.RAW_TUSKLIN_MEAT)));
+    public static final RegistryObject<Item> RAW_TUSKLIN_MEAT_PIECE = ITEMS.register("raw_tusklin_meat_piece", () -> new Item(foodBuilder(AMDFoodValues.RAW_TUSKLIN_MEAT_PIECE)));
+    public static final RegistryObject<Item> COOKED_TUSKLIN_MEAT = ITEMS.register("cooked_tusklin_meat", () -> new Item(foodBuilder(AMDFoodValues.COOKED_TUSKLIN_MEAT)));
+    public static final RegistryObject<Item> COOKED_TUSKLIN_MEAT_PIECE = ITEMS.register("cooked_tusklin_meat_piece", () -> new Item(foodBuilder(AMDFoodValues.COOKED_TUSKLIN_MEAT_PIECE)));
+    public static final RegistryObject<Item> RAW_DEVILS_HOLE_PUPFISH = ITEMS.register("raw_devils_hole_pupfish", () -> new Item(foodBuilder(Foods.COD)));
+    public static final RegistryObject<Item> RAW_DEVILS_HOLE_PUPFISH_SLICE = ITEMS.register("raw_devils_hole_pupfish_slice", () -> new Item(foodBuilder(FoodValues.COD_SLICE)));
+    public static final RegistryObject<Item> COOKED_DEVILS_HOLE_PUPFISH = ITEMS.register("cooked_devils_hole_pupfish", () -> new Item(foodBuilder(Foods.COOKED_COD)));
+    public static final RegistryObject<Item> COOKED_DEVILS_HOLE_PUPFISH_SLICE = ITEMS.register("cooked_devils_hole_pupfish_slice", () -> new Item(foodBuilder(FoodValues.COOKED_COD_SLICE)));
+    public static final RegistryObject<Item> RAW_CATFISH_SLICE = ITEMS.register("raw_catfish_slice", () -> new Item(foodBuilder(FoodValues.COD_SLICE)));
+    public static final RegistryObject<Item> COOKED_CATFISH_SLICE = ITEMS.register("cooked_catfish_slice", () -> new Item(foodBuilder(FoodValues.COOKED_COD_SLICE)));
+    public static final RegistryObject<Item> RAW_FLYING_FISH_SLICE = ITEMS.register("raw_flying_fish_slice", () -> new Item(foodBuilder(FoodValues.COD_SLICE)));
+    public static final RegistryObject<Item> COOKED_FLYING_FISH = ITEMS.register("cooked_flying_fish", () -> new Item(foodBuilder(Foods.COOKED_COD)));
+    public static final RegistryObject<Item> COOKED_FLYING_FISH_SLICE = ITEMS.register("cooked_flying_fish_slice", () -> new Item(foodBuilder(FoodValues.COOKED_COD_SLICE)));
+    public static final RegistryObject<Item> RAW_MUDSKIPPER = ITEMS.register("raw_mudskipper", () -> new Item(foodBuilder(Foods.COD)));
+    public static final RegistryObject<Item> RAW_MUDSKIPPER_SLICE = ITEMS.register("raw_mudskipper_slice", () -> new Item(foodBuilder(FoodValues.COD_SLICE)));
+    public static final RegistryObject<Item> COOKED_MUDSKIPPER = ITEMS.register("cooked_mudskipper", () -> new Item(foodBuilder(Foods.COOKED_COD)));
+    public static final RegistryObject<Item> COOKED_MUDSKIPPER_SLICE = ITEMS.register("cooked_mudskipper_slice", () -> new Item(foodBuilder(FoodValues.COOKED_COD_SLICE)));
+    public static final RegistryObject<Item> BANANA_SLICE = ITEMS.register("banana_slice", () -> new Item(foodBuilder(AMDFoodValues.BANANA_SLICE)));
+    public static final RegistryObject<Item> RAW_CROCODILE_CLAW = ITEMS.register("raw_crocodile_claw", () -> new Item(foodBuilder(AMDFoodValues.RAW_CROCODILE_CLAW)));
+    public static final RegistryObject<Item> RAW_CROCODILE_TAIL = ITEMS.register("raw_crocodile_tail", () -> new Item(foodBuilder(AMDFoodValues.RAW_CROCODILE_TAIL)));
+    public static final RegistryObject<Item> RAW_CROCODILE_MEAT = ITEMS.register("raw_crocodile_meat", () -> new Item(foodBuilder(AMDFoodValues.RAW_CROCODILE_MEAT)));
+    public static final RegistryObject<Item> COOKED_CROCODILE_CLAW = ITEMS.register("cooked_crocodile_claw", () -> new Item(foodBuilder(AMDFoodValues.COOKED_CROCODILE_CLAW)));
+    public static final RegistryObject<Item> COOKED_CROCODILE_TAIL = ITEMS.register("cooked_crocodile_tail", () -> new Item(foodBuilder(AMDFoodValues.COOKED_CROCODILE_TAIL)));
+    public static final RegistryObject<Item> COOKED_CROCODILE_MEAT = ITEMS.register("cooked_crocodile_meat", () -> new Item(foodBuilder(AMDFoodValues.COOKED_CROCODILE_MEAT)));
+    public static final RegistryObject<Item> RAW_WHOLE_CROCODILE = ITEMS.register("raw_whole_crocodile", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> MIMIC_OCTOPUS_TENTACLE = ITEMS.register("mimic_octopus_tentacle", () -> new Item(foodBuilder(AMDFoodValues.RAW_TENTACLE)));
+    public static final RegistryObject<Item> COOKED_OCTOPUS_TENTACLE = ITEMS.register("cooked_octopus_tentacle", () -> new Item(foodBuilder(AMDFoodValues.COOKED_TENTACLE)));
+    //材料
+    public static final RegistryObject<Item> CROCODILE_TOOTH = ITEMS.register("crocodile_tooth", () -> new Item(defaultBuilder()));
+    //工具？
+    public static final RegistryObject<Item> LOBSTER_HEAD = ITEMS.register("lobster_head", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> MANTIS_SHRIMP_SCYTHE = ITEMS.register("mantis_shrimp_scythe", () -> new MantisShrimpKnife(ItemTier.SHRIMP, 3, -2.4F, defaultBuilder()));
+    public static final RegistryObject<Item> MANTIS_SHRIMP_SHOVEL = ITEMS.register("mantis_shrimp_shovel", () -> new MantisShrimpShovel(ItemTier.SHRIMP, 1.5F, -3.0F, defaultBuilder()));
+    public static final RegistryObject<Item> MANTIS_SHRIMP_HAMMER = ITEMS.register("mantis_shrimp_hammer", () -> new MantisShrimpHammer(ItemTier.SHRIMP, 1, -2.8F, defaultBuilder()));
+    public static final RegistryObject<Item> MANTIS_SHRIMP_AXE = ITEMS.register("mantis_shrimp_axe", () -> new MantisShrimpAxe(ItemTier.SHRIMP, 6.0F, -3.1F, defaultBuilder()));
+    public static final RegistryObject<Item> LOBSTER_KNIFE = ITEMS.register("lobster_knife", () -> new LobsterKnife(ItemTier.SHRIMP, 2, -2F, defaultBuilder()));
+    public static final RegistryObject<Item> LOBSTER_DART = ITEMS.register("lobster_dart", () -> new LobsterDartItem(defaultBuilder().durability(64)));
+    public static final RegistryObject<Item> CROCODILE_KNIFE = ITEMS.register("crocodile_knife", () -> new CrocodileKnife(ItemTier.CROCODILE, 1, -2F, defaultBuilder()));
+    public static final RegistryObject<Item> CROCODILE_SCUTE_SWORD = ITEMS.register("crocodile_scute_sword", () -> new CrocodileSword(ItemTier.CROCODILE_SCUTE, 3, -2.4F, defaultBuilder()));
+    public static final RegistryObject<Item> BANANA_BOW = ITEMS.register("banana_bow", () -> new BananaBowItem(defaultBuilder().durability(64)));
+
+    //无容器食物
+    public static final RegistryObject<Item> RAW_TUSKLIN_SAUSAGE = ITEMS.register("raw_tusklin_sausage", () -> new Item(foodBuilder(AMDFoodValues.RAW_TUSKLIN_SAUSAGE)));
+    public static final RegistryObject<Item> SMOKED_TUSKLIN_SAUSAGE = ITEMS.register("smoked_tusklin_sausage", () -> new Item(foodBuilder(AMDFoodValues.SMOKED_TUSKLIN_SAUSAGE)));
+    public static final RegistryObject<Item> SLICE_OF_SMOKED_TUSKLIN_SAUSAGE = ITEMS.register("slice_of_smoked_tusklin_sausage", () -> new Item(foodBuilder(AMDFoodValues.SLICE_OF_SMOKED_TUSKLIN_SAUSAGE)));
+    public static final RegistryObject<Item> BIG_MAC = ITEMS.register("big_mac", () -> new SlowEatConsumableItem(foodBuilder(AMDFoodValues.BIG_MAC), true));
+    public static final RegistryObject<Item> MANTIS_SHRIMP_TEMPURA = ITEMS.register("mantis_shrimp_tempura", () -> new ConsumableItem(foodBuilder(AMDFoodValues.MANTIS_SHRIMP_TEMPURA), true));
+    public static final RegistryObject<Item> SHRIMP_FRIED_EGG = ITEMS.register("shrimp_fried_egg", () -> new Item(foodBuilder(AMDFoodValues.SHRIMP_FRIED_EGG)));
+    public static final RegistryObject<Item> SHRIMP_POKE_BOWL = ITEMS.register("shrimp_poke_bowl", () -> new ConsumableItem(foodBuilder(AMDFoodValues.SHRIMP_POKE_BOWL), true));
+    public static final RegistryObject<Item> FRIED_TUSKLIN_MEAT = ITEMS.register("fried_tusklin_meat", () -> new Item(foodBuilder(AMDFoodValues.FRIED_TUSKLIN_MEAT)));
+    public static final RegistryObject<Item> SMOKED_TUSKLIN_SANDWICH = ITEMS.register("smoked_tusklin_sandwich", () -> new Item(foodBuilder(AMDFoodValues.SMOKED_TUSKLIN_SANDWICH)));
+    public static final RegistryObject<Item> TUSKLIN_HOT_DOG = ITEMS.register("tusklin_hot_dog", () -> new SlowEatConsumableItem(foodBuilder(AMDFoodValues.TUSKLIN_HOTDOG), true));
+
+    public static final RegistryObject<Item> CATFISH_ROLL = ITEMS.register("catfish_roll", () -> new Item(foodBuilder(FoodValues.COD_ROLL)));
+    public static final RegistryObject<Item> DEVILS_HOLE_PUPFISH_ROLL = ITEMS.register("devils_hole_pupfish_roll", () -> new Item(foodBuilder(FoodValues.COD_ROLL)));
+    public static final RegistryObject<Item> FLYING_FISH_ROLL = ITEMS.register("flying_fish_roll", () -> new Item(foodBuilder(FoodValues.COD_ROLL)));
+    public static final RegistryObject<Item> MUDSKIPPER_ROLL = ITEMS.register("mudskipper_roll", () -> new Item(foodBuilder(FoodValues.COD_ROLL)));
+    public static final RegistryObject<Item> BANANA_ROLL = ITEMS.register("banana_roll", () -> new SlowEatConsumableItem(foodBuilder(AMDFoodValues.BANANA_ROLL)));
+    public static final RegistryObject<Item> BANANA_ROLL_SLICE = ITEMS.register("banana_roll_slice", () -> new Item(foodBuilder(AMDFoodValues.BANANA_ROLL_SLICE)));
+    public static final RegistryObject<Item> TRIOPS_EGGS_ROLL = ITEMS.register("triops_eggs_roll", () -> new Item(foodBuilder(FoodValues.COD_ROLL)));
+    public static final RegistryObject<Item> LOBSTER_ROLL = ITEMS.register("lobster_roll", () -> new Item(foodBuilder(AMDFoodValues.LOBSTER_ROLL)));
+    public static final RegistryObject<Item> CROCODILE_RICE = ITEMS.register("crocodile_rice", () -> new ConsumableItem(foodBuilder(FoodValues.COOKED_RICE), true));
+    public static final RegistryObject<Item> TENTACLE_SANDWICH = ITEMS.register("tentacle_sandwich", () -> new Item(foodBuilder(AMDFoodValues.TENTACLE_SANDWICH)));
+    public static final RegistryObject<Item> TAKOYAKI = ITEMS.register("takoyaki", () -> new ConsumableItem(foodBuilder(AMDFoodValues.TAKOYAKI), true));
+    public static final RegistryObject<Item> CROCODILE_BARBECUE_STICK = ITEMS.register("crocodile_barbecue_stick", () -> new Item(foodBuilder(AMDFoodValues.CROCODILE_BARBECUE_STICK)));
+
+    //派
+    public static final RegistryObject<Item> MOOSE_PIE = ITEMS.register("moose_pie", () -> new BlockItem(BlockRegistry.MOOSE_PIE_BLOCK.get(), defaultBuilder().stacksTo(1)));
+    public static final RegistryObject<Item> MOOSE_PIE_SLICE = ITEMS.register("slice_of_moose_pie", () -> new Item(foodBuilder(AMDFoodValues.MOOSE_PIE)));
+
+    //特殊
+    public static final RegistryObject<Item> ENCHANTED_COOKED_SEAGULL = ITEMS.register("enchanted_cooked_seagull", () -> new EnchantedSeagullItem(foodBuilder(AMDFoodValues.ALWAYS_EAT_COOKED_SEAGULL).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> ETERNAL_COOKED_SEAGULL = ITEMS.register("eternal_cooked_seagull", () -> new EternalFoodItem(foodBuilder(AMDFoodValues.COOKED_SEAGULL).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> ENCHANTED_ETERNAL_COOKED_SEAGULL = ITEMS.register("enchanted_eternal_cooked_seagull", () -> new EnchantedEternalSeagullItem(foodBuilder(AMDFoodValues.ALWAYS_EAT_COOKED_SEAGULL).rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> RAINBOW_CUSTARD = ITEMS.register("rainbow_custard", () -> new RainbowConsumableItem(foodBuilder(FoodValues.GLOW_BERRY_CUSTARD).craftRemainder(Items.GLASS_BOTTLE)));
+    public static final RegistryObject<Item> RAINBOW_POPSICLE = ITEMS.register("rainbow_popsicle", () -> new RainbowPopsicleItem(foodBuilder(FoodValues.POPSICLE)));
+    public static final RegistryObject<Item> MIMICANDY = ITEMS.register("mimicandy", () -> new Item(foodBuilder(AMDFoodValues.MIMICANDY)));
+    //汤
+    public static final RegistryObject<Item> BOWL_OF_WILD_STEW = ITEMS.register("bowl_of_wild_stew", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.BOWL_OF_WILD_STEW), true));
+    public static final RegistryObject<Item> FRONTIER_SOUP = ITEMS.register("frontier_soup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.FRONTIER_SOUP), true));
+    public static final RegistryObject<Item> KANGAROO_MEAT_STEW = ITEMS.register("kangaroo_meat_stew", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.KANGAROO_MEAT_STEW), true));
+    public static final RegistryObject<Item> MOOSE_STEW = ITEMS.register("moose_stew", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.MOOSE_STEW), true));
+    public static final RegistryObject<Item> SEA_BEAR_STEW = ITEMS.register("sea_bear_stew", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.SEA_BEAR_STEW), true));
+    public static final RegistryObject<Item> SEAGULL_SOUP = ITEMS.register("seagull_soup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.SEAGULL_SOUP), true));
+    public static final RegistryObject<Item> CATFISH_STEW = ITEMS.register("catfish_stew", () -> new ConsumableItem(foodBuilder(FoodValues.FISH_STEW), true));
+    public static final RegistryObject<Item> DEVILS_HOLE_PUPFISH_STEW = ITEMS.register("devils_hole_pupfish_stew", () -> new ConsumableItem(foodBuilder(FoodValues.FISH_STEW), true));
+    public static final RegistryObject<Item> FLYING_FISH_STEW = ITEMS.register("flying_fish_stew", () -> new ConsumableItem(foodBuilder(FoodValues.FISH_STEW), true));
+    public static final RegistryObject<Item> MUDSKIPPER_STEW = ITEMS.register("mudskipper_stew", () -> new ConsumableItem(foodBuilder(FoodValues.FISH_STEW), true));
+    public static final RegistryObject<Item> CROCODILE_STEW_WITH_CATFISH = ITEMS.register("crocodile_stewed_with_catfish", () -> new ConsumableItem(foodBuilder(FoodValues.FISH_STEW), true));
+
+    //碗装食物
+    public static final RegistryObject<Item> BISON_TARTARE = ITEMS.register("bison_tartare", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.BISON_TARTARE), true));
+    public static final RegistryObject<Item> BOWL_OF_HONEY_GLAZED_BEAR_MEAT_WITH_SALMON = ITEMS.register("bowl_of_honey_glazed_bear_meat_with_salmon", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.BOWL_OF_HONEY_GLAZED_BEAR_MEAT_WITH_SALMON), true));
+    public static final RegistryObject<Item> BRAISED_KANGAROO_MEATBALLS = ITEMS.register("braised_kangaroo_meatballs", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.BREASTED_KANGAROO_MEATBALLS), true));
+    public static final RegistryObject<Item> GRAVY_KANGAROO_MEAT = ITEMS.register("gravy_kangaroo_meat", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.GRAVY_KANGAROO_MEAT), true));
+    public static final RegistryObject<Item> HONEY_GLAZED_MOOSE_RIBS = ITEMS.register("honey_glazed_moose_ribs", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.HONEY_GLAZED_MOOSE_RIBS), true));
+    public static final RegistryObject<Item> ROAST_SEAGULL = ITEMS.register("roast_seagull", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.ROAST_SEAGULL), true));
+    public static final RegistryObject<Item> CANNED_BEAR_MEAT = ITEMS.register("canned_bear_meat", () -> new SlowEatConsumableItem(bucketFoodBuilder(AMDFoodValues.CANNED_BEAR_MEAT), true));
+    public static final RegistryObject<Item> FRIED_SEAGULL_WITH_FRIES = ITEMS.register("fried_seagull_with_fries", () -> new ConsumableItem(bucketFoodBuilder(AMDFoodValues.FRIED_SEAGULL_WITH_FRIES), true));
+    public static final RegistryObject<Item> KATSUDON = ITEMS.register("katsudon", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.KATSUDON), true));
+    public static final RegistryObject<Item> BOWL_OF_MOOSE_SAUSAGE_WITH_SALMON = ITEMS.register("bowl_of_moose_sausage_with_salmon", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.BOWL_OF_MOOSE_SAUSAGE_WITH_SALMON), true));
+    public static final RegistryObject<Item> BOWL_OF_STUFFED_CROCODILE_HEAD = ITEMS.register("bowl_of_stuffed_crocodile_head", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.STUFFED_CROCODILE_HEAD), true));
+    public static final RegistryObject<Item> BOWL_OF_STUFFED_CROCODILE_TAIL = ITEMS.register("bowl_of_stuffed_crocodile_tail", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.STUFFED_CROCODILE_TAIL), true));
+    public static final RegistryObject<Item> BOWL_OF_STUFFED_CROCODILE_LEG = ITEMS.register("bowl_of_stuffed_crocodile_leg", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.STUFFED_CROCODILE_CLAW), true));
+    public static final RegistryObject<Item> BOWL_OF_STUFFED_CROCODILE = ITEMS.register("bowl_of_stuffed_crocodile", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.STUFFED_CROCODILE), true));
+    public static final RegistryObject<Item> TENTACLE_MEDLEY = ITEMS.register("tentacle_medley", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.TENTACLE_MEDLEY), false));
+    public static final RegistryObject<Item> CTHULHUS_BREAKFAST = ITEMS.register("cthulhus_breakfast", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.CTHULHUS_BREAKFAST), true));
+    public static final RegistryObject<Item> LOBSTER_HEAD_STEW = ITEMS.register("lobster_head_stew", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.LOBSTER_HEAD_STEW), true));
+    public static final RegistryObject<Item> LOBSTER_PASTA = ITEMS.register("lobster_pasta", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.LOBSTER_PASTA), true));
+
+    //大菜
+    public static final RegistryObject<Item> MOOSE_SAUSAGE_WITH_SALMON = ITEMS.register("moose_sausage_with_salmon", () -> new BlockItem(BlockRegistry.MOOSE_SAUSAGE_WITH_SALMON.get(), defaultBuilder().stacksTo(1)));
+    public static final RegistryObject<Item> HONEY_GLAZED_BEAR_MEAT_WITH_SALMON = ITEMS.register("honey_glazed_bear_meat_with_salmon", () -> new BlockItem(BlockRegistry.HONEY_GLAZED_BEAR_MEAT_WITH_SALMON.get(), defaultBuilder().stacksTo(1)));
+    public static final RegistryObject<Item> WILD_STEW = ITEMS.register("wild_stew", () -> new BlockItem(BlockRegistry.WILD_STEW.get(), defaultBuilder().stacksTo(1)));
+    public static final RegistryObject<Item> ALEXS_RICE_ROLL_MEDLEY = ITEMS.register("alexs_rice_roll_medley", () -> new PlaceOnWaterBlockItem(BlockRegistry.ALEXS_RICE_ROLL_MEDLEY.get(), defaultBuilder().stacksTo(1)));
+    public static final RegistryObject<Item> STEAMED_STUFFED_CROCODILE = ITEMS.register("steamed_stuffed_crocodile", () -> new BlockItem(BlockRegistry.STEAMED_STUFFED_CROCODILE.get(), defaultBuilder().stacksTo(1)));
+    public static final RegistryObject<Item> LOBSTER_ROLL_MEDLEY = ITEMS.register("lobster_roll_medley", () -> new BlockItem(BlockRegistry.LOBSTER_ROLL_MEDLEY.get(), defaultBuilder().stacksTo(1)));
+
+    private static Item.Properties defaultBuilder() {
+        return new Item.Properties();
+    }
+
+    public static Item.Properties foodBuilder(FoodProperties food) {
+        return new Item.Properties().food(food);
+    }
+
+    private static Item.Properties bowlFoodBuilder(FoodProperties food) {
+        return new Item.Properties().craftRemainder(Items.BOWL).stacksTo(16).food(food);
+    }
+
+    private static Item.Properties bucketFoodBuilder(FoodProperties food) {
+        return new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).food(food);
+    }
+}

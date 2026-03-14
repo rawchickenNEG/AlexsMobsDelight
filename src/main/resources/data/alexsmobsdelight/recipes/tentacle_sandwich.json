@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:bread"
+    },
+    {
+      "tag": "forge:salad_ingredients"
+    },
+    {
+      "item": "alexsmobsdelight:cooked_octopus_tentacle"
+    },
+    {
+      "item": "alexsmobsdelight:cooked_octopus_tentacle"
+    }
+  ],
+  "result": {
+    "item": "alexsmobsdelight:tentacle_sandwich"
+  }
+}

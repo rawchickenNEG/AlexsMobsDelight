@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "alexsmobsdelight:raw_bison_meat"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "alexsmobsdelight:raw_bison_meat_cubes"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

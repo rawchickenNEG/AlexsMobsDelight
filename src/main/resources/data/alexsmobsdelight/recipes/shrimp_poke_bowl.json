@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:crops/onion"
+    },
+    {
+      "item": "alexsmobsdelight:mantis_shrimp_tempura"
+    },
+    {
+      "item": "alexsmobsdelight:shrimp_fried_egg"
+    },
+    {
+      "tag": "forge:salad_ingredients"
+    },
+    {
+      "item": "alexsmobs:shrimp_fried_rice"
+    },
+    {
+      "tag": "forge:salad_ingredients"
+    }
+  ],
+  "result": {
+    "item": "alexsmobsdelight:shrimp_poke_bowl"
+  }
+}

@@ -1,0 +1,7 @@
+- 1.0.2
+   Apply the rate of applying food effects when seagull store food effects.
+- 1.0.1
+   Add Moose Antler loot in Moose loot table.
+   Add Mimicandy and duplicate food recipe (WIP, hide)
+   Fix Moose Sausage With Salmon block loot table issue.
+   Fix issue: Enchanted book cannot use on Lobster Dart and Banana Bow.
