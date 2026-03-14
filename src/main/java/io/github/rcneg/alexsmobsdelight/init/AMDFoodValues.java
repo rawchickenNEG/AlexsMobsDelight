@@ -9,33 +9,33 @@ import net.minecraft.world.food.FoodProperties;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
 public class AMDFoodValues {
-    public static final FoodProperties RAW_BEAR_MEAT = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.3F).build();
-    public static final FoodProperties RAW_BEAR_MEAT_SLICE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).build();
-    public static final FoodProperties COOKED_BEAR_MEAT = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).build();
-    public static final FoodProperties COOKED_BEAR_MEAT_SLICE = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.6F).build();
+    public static final FoodProperties RAW_BEAR_MEAT = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.3F).meat().build();
+    public static final FoodProperties RAW_BEAR_MEAT_SLICE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).meat().build();
+    public static final FoodProperties COOKED_BEAR_MEAT = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).meat().build();
+    public static final FoodProperties COOKED_BEAR_MEAT_SLICE = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.6F).meat().build();
 
-    public static final FoodProperties RAW_BISON_MEAT = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.3F).build();
-    public static final FoodProperties RAW_BISON_MEAT_CUBES = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.3F).build();
-    public static final FoodProperties COOKED_BISON_MEAT = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.6F).build();
-    public static final FoodProperties COOKED_BISON_MEAT_CUBES = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.6F).build();
+    public static final FoodProperties RAW_BISON_MEAT = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.3F).meat().build();
+    public static final FoodProperties RAW_BISON_MEAT_CUBES = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.3F).meat().build();
+    public static final FoodProperties COOKED_BISON_MEAT = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.6F).meat().build();
+    public static final FoodProperties COOKED_BISON_MEAT_CUBES = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.6F).meat().build();
 
-    public static final FoodProperties RAW_TUSKLIN_MEAT = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.3F).build();
-    public static final FoodProperties RAW_TUSKLIN_MEAT_PIECE = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.3F).build();
-    public static final FoodProperties COOKED_TUSKLIN_MEAT = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.6F).build();
-    public static final FoodProperties COOKED_TUSKLIN_MEAT_PIECE = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.6F).build();
+    public static final FoodProperties RAW_TUSKLIN_MEAT = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.3F).meat().build();
+    public static final FoodProperties RAW_TUSKLIN_MEAT_PIECE = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.3F).meat().build();
+    public static final FoodProperties COOKED_TUSKLIN_MEAT = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.6F).meat().build();
+    public static final FoodProperties COOKED_TUSKLIN_MEAT_PIECE = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.6F).meat().build();
     public static final FoodProperties RAW_TUSKLIN_SAUSAGE = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.4F).build();
     public static final FoodProperties SMOKED_TUSKLIN_SAUSAGE = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.85F).build();
     public static final FoodProperties SLICE_OF_SMOKED_TUSKLIN_SAUSAGE = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.85F).build();
-    public static final FoodProperties FRIED_TUSKLIN_MEAT = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.85F).build();
+    public static final FoodProperties FRIED_TUSKLIN_MEAT = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.85F).meat().build();
 
-    public static final FoodProperties RAW_KANGAROO_MEAT_SLICE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.6F).build();
-    public static final FoodProperties COOKED_KANGAROO_MEAT_SLICE = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.85F).build();
+    public static final FoodProperties RAW_KANGAROO_MEAT_SLICE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.6F).meat().build();
+    public static final FoodProperties COOKED_KANGAROO_MEAT_SLICE = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.85F).meat().build();
 
-    public static final FoodProperties RAW_MOOSE_RIB_PIECE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.6F).build();
-    public static final FoodProperties COOKED_MOOSE_RIB_PIECE = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.85F).build();
+    public static final FoodProperties RAW_MOOSE_RIB_PIECE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.6F).meat().build();
+    public static final FoodProperties COOKED_MOOSE_RIB_PIECE = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.85F).meat().build();
 
-    public static final FoodProperties RAW_SEAGULL = (new FoodProperties.Builder()).nutrition(1).saturationMod(0.3F).build();
-    public static final FoodProperties COOKED_SEAGULL = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).build();
+    public static final FoodProperties RAW_SEAGULL = (new FoodProperties.Builder()).nutrition(1).saturationMod(0.3F).meat().build();
+    public static final FoodProperties COOKED_SEAGULL = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).meat().build();
     public static final FoodProperties ALWAYS_EAT_COOKED_SEAGULL = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).alwaysEat().build();
 
     public static final FoodProperties MANTIS_SHRIMP_TAIL = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.3F).build();
@@ -46,12 +46,12 @@ public class AMDFoodValues {
     public static final FoodProperties BANANA_ROLL_SLICE = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.5F).build();
     public static final FoodProperties LOBSTER_ROLL = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).build();
 
-    public static final FoodProperties RAW_CROCODILE_CLAW = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.3F).build();
-    public static final FoodProperties RAW_CROCODILE_TAIL = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.3F).build();
-    public static final FoodProperties RAW_CROCODILE_MEAT = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).build();
-    public static final FoodProperties COOKED_CROCODILE_CLAW = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).build();
-    public static final FoodProperties COOKED_CROCODILE_TAIL = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.6F).build();
-    public static final FoodProperties COOKED_CROCODILE_MEAT = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.6F).build();
+    public static final FoodProperties RAW_CROCODILE_CLAW = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.3F).meat().build();
+    public static final FoodProperties RAW_CROCODILE_TAIL = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.3F).meat().build();
+    public static final FoodProperties RAW_CROCODILE_MEAT = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).meat().build();
+    public static final FoodProperties COOKED_CROCODILE_CLAW = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).meat().build();
+    public static final FoodProperties COOKED_CROCODILE_TAIL = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.6F).meat().build();
+    public static final FoodProperties COOKED_CROCODILE_MEAT = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.6F).meat().build();
     public static final FoodProperties CROCODILE_BARBECUE_STICK = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.9F).build();
 
     public static final FoodProperties RAW_TENTACLE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).build();
