@@ -110,7 +110,7 @@ public class ThrownDartEntity extends AbstractArrow implements ItemSupplier {
 
     protected void onHitEntity(EntityHitResult p_37573_) {
         Entity $$1 = p_37573_.getEntity();
-        float $$2 = 8.0F;
+        float $$2 = 6.0F;
         if ($$1 instanceof LivingEntity $$3) {
             $$2 += EnchantmentHelper.getDamageBonus(this.tridentItem, $$3.getMobType());
         }
