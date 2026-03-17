@@ -15,7 +15,6 @@ import java.util.List;
 public class CrocodileDeathRollEffect extends MobEffect {
     public CrocodileDeathRollEffect(MobEffectCategory p_19451_, int p_19452_) {
         super(p_19451_, p_19452_);
-        this.addAttributeModifier(Attributes.ATTACK_DAMAGE, "7107DE5E-0135-1513-5654-916891316895", (double) 1.0F, AttributeModifier.Operation.MULTIPLY_TOTAL);
     }
 
     public void applyEffectTick(LivingEntity entity, int amplifier) {

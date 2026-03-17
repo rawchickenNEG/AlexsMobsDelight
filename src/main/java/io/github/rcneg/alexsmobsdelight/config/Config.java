@@ -1,5 +1,7 @@
 package io.github.rcneg.alexsmobsdelight.config;
 
+import com.github.alexthe666.alexsmobs.config.AMConfig;
+import com.google.common.collect.Lists;
 import io.github.rcneg.alexsmobsdelight.AlexsMobsDelight;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
