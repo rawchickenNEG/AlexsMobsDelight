@@ -1,6 +1,8 @@
 - 1.0.2
    Apply the rate of applying food effects when seagull store food effects.
+   Add more foods and tool items (whale, seal, giant squid).
    Change thrown Lobster Dart hit damage.
+   Fix wrong output recipe issue of cutting tusklin meat piece.
    Remove redundant damage addition on Crocodile Death Roll effect.
 - 1.0.1
    Add Moose Antler loot in Moose loot table.

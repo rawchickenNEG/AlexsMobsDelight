@@ -17,25 +17,17 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class SlowEatConsumableItem extends ConsumableItem {
-    private final boolean hasFoodEffectTooltip;
-    private final boolean hasCustomTooltip;
 
     public SlowEatConsumableItem(Item.Properties properties) {
         super(properties);
-        this.hasFoodEffectTooltip = false;
-        this.hasCustomTooltip = false;
     }
 
     public SlowEatConsumableItem(Item.Properties properties, boolean hasFoodEffectTooltip) {
-        super(properties);
-        this.hasFoodEffectTooltip = hasFoodEffectTooltip;
-        this.hasCustomTooltip = false;
+        super(properties, hasFoodEffectTooltip);
     }
 
     public SlowEatConsumableItem(Item.Properties properties, boolean hasFoodEffectTooltip, boolean hasCustomTooltip) {
-        super(properties);
-        this.hasFoodEffectTooltip = hasFoodEffectTooltip;
-        this.hasCustomTooltip = hasCustomTooltip;
+        super(properties, hasFoodEffectTooltip, hasCustomTooltip);
     }
 
     public int getUseDuration(ItemStack p_41454_) {
@@ -43,20 +35,5 @@ public class SlowEatConsumableItem extends ConsumableItem {
             return 64;
         }
         return 0;
-    }
-
-    @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag isAdvanced) {
-        if ((Boolean) Configuration.FOOD_EFFECT_TOOLTIP.get()) {
-            if (this.hasCustomTooltip) {
-                MutableComponent textEmpty = TextUtils.getTranslation("tooltip." + this, new Object[0]);
-                tooltip.add(textEmpty.withStyle(ChatFormatting.BLUE));
-            }
-
-            if (this.hasFoodEffectTooltip) {
-                TextUtils.addFoodEffectTooltip(stack, tooltip, 1.0F);
-            }
-        }
-
     }
 }

@@ -15,18 +15,21 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.SculkShriekerBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -122,5 +125,20 @@ public class InteractEvents {
             }
         }
 
+    }
+
+    @SubscribeEvent
+    public static void modifyUnderwaterBreakSpeed(PlayerEvent.BreakSpeed event) {
+        Player player = event.getEntity();
+        float speed = event.getNewSpeed();
+
+        ItemStack tool = player.getMainHandItem();
+        if (tool.is(ItemRegistry.WHALE_TOOTH_PICKAXE.get())) {
+            if (player.isEyeInFluid(FluidTags.WATER) && !EnchantmentHelper.hasAquaAffinity(player)) {
+                speed *= 5.0F;
+            }
+        }
+
+        event.setNewSpeed(speed);
     }
 }

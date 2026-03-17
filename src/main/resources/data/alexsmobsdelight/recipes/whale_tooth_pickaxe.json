@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "t": {
+      "item": "alexsmobs:cachalot_whale_tooth"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "p": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "tpt",
+    " s ",
+    " s "
+  ],
+  "result": {
+    "item": "alexsmobsdelight:whale_tooth_pickaxe"
+  }
+}
