@@ -1,6 +1,8 @@
 package io.github.rcneg.alexsmobsdelight.events;
 
 import com.github.alexthe666.alexsmobs.effect.AMEffectRegistry;
+import com.github.alexthe666.alexsmobs.entity.EntityDevilsHolePupfish;
+import com.github.alexthe666.alexsmobs.entity.EntitySeagull;
 import com.github.alexthe666.alexsmobs.misc.AMSoundRegistry;
 import io.github.rcneg.alexsmobsdelight.accessor.IEntitySeagullData;
 import io.github.rcneg.alexsmobsdelight.config.Config;
@@ -18,6 +20,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -26,6 +29,8 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -111,6 +116,14 @@ public class AttackEvents {
                     addEntityDrops(event, meat);
                 }else if(seagull.amd$getConsumedEternalFood()){
                     addEntityDrops(event, new ItemStack(ItemRegistry.ETERNAL_COOKED_SEAGULL.get()));
+                }
+            }
+
+            if (entity instanceof EntityDevilsHolePupfish fish){
+                AABB aabb = entity.getBoundingBox().inflate(8);
+                List<EntityDevilsHolePupfish> list = fish.level().getEntitiesOfClass(EntityDevilsHolePupfish.class, aabb);
+                if(list.size() >= Config.PUPFISH_ENABLE_DROP.get()){
+                    addEntityDrops(event, new ItemStack(ItemRegistry.RAW_DEVILS_HOLE_PUPFISH.get()));
                 }
             }
         }

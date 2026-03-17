@@ -40,7 +40,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> RAW_TUSKLIN_MEAT_PIECE = ITEMS.register("raw_tusklin_meat_piece", () -> new Item(foodBuilder(AMDFoodValues.RAW_TUSKLIN_MEAT_PIECE)));
     public static final RegistryObject<Item> COOKED_TUSKLIN_MEAT = ITEMS.register("cooked_tusklin_meat", () -> new Item(foodBuilder(AMDFoodValues.COOKED_TUSKLIN_MEAT)));
     public static final RegistryObject<Item> COOKED_TUSKLIN_MEAT_PIECE = ITEMS.register("cooked_tusklin_meat_piece", () -> new Item(foodBuilder(AMDFoodValues.COOKED_TUSKLIN_MEAT_PIECE)));
-    public static final RegistryObject<Item> RAW_DEVILS_HOLE_PUPFISH = ITEMS.register("raw_devils_hole_pupfish", () -> new Item(foodBuilder(Foods.COD)));
+    public static final RegistryObject<Item> RAW_DEVILS_HOLE_PUPFISH = ITEMS.register("raw_devils_hole_pupfish", () -> new ConsumableItem(foodBuilder(Foods.COD), false, true));
     public static final RegistryObject<Item> RAW_DEVILS_HOLE_PUPFISH_SLICE = ITEMS.register("raw_devils_hole_pupfish_slice", () -> new Item(foodBuilder(FoodValues.COD_SLICE)));
     public static final RegistryObject<Item> COOKED_DEVILS_HOLE_PUPFISH = ITEMS.register("cooked_devils_hole_pupfish", () -> new Item(foodBuilder(Foods.COOKED_COD)));
     public static final RegistryObject<Item> COOKED_DEVILS_HOLE_PUPFISH_SLICE = ITEMS.register("cooked_devils_hole_pupfish_slice", () -> new Item(foodBuilder(FoodValues.COOKED_COD_SLICE)));
