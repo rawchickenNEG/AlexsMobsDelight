@@ -118,14 +118,6 @@ public class AttackEvents {
                     addEntityDrops(event, new ItemStack(ItemRegistry.ETERNAL_COOKED_SEAGULL.get()));
                 }
             }
-
-            if (entity instanceof EntityDevilsHolePupfish fish){
-                AABB aabb = entity.getBoundingBox().inflate(8);
-                List<EntityDevilsHolePupfish> list = fish.level().getEntitiesOfClass(EntityDevilsHolePupfish.class, aabb);
-                if(list.size() >= Config.PUPFISH_ENABLE_DROP.get()){
-                    addEntityDrops(event, new ItemStack(ItemRegistry.RAW_DEVILS_HOLE_PUPFISH.get()));
-                }
-            }
         }
     }
 

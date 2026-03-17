@@ -1,7 +1,5 @@
 package io.github.rcneg.alexsmobsdelight.config;
 
-import com.github.alexthe666.alexsmobs.config.AMConfig;
-import com.google.common.collect.Lists;
 import io.github.rcneg.alexsmobsdelight.AlexsMobsDelight;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -23,8 +21,6 @@ public class Config
     public static ForgeConfigSpec.IntValue CROCODILE_KNIFE_LOOT;
     public static ForgeConfigSpec.DoubleValue CROCODILE_KNIFE_HEALTH;
     public static ForgeConfigSpec.BooleanValue CROCODILE_KNIFE_FULL_DROP;
-    public static ForgeConfigSpec.IntValue PUPFISH_ENABLE_DROP;
-
 
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ETERNAL_FOODS;
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> LOOTING_ENTITIES_BLACKLIST;
@@ -59,11 +55,6 @@ public class Config
                 .defineListAllowEmpty("LootingEntitiesBlacklist",
                         List.of("alexsmobs:void_worm"
                         ), Config::validateEntityTypeName);
-        COMMON_BUILDER.pop();
-        COMMON_BUILDER.push("Devil's Hole Pupfish");
-        PUPFISH_ENABLE_DROP = COMMON_BUILDER.comment("Raw Devil's Hole Pupfish will only obtainable when there are enough number of living pupfishes near by the target fish.")
-                .comment("I know this is the rarest fish in the world, but in AlexsMobs, once you find at least two, you will be able to farm a great many of them because of the powerful fertility.")
-                .defineInRange("RepopulationAmount", 16, 0, 64);
         COMMON_BUILDER.pop();
         COMMON_CONFIG = COMMON_BUILDER.build();
     }
