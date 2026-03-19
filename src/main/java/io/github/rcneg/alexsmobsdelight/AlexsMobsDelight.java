@@ -1,7 +1,10 @@
 package io.github.rcneg.alexsmobsdelight;
 
+import com.github.alexthe666.alexsmobs.item.AMItemRegistry;
 import io.github.rcneg.alexsmobsdelight.config.Config;
 import io.github.rcneg.alexsmobsdelight.init.*;
+import net.minecraft.world.item.BowlFoodItem;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -9,6 +12,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
+
+import java.util.List;
 
 @Mod(AlexsMobsDelight.MODID)
 public class AlexsMobsDelight
@@ -33,5 +39,18 @@ public class AlexsMobsDelight
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(() -> {
+            registerStackSizeOverrides();
+        });
+    }
+
+    public static void registerStackSizeOverrides() {
+        if (!Config.STACKABLE_SOUP_ITEMS.get()) return;
+        List<Item> soupItems = List.of(AMItemRegistry.MOSQUITO_REPELLENT_STEW.get(), AMItemRegistry.SOPA_DE_MACACO.get());
+        soupItems.forEach((item) -> {
+            if (item instanceof BowlFoodItem) {
+                ObfuscationReflectionHelper.setPrivateValue(Item.class, item, 16, "f_41370_");
+            }
+        });
     }
 }
