@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:bread"
+    },
+    {
+      "tag": "alexsmobsdelight:cooked_squid_tentacles"
+    },
+    {
+      "tag": "alexsmobsdelight:cooked_squid_tentacles"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    }
+  ],
+  "result": {
+    "item": "alexsmobsdelight:dried_kelp_tentacles_sandwich"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 400,
+  "experience": 3.0,
+  "ingredients": [
+    {
+      "item": "alexsmobsdelight:whale_meat"
+    },
+    {
+      "item": "alexsmobs:lost_tentacle"
+    },
+    {
+      "item": "alexsmobs:lost_tentacle"
+    },
+    {
+      "tag": "forge:crops/onion"
+    },
+    {
+      "item": "minecraft:kelp"
+    },
+    {
+      "item": "minecraft:kelp"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "alexsmobsdelight:whale_meat_with_tentacles"
+  }
+}
