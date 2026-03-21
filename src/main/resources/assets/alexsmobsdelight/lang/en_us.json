@@ -26,6 +26,19 @@
   "effect.alexsmobsdelight.seagull_anorexia.desc": "Seagull near by effect holders will always in stealing cooldown, in other words, they will not steal your food during this effect.",
   "effect.alexsmobsdelight.crystallize_walker": "Crystallize Walker",
   "effect.alexsmobsdelight.crystallize_walker.desc": "Similar to Frost Walker enchantment, but placing Crystallize Banana Slug Mucus",
+  "effect.alexsmobsdelight.bison_impact": "Bison Impact",
+  "effect.alexsmobsdelight.bison_impact.desc": "Add attack damage based on your moving speed.",
+  "effect.alexsmobsdelight.extended_touch": "Extended Touch",
+  "effect.alexsmobsdelight.extended_touch.desc": "Add block interact range.",
+  "effect.alexsmobsdelight.extended_scare": "Extended Scare",
+  "effect.alexsmobsdelight.extended_scare.desc": "Add entity interact range.",
+  "effect.alexsmobsdelight.poison_fangs": "Poison Fangs",
+  "effect.alexsmobsdelight.poison_fangs.desc": "Apply Poison II effect when attacking, higher level provides longer poison effect duration.",
+
+  "entity.alexsmobsdelight.thrown_dart": "Thrown Dart",
+  "entity.alexsmobsdelight.thrown_banana": "Thrown Banana",
+  "entity.alexsmobsdelight.super_seagull": "Super Seagull (WIP)",
+  "entity.alexsmobsdelight.super_seagull.display": "Seagull - The Profane",
 
   "item.alexsmobsdelight.big_mac": "Big Max",
   "item.alexsmobsdelight.bison_tartare": "Bison Tartare",
@@ -181,7 +194,7 @@
   "farmersdelight.tooltip.seal_meat": "Orca's favorite.",
   "farmersdelight.tooltip.orcas_leap_soup": "Supreme present from orca!",
   "farmersdelight.tooltip.sea_bear_stew": "Try feeding the bear in water with this?",
-  "farmersdelight.tooltip.raw_devils_hole_pupfish": "Congratulations on the recovery of the population! It's time to taste the rarest fish.",
+  "farmersdelight.tooltip.cheese": "Remove all bad effects.",
 
   "message.alexsmobsdelight.crocodile_knife": "Target is too strong for you, you can not loot from it.",
   "message.alexsmobsdelight.crocodile_knife_1": "Target is strong for you, you got lower chance to loot from it.",

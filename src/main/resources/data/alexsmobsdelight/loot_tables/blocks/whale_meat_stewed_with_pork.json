@@ -7,40 +7,44 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "alexsmobsdelight:polar_kiviak"
+          "name": "alexsmobsdelight:whale_meat_stewed_with_pork"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "alexsmobsdelight:polar_kiviak",
+          "block": "alexsmobsdelight:whale_meat_stewed_with_pork",
           "properties": {
-            "opened": "false"
+            "servings": "4"
           }
         }
       ]
     },
     {
-      "name": "pool1",
+      "name": "pool2",
       "rolls": 1,
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "alexsmobsdelight:kiviak",
+          "name": "minecraft:brick",
           "functions": [
             {
               "function": "set_count",
-              "count": 3
+              "count": 4
             }
           ]
         }
       ],
+
       "conditions": [
         {
-          "condition": "minecraft:block_state_property",
-          "block": "alexsmobsdelight:polar_kiviak",
-          "properties": {
-            "opened": "true"
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:block_state_property",
+            "block": "alexsmobsdelight:whale_meat_stewed_with_pork",
+            "properties": {
+              "servings": "4"
+            }
           }
         }
       ]

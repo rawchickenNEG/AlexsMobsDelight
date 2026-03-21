@@ -60,11 +60,10 @@ public class AMDFoodValues {
     public static final FoodProperties RAW_TENTACLE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).build();
     public static final FoodProperties COOKED_TENTACLE = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.6F).build();
     public static final FoodProperties COOKED_LOST_TENTACLE = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).build();
+    public static final FoodProperties COOKED_LOST_TENTACLE_CUT = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.6F).build();
     public static final FoodProperties TENTACLE_MEDLEY = (new FoodProperties.Builder()).nutrition(10).saturationMod(0.6F).build();
     public static final FoodProperties TENTACLE_SANDWICH = (new FoodProperties.Builder()).nutrition(10).saturationMod(0.6F).build();
     public static final FoodProperties DRIED_KELP_TENTACLE_SANDWICH = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.7F).build();
-    public static final FoodProperties SEAL_SANDWICH = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.6F).build();
-
 
     public static final FoodProperties MOOSE_PIE = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.3F).build();
     public static final FoodProperties MIMICANDY = (new FoodProperties.Builder()).nutrition(1).saturationMod(0.5F).build();
@@ -74,6 +73,13 @@ public class AMDFoodValues {
     public static final FoodProperties SEAL_MEAT = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.3F).meat().build();
     public static final FoodProperties COOKED_SEAL_MEAT = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).meat().build();
     public static final FoodProperties CHEESE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.6F).meat().build();
+
+    public static final FoodProperties SEAL_STICK = (new FoodProperties.Builder()).nutrition(10).saturationMod(0.6F).saturationMod(0.6F).alwaysEat().effect(() -> {
+        return new MobEffectInstance((MobEffect)MobEffects.LUCK, 200, 4);
+    }, 1.0F).build();
+    public static final FoodProperties SEAL_SANDWICH = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.6F).effect(() -> {
+        return new MobEffectInstance((MobEffect)MobEffects.LUCK, 3000, 0);
+    }, 1.0F).build();
 
     public static final FoodProperties BANANA_CUSTARD = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.6F).alwaysEat().effect(() -> {
         return new MobEffectInstance(EffectRegistry.CRYSTALLIZE_WALKER.get(), 3600, 0);
@@ -94,6 +100,11 @@ public class AMDFoodValues {
     }, 1.0F).build();
     public static final FoodProperties KANGAROO_MEAT_STEW = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).effect(() -> {
         return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
+    }, 1.0F).build();
+    public static final FoodProperties SEAL_STEW = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 1800, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect)MobEffects.LUCK, 3000, 0);
     }, 1.0F).build();
     public static final FoodProperties MOOSE_STEW = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).effect(() -> {
         return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
@@ -148,6 +159,8 @@ public class AMDFoodValues {
     }, 1.0F).build();
     public static final FoodProperties CHEESE_SEAL_BURGER = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.85F).effect(() -> {
         return new MobEffectInstance((MobEffect)MobEffects.DAMAGE_BOOST, 600, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect)MobEffects.LUCK, 1800, 2);
     }, 1.0F).build();
     public static final FoodProperties MANTIS_SHRIMP_TEMPURA = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).effect(() -> {
         return new MobEffectInstance((MobEffect)MobEffects.DAMAGE_BOOST, 600, 0);
@@ -204,6 +217,32 @@ public class AMDFoodValues {
         return new MobEffectInstance((MobEffect)AMEffectRegistry.FEAR.get(), 100, 0);
     }, 1.0F).effect(() -> {
         return new MobEffectInstance((MobEffect)MobEffects.DIG_SPEED, 1200, 4);
+    }, 1.0F).build();
+    public static final FoodProperties WHALE_PORK_STEW = (new FoodProperties.Builder()).nutrition(16).saturationMod(0.85F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 6000, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.NOURISHMENT.get(), 6000, 0);
+    }, 1.0F).build();
+    public static final FoodProperties TENTACLE_SALAD = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).effect(() -> {
+        return new MobEffectInstance((MobEffect)EffectRegistry.EXTENDED_TOUCH.get(), 3600, 0);
+    }, 1.0F).build();
+    public static final FoodProperties TENTACLE_STICK = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).effect(() -> {
+        return new MobEffectInstance((MobEffect)EffectRegistry.EXTENDED_TOUCH.get(), 1800, 1);
+    }, 1.0F).build();
+    public static final FoodProperties WHALE_SOUP = (new FoodProperties.Builder()).nutrition(16).saturationMod(0.6F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect)AMEffectRegistry.ORCAS_MIGHT.get(), 900, 0);
+    }, 1.0F).build();
+    public static final FoodProperties WHALE_TENTACLE = (new FoodProperties.Builder()).nutrition(24).saturationMod(0.85F).effect(() -> {
+        return new MobEffectInstance((MobEffect)EffectRegistry.EXTENDED_TOUCH.get(), 6000, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.NOURISHMENT.get(), 6000, 0);
+    }, 1.0F).build();
+    public static final FoodProperties WHALE_SKIN_STEW = (new FoodProperties.Builder()).nutrition(20).saturationMod(0.6F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect)MobEffects.DAMAGE_RESISTANCE, 900, 0);
     }, 1.0F).build();
 
     //public static final Map<Item, FoodProperties> VANILLA_SOUP_EFFECTS;

@@ -1,7 +1,6 @@
 package io.github.rcneg.alexsmobsdelight.items;
 
 import com.github.alexthe666.alexsmobs.block.AMBlockRegistry;
-import com.github.alexthe666.alexsmobs.block.BlockBananaSlugSlime;
 import com.github.alexthe666.alexsmobs.entity.util.RainbowUtil;
 import com.google.common.collect.Lists;
 import net.minecraft.core.BlockPos;
@@ -31,7 +30,7 @@ public class BananaPopsicleItem extends PopsicleItem {
         return super.finishUsingItem(st, level, e);
     }
 
-    private boolean removeWaterBreadthFirstSearch(Level level, BlockPos pos) {
+    private void removeWaterBreadthFirstSearch(Level level, BlockPos pos) {
         Queue<Tuple<BlockPos, Integer>> queue = Lists.newLinkedList();
         queue.add(new Tuple(pos, 0));
         int i = 0;
@@ -56,10 +55,8 @@ public class BananaPopsicleItem extends PopsicleItem {
             }
 
             Direction[] var11 = Direction.values();
-            int var12 = var11.length;
 
-            for(int var13 = 0; var13 < var12; ++var13) {
-                Direction direction = var11[var13];
+            for (Direction direction : var11) {
                 BlockPos blockpos1 = blockpos.relative(direction);
                 BlockState blockstate = level.getBlockState(blockpos1);
                 FluidState fluidstate = level.getFluidState(blockpos1);
@@ -71,7 +68,7 @@ public class BananaPopsicleItem extends PopsicleItem {
 
                         ++i;
                         ++fullBlocks;
-                        level.setBlockAndUpdate(blockpos1, (BlockState)blockstate.setValue(BlockStateProperties.WATERLOGGED, false));
+                        level.setBlockAndUpdate(blockpos1, (BlockState) blockstate.setValue(BlockStateProperties.WATERLOGGED, false));
                         if (j < 6) {
                             queue.add(new Tuple(blockpos1, j + 1));
                         }
@@ -82,9 +79,9 @@ public class BananaPopsicleItem extends PopsicleItem {
 
                         ++i;
                         ++fullBlocks;
-                        ((BucketPickup)blockstate.getBlock()).pickupBlock(level, blockpos1, blockstate);
+                        ((BucketPickup) blockstate.getBlock()).pickupBlock(level, blockpos1, blockstate);
                         if (level.getBlockState(blockpos).isAir()) {
-                            level.setBlockAndUpdate(blockpos, ((Block)AMBlockRegistry.CRYSTALIZED_BANANA_SLUG_MUCUS.get()).defaultBlockState());
+                            level.setBlockAndUpdate(blockpos, ((Block) AMBlockRegistry.CRYSTALIZED_BANANA_SLUG_MUCUS.get()).defaultBlockState());
                         }
 
                         if (j < 6) {
@@ -95,7 +92,7 @@ public class BananaPopsicleItem extends PopsicleItem {
                             lastFluidState = fluidstate;
                         }
 
-                        level.setBlockAndUpdate(blockpos1, ((Block)AMBlockRegistry.CRYSTALIZED_BANANA_SLUG_MUCUS.get()).defaultBlockState());
+                        level.setBlockAndUpdate(blockpos1, ((Block) AMBlockRegistry.CRYSTALIZED_BANANA_SLUG_MUCUS.get()).defaultBlockState());
                         ++i;
                         if (blockstate.getFluidState().isSource()) {
                             ++fullBlocks;
@@ -113,6 +110,5 @@ public class BananaPopsicleItem extends PopsicleItem {
             }
         }
 
-        return fullBlocks > 0;
     }
 }

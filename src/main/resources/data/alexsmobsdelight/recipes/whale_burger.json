@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "minecraft:bread"
+    },
+    "w": {
+      "item": "alexsmobsdelight:cooked_whale_meat"
+    }
+  },
+  "pattern": [
+    "b",
+    "w",
+    "b"
+  ],
+  "result": {
+    "item": "alexsmobsdelight:whale_burger"
+  }
+}

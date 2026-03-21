@@ -1,5 +1,7 @@
 package io.github.rcneg.alexsmobsdelight.blocks;
 
+import com.github.alexthe666.alexsmobs.client.particle.AMParticleRegistry;
+import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -12,8 +14,11 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LightLayer;
@@ -26,12 +31,18 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
 public class KiviakBlock extends Block {
     public static IntegerProperty COMPOSTING = IntegerProperty.create("composting", 0, 7);
     public static final DirectionProperty FACING;
     public static BooleanProperty OPENED = BooleanProperty.create("opened");
+    protected static final VoxelShape SHAPE_N = Block.box(0.0, 0.0, 3.0, 15.0, 13.0, 12.0);
+    protected static final VoxelShape SHAPE_W = Block.box(3.0, 0.0, 1.0, 12.0, 13.0, 16.0);
+    protected static final VoxelShape SHAPE_S = Block.box(1.0, 0.0, 4.0, 16.0, 13.0, 13.0);
+    protected static final VoxelShape SHAPE_E = Block.box(4.0, 0.0, 0.0, 13.0, 13.0, 15.0);
 
     public KiviakBlock(BlockBehaviour.Properties properties) {
         super(properties);
@@ -43,7 +54,7 @@ public class KiviakBlock extends Block {
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection());
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
@@ -80,8 +91,8 @@ public class KiviakBlock extends Block {
             chance += maxLight < 5 ? 0.1F : 0.05F;
             chance += coldBiome ? 0.1F : 0.0F;
             if (level.getRandom().nextFloat() <= chance) {
-                if ((Integer)state.getValue(COMPOSTING) != this.getMaxCompostingStage()) {
-                    level.setBlock(pos, (BlockState) state.setValue(COMPOSTING, (Integer) state.getValue(COMPOSTING) + 1), 3);
+                if (state.getValue(COMPOSTING) != this.getMaxCompostingStage()) {
+                    level.setBlock(pos, state.setValue(COMPOSTING, state.getValue(COMPOSTING) + 1), 3);
                 }
             }
 
@@ -104,6 +115,9 @@ public class KiviakBlock extends Block {
     }
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+
+
+
         return level.isClientSide && this.takeServing(level, pos, state, player, hand).consumesAction() ? InteractionResult.SUCCESS : this.takeServing(level, pos, state, player, hand);
     }
 
@@ -111,13 +125,34 @@ public class KiviakBlock extends Block {
         int shouldOpen = state.getValue(COMPOSTING);
         boolean opened = state.getValue(OPENED);
         if (shouldOpen == 7 && player.getItemInHand(hand).is(ModTags.KNIVES) && !opened) {
-            level.playSound((Player)null, pos, SoundEvents.SHEEP_SHEAR, SoundSource.PLAYERS, 0.8F, 0.8F);
-            level.setBlock(pos, (BlockState) state.setValue(OPENED, true), 3);
+            level.setBlock(pos, state.setValue(OPENED, true), 3);
+            if(level instanceof ServerLevel serverLevel){
+                Direction direction = state.getValue(FACING).getOpposite();
+                ItemStack itemS = new ItemStack(ItemRegistry.KIVIAK.get(), 3);
+                ItemEntity itemE = new ItemEntity(serverLevel, pos.getX()+0.5, pos.getY()+0.3, pos.getZ()+0.5, itemS);
+                itemE.setDefaultPickUpDelay();
+                itemE.setDeltaMovement(direction.getStepX() * Math.random() + (0.6 * Math.random() - 0.3), 0.4 * Math.random() - 0.1, direction.getStepZ() * Math.random() + (0.6 * Math.random() - 0.3));
+                level.addFreshEntity(itemE);
+                level.playSound(null, pos, SoundEvents.DRAGON_FIREBALL_EXPLODE, SoundSource.BLOCKS, 1.0f, 1.5f);
+                serverLevel.sendParticles(AMParticleRegistry.SMELLY.get(), pos.getX()+0.5, pos.getY()+0.3, pos.getZ()+0.5, 30, 0.0D, 0.0D, 0.0D, 0.2D);
+                serverLevel.sendParticles(ParticleTypes.CLOUD, pos.getX()+0.5, pos.getY()+0.3, pos.getZ()+0.5, 60, 0.0D, 0.0D, 0.0D, 0.12D);
+            }
             return InteractionResult.SUCCESS;
+        } else if (opened) {
+            return InteractionResult.PASS;
         } else {
             player.displayClientMessage(Component.translatable("alexsmobsdelight.jei.kiviak_decomposition.tips"), true);
             return InteractionResult.PASS;
         }
+    }
+
+    public VoxelShape getShape(BlockState p_51787_, BlockGetter p_51788_, BlockPos p_51789_, CollisionContext p_51790_) {
+        return switch (p_51787_.getValue(FACING)) {
+            case SOUTH -> SHAPE_S;
+            case WEST -> SHAPE_W;
+            case EAST -> SHAPE_E;
+            default -> SHAPE_N;
+        };
     }
 
     static {

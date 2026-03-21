@@ -19,7 +19,7 @@
   "effect.alexsmobsdelight.crocodile_death_roll": "食鳄不赦",
   "effect.alexsmobsdelight.crocodile_crush.desc": "增加攻击伤害",
   "effect.alexsmobsdelight.crocodile_toughness.desc": "增加盔甲韧性",
-  "effect.alexsmobsdelight.crocodile_sharpness.desc": "攻击造成流血效果，同时拥有四种鳄鱼效果时进化",
+  "effect.alexsmobsdelight.crocodile_sharpness.desc": "攻击造成同等级的 流血 效果，同时拥有四种鳄鱼效果时进化",
   "effect.alexsmobsdelight.crocodile_hacksaw.desc": "增加攻击速度",
   "effect.alexsmobsdelight.crocodile_death_roll.desc": "攻击后进入死亡翻滚状态，持续攻击目标并阻止其移动，期间不会受到任何伤害",
   "effect.alexsmobsdelight.seagull_anorexia": "厌食海鸥",
@@ -28,6 +28,17 @@
   "effect.alexsmobsdelight.crystallize_walker.desc": "类似冰霜行者附魔，但是产生的是香蕉蛞蝓粘液结晶。",
   "effect.alexsmobsdelight.bison_impact": "野牛冲撞",
   "effect.alexsmobsdelight.bison_impact.desc": "根据移动速度提升你造成的伤害",
+  "effect.alexsmobsdelight.extended_touch": "延伸之触",
+  "effect.alexsmobsdelight.extended_touch.desc": "增加方块放置范围",
+  "effect.alexsmobsdelight.extended_scare": "延伸恐惧",
+  "effect.alexsmobsdelight.extended_scare.desc": "增加近战攻击范围",
+  "effect.alexsmobsdelight.poison_fangs": "剧毒之牙",
+  "effect.alexsmobsdelight.poison_fangs.desc": "攻击造成 中毒II 效果，更高的等级会提供更长的中毒效果持续时间",
+
+  "entity.alexsmobsdelight.thrown_dart": "飞镖",
+  "entity.alexsmobsdelight.thrown_banana": "射出的香蕉",
+  "entity.alexsmobsdelight.super_seagull": "超级海鸥 (WIP)",
+  "entity.alexsmobsdelight.super_seagull.display": "西格尔 天启饥荒",
 
   "item.alexsmobsdelight.big_mac": "巨无霸",
   "item.alexsmobsdelight.bison_tartare": "野牛鞑靼",
@@ -181,9 +192,9 @@
 
   "farmersdelight.tooltip.mimicandy": "使用方法类似复刻凝胶，但是复刻的是食物。",
   "farmersdelight.tooltip.seal_meat": "虎鲸把子肉",
-  "farmersdelight.tooltip.orcas_leap_soup": "来自逆戟鲸的至高馈赠！",
+  "farmersdelight.tooltip.orcas_leap_soup": "来自虎鲸的至高馈赠！",
   "farmersdelight.tooltip.sea_bear_stew": "试试用这个喂给在水里的熊？",
-  "farmersdelight.tooltip.raw_devils_hole_pupfish": "恭喜你恢复了种群！是时候尝尝最稀有的鱼了",
+  "farmersdelight.tooltip.cheese": "移除所有的负面效果",
 
   "message.alexsmobsdelight.crocodile_knife": "目标对你来说太强了，无法掠夺",
   "message.alexsmobsdelight.crocodile_knife_1": "目标对你来说很强，降低掠夺的概率",

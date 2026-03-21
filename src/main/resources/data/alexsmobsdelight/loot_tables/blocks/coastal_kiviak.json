@@ -21,7 +21,7 @@
       ]
     },
     {
-      "name": "pool2",
+      "name": "pool1",
       "rolls": 1,
       "entries": [
         {
@@ -29,8 +29,8 @@
           "name": "alexsmobsdelight:kiviak",
           "functions": [
             {
-              "function": "minecraft:set_count",
-              "count": 6
+              "function": "set_count",
+              "count": 3
             }
           ]
         }

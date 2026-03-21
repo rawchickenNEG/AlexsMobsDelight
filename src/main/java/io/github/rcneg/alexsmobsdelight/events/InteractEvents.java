@@ -2,9 +2,11 @@ package io.github.rcneg.alexsmobsdelight.events;
 
 import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
 import com.github.alexthe666.alexsmobs.entity.EntityGrizzlyBear;
+import com.github.alexthe666.alexsmobs.entity.EntityOrca;
 import com.github.alexthe666.alexsmobs.entity.EntitySeaBear;
 import com.github.alexthe666.alexsmobs.item.AMItemRegistry;
 import com.github.alexthe666.alexsmobs.misc.AMSoundRegistry;
+import io.github.rcneg.alexsmobsdelight.config.Config;
 import io.github.rcneg.alexsmobsdelight.helper.ItemHelper;
 import io.github.rcneg.alexsmobsdelight.init.BlockRegistry;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
@@ -76,17 +78,32 @@ public class InteractEvents {
 
     @SubscribeEvent
     public static void onPlayerRightClickEntity(PlayerInteractEvent.EntityInteract event) {
-        if(!event.getLevel().isClientSide && event.getEntity().getMainHandItem().is(ItemRegistry.SEA_BEAR_STEW.get()) && event.getTarget() instanceof EntityGrizzlyBear bear && bear.isInWater()){
-            EntitySeaBear seabear = (EntitySeaBear)((EntityType)AMEntityRegistry.SEA_BEAR.get()).create(event.getLevel());
-            seabear.moveTo(bear.getX(), bear.getY(), bear.getZ());
-            if(event.getLevel() instanceof ServerLevel serverLevel){
-                serverLevel.sendParticles(ParticleTypes.CLOUD, bear.getX(), bear.getY(), bear.getZ(), 200, 1.0D, 1.0D, 1.0D, 0.0D);
+        if(!event.getLevel().isClientSide){
+            if(event.getEntity().getMainHandItem().is(ItemRegistry.SEA_BEAR_STEW.get()) && event.getTarget() instanceof EntityGrizzlyBear bear && bear.isInWater()){
+                EntitySeaBear seabear = (EntitySeaBear)((EntityType)AMEntityRegistry.SEA_BEAR.get()).create(event.getLevel());
+                seabear.moveTo(bear.getX(), bear.getY(), bear.getZ());
+                if(event.getLevel() instanceof ServerLevel serverLevel){
+                    serverLevel.sendParticles(ParticleTypes.CLOUD, bear.getX(), bear.getY(), bear.getZ(), 200, 1.0D, 1.0D, 1.0D, 0.0D);
+                }
+                seabear.playSound(SoundEvents.ZOMBIE_CONVERTED_TO_DROWNED, 1, 1);
+                event.getLevel().addFreshEntity(seabear);
+                bear.discard();
+                if (!event.getEntity().getAbilities().instabuild) {
+                    event.getEntity().getMainHandItem().shrink(1);
+                }
             }
-            seabear.playSound(SoundEvents.ZOMBIE_CONVERTED_TO_DROWNED, 1, 1);
-            event.getLevel().addFreshEntity(seabear);
-            bear.discard();
-            if (!event.getEntity().getAbilities().instabuild) {
-                event.getEntity().getMainHandItem().shrink(1);
+            if(event.getEntity().getMainHandItem().is(ItemRegistry.SEAL_MEAT.get()) && event.getTarget() instanceof EntityOrca orca){
+                if(event.getLevel() instanceof ServerLevel serverLevel){
+                    serverLevel.sendParticles(ParticleTypes.HAPPY_VILLAGER, orca.getX(), orca.getY(), orca.getZ(), 30, 1.5D, 1.0D, 1.5D, 3.0D);
+                }
+                orca.playSound(SoundEvents.GENERIC_EAT, 1, 0.5f);
+                if(orca.getRandom().nextInt(100) <= Config.ORCA_GIFT_CHANCE.get()){
+                    ItemStack drop = new ItemStack(ItemRegistry.ORCAS_LEAP_SOUP.get());
+                    orca.spawnAtLocation(drop);
+                }
+                if (!event.getEntity().getAbilities().instabuild) {
+                    event.getEntity().getMainHandItem().shrink(1);
+                }
             }
         }
     }
