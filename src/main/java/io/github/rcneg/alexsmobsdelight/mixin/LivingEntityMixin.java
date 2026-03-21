@@ -1,10 +1,10 @@
 package io.github.rcneg.alexsmobsdelight.mixin;
 
+import io.github.rcneg.alexsmobsdelight.effects.CrystallizeWalkerEffect;
 import io.github.rcneg.alexsmobsdelight.init.EffectRegistry;
-import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,6 +34,18 @@ public class LivingEntityMixin {
                     }
                 }
             }
+        }
+    }
+
+    @Inject(
+            method = "onChangedBlock",
+            at = @At("HEAD")
+    )
+    private void amd$onChangeBlock(BlockPos pos, CallbackInfo ci) {
+        LivingEntity entity = (LivingEntity) (Object) this;
+        if (entity.hasEffect(EffectRegistry.CRYSTALLIZE_WALKER.get())){
+            int i = entity.getEffect(EffectRegistry.CRYSTALLIZE_WALKER.get()).getAmplifier() + 1;
+            CrystallizeWalkerEffect.onEntityMoved(entity, entity.level(), pos, i);
         }
     }
 }

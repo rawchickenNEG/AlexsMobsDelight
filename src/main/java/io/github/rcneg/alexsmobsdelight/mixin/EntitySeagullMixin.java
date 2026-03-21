@@ -5,12 +5,22 @@ import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
 import io.github.rcneg.alexsmobsdelight.accessor.IEntitySeagullData;
 import io.github.rcneg.alexsmobsdelight.config.Config;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ChestBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BrushableBlockEntity;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -77,6 +87,40 @@ public class EntitySeagullMixin implements IEntitySeagullData {
                 }
             }
         }
+    }
+
+    @Inject(method = "setTreasurePos", at = @At("TAIL"), remap = false)
+    private void amd$setTreasureSand(BlockPos pos, CallbackInfo ci) {
+        EntitySeagull seagull = (EntitySeagull) (Object) this;
+        Level level = seagull.level();
+        for(int i = 0; i < 128; ++i) {
+            BlockPos pos1 = new BlockPos(pos.getX(), i, pos.getZ());
+            if (level.getBlockState(pos1).getBlock() instanceof ChestBlock && level.getBlockState(pos1.below()).is(Blocks.SAND)) {
+                boolean flag = true;
+                for(Direction d : Direction.values()){
+                    if(!level.getBlockState(pos1.relative(d)).isSolid()){
+                        flag = false;
+                    }
+                }
+                if(flag){
+                    BlockState treasureSand = Blocks.SUSPICIOUS_SAND.defaultBlockState();
+                    if(level.setBlock(pos1.below(), treasureSand, 3)){
+                        BlockEntity entity = level.getBlockEntity(pos1.below());
+                        if(entity instanceof BrushableBlockEntity brushable){
+                            BlockEntity entity1 = level.getBlockEntity(pos1);
+                            if(entity1 instanceof ChestBlockEntity chestEntity){
+                                CompoundTag tag = chestEntity.getPersistentData();
+                                if(tag.contains("LootTable")){
+                                    brushable.setLootTable(new ResourceLocation("alexsmobsdelight:gameplay/seagull_treasure_sand"), 0);
+                                }
+                            }
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))

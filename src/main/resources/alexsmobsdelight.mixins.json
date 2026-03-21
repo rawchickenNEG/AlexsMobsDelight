@@ -5,9 +5,12 @@
   "minVersion": "0.8",
   "refmap": "alexsmobsdelight.refmap.json",
   "mixins": [
+    "EntityDevilsHolePupfishMixin",
     "EntityMantisShrimpMixin",
+    "EntityRaccoonMixin",
     "EntitySeagullMixin",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "SeagullAIStealFromPlayersMixin"
   ],
   "injectors": {
     "defaultRequire": 1
