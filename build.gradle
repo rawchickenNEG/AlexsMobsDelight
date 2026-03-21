@@ -83,6 +83,13 @@ repositories {
         content {
             includeGroup "curse.maven"
         }
+
+    }
+
+    maven {
+        // CraftTweaker
+        name = "BlameJared"
+        url = "https://maven.blamejared.com/"
     }
 }
 
@@ -93,10 +100,16 @@ mixin {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // compile against the JEI API but do not include it at runtime
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+    // at runtime, use the full JEI jar for Forge
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+
     implementation fg.deobf("curse.maven:farmers-delight-398521:7596353")
     implementation fg.deobf("curse.maven:citadel-331936:5633260")
     implementation fg.deobf("curse.maven:alexs-mobs-426558:5698791")
-    runtimeOnly fg.deobf("curse.maven:jei-238222:6600311")
     runtimeOnly fg.deobf("curse.maven:just-enough-resources-jer-240630:5057220")
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 }

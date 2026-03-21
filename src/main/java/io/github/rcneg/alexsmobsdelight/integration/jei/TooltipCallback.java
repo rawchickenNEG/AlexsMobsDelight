@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 
 import java.util.List;
 
+@SuppressWarnings("removal")
 public class TooltipCallback implements IRecipeSlotTooltipCallback {
 
     @Override

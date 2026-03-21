@@ -61,6 +61,7 @@ public class KiviakDecompositionRecipeCategory implements IRecipeCategory<Kiviak
     }
 
     @Override
+    @SuppressWarnings("removal")
     public IDrawable getBackground() {
         return this.background;
     }
@@ -71,6 +72,7 @@ public class KiviakDecompositionRecipeCategory implements IRecipeCategory<Kiviak
     }
 
     @Override
+    @SuppressWarnings("removal")
     public void setRecipe(IRecipeLayoutBuilder builder, KiviakDecompositionDummy recipe, IFocusGroup focusGroup) {
         List<ItemStack> accelerators = ForgeRegistries.BLOCKS.tags().getTag(BlockTags.ICE).stream().map(ItemStack::new).collect(Collectors.toList());
         List<ItemStack> knives = ForgeRegistries.ITEMS.tags().getTag(ModTags.KNIVES).stream().map(ItemStack::new).toList();
@@ -89,6 +91,7 @@ public class KiviakDecompositionRecipeCategory implements IRecipeCategory<Kiviak
     }
 
     @Override
+    @SuppressWarnings("removal")
     public List<Component> getTooltipStrings(KiviakDecompositionDummy recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
         if (ClientRenderUtils.isCursorInsideBounds(40, 38, 11, 11, mouseX, mouseY)) {
             return ImmutableList.of(translateKey(".light"));
