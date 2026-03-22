@@ -4,7 +4,7 @@
 	"texture_size": [128, 128],
 	"textures": {
 		"2": "alexsmobsdelight:block/coastal_kiviak_block_1_open",
-		"particle": "alexsmobsdelight:block/coastal_kiviak_block_1_open"
+		"particle": "alexsmobsdelight:block/seal_fur_carpet_brown_top"
 	},
 	"elements": [
 		{
