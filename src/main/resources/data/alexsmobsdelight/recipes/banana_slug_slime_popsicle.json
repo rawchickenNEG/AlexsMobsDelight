@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "-": {
+      "item": "minecraft:stick"
+    },
+    "i": {
+      "item": "minecraft:ice"
+    },
+    "r": {
+      "item": "alexsmobs:banana_slug_slime"
+    },
+    "s": {
+      "item": "minecraft:snowball"
+    }
+  },
+  "pattern": [
+    " sr",
+    "irs",
+    "-i "
+  ],
+  "result": {
+    "item": "alexsmobsdelight:banana_slug_slime_popsicle"
+  },
+  "show_notification": true
+}

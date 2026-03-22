@@ -9,7 +9,7 @@
       "item": "minecraft:stick"
     },
     "p": {
-      "tag": "minecraft:planks"
+      "item": "minecraft:string"
     }
   },
   "pattern": [
