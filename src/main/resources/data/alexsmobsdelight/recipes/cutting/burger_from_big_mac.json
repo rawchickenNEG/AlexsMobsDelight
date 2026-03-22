@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "alexsmobsdelight:big_mac"
+    }
+  ],
+  "result": [
+    {
+      "count": 4,
+      "item": "farmersdelight:hamburger"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}
