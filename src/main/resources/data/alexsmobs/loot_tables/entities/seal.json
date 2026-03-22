@@ -57,7 +57,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{Variant:1}"
+                "nbt": "{Arctic:0b}"
               }
             }
           ],
@@ -85,7 +85,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{Variant:0}"
+                "nbt": "{Arctic:1b}"
               }
             }
           ],
