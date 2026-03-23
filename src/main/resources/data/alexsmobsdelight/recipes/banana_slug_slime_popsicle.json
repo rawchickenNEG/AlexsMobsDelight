@@ -5,11 +5,11 @@
     "-": {
       "item": "minecraft:stick"
     },
-    "i": {
-      "item": "minecraft:ice"
-    },
     "r": {
       "item": "alexsmobs:banana_slug_slime"
+    },
+    "p": {
+      "item": "alexsmobs:banana_peel"
     },
     "s": {
       "item": "minecraft:snowball"
@@ -17,8 +17,8 @@
   },
   "pattern": [
     " sr",
-    "irs",
-    "-i "
+    "prs",
+    "-p "
   ],
   "result": {
     "item": "alexsmobsdelight:banana_slug_slime_popsicle"

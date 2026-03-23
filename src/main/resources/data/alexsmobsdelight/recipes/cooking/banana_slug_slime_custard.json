@@ -17,6 +17,9 @@
     },
     {
       "item": "minecraft:sugar"
+    },
+    {
+      "tag": "forge:fruits/banana"
     }
   ],
   "recipe_book_tab": "misc",
