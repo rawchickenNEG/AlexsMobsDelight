@@ -20,7 +20,7 @@ public class EntityRaccoonMixin {
     private void amd$stopBeLootable(Container inventory, CallbackInfoReturnable<Boolean> cir) {
         for(int i = 0; i < inventory.getContainerSize(); ++i) {
             ItemStack stack = inventory.getItem(i);
-            if (stack.getItem() == ItemRegistry.KIVIAK.get()) {
+            if (stack.getItem() == ItemRegistry.OPENED_SURFLYGFISK.get()) {
                 cir.setReturnValue(false);
             }
         }
