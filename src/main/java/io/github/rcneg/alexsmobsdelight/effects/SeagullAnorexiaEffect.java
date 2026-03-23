@@ -18,8 +18,7 @@ public class SeagullAnorexiaEffect extends MobEffect {
         List<EntitySeagull> list = entity.level().getEntitiesOfClass(EntitySeagull.class, aabb);
         if (!list.isEmpty()) {
             for (EntitySeagull seagull : list) {
-                if(seagull.stealCooldown < 200)
-                seagull.stealCooldown = 200;
+                if(seagull.stealCooldown < 200) seagull.stealCooldown = 200;
             }
         }
     }
