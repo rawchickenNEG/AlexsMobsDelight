@@ -20,6 +20,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -97,6 +98,11 @@ public class AttackEvents {
             if(attacker.hasEffect(EffectRegistry.CROCODILE_SHARPNESS.get())){
                 int amp = attacker.getEffect(EffectRegistry.CROCODILE_SHARPNESS.get()).getAmplifier();
                 entity.addEffect(new MobEffectInstance(AMEffectRegistry.EXSANGUINATION.get(), 100, amp));
+            }
+
+            if(attacker.hasEffect(EffectRegistry.POISON_FANGS.get())){
+                int amp = attacker.getEffect(EffectRegistry.POISON_FANGS.get()).getAmplifier();
+                entity.addEffect(new MobEffectInstance(MobEffects.POISON, 100 * amp, 1));
             }
         }
     }
