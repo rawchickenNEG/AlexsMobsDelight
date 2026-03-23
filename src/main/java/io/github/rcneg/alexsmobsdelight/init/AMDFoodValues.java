@@ -38,7 +38,7 @@ public class AMDFoodValues {
     public static final FoodProperties COOKED_SEAGULL = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).meat().build();
     public static final FoodProperties ALWAYS_EAT_COOKED_SEAGULL = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).alwaysEat().build();
     public static final FoodProperties KIVIAK = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).alwaysEat().effect(() -> {
-        return new MobEffectInstance(EffectRegistry.SEAGULL_ANOREXIA.get(), 6000, 0);
+        return new MobEffectInstance(EffectRegistry.SEAGULL_ANOREXIA.get(), 24000, 0);
 }, 1.0F).build();
 
     public static final FoodProperties MANTIS_SHRIMP_TAIL = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.3F).build();
@@ -72,9 +72,9 @@ public class AMDFoodValues {
     public static final FoodProperties COOKED_WHALE_MEAT = (new FoodProperties.Builder()).nutrition(16).saturationMod(0.6F).build();
     public static final FoodProperties SEAL_MEAT = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.3F).meat().build();
     public static final FoodProperties COOKED_SEAL_MEAT = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).meat().build();
-    public static final FoodProperties CHEESE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.6F).meat().build();
+    public static final FoodProperties CHEESE = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.6F).meat().build();
 
-    public static final FoodProperties SEAL_STICK = (new FoodProperties.Builder()).nutrition(10).saturationMod(0.6F).saturationMod(0.6F).alwaysEat().effect(() -> {
+    public static final FoodProperties SEAL_STICK = (new FoodProperties.Builder()).nutrition(10).saturationMod(0.6F).alwaysEat().effect(() -> {
         return new MobEffectInstance((MobEffect)MobEffects.LUCK, 200, 4);
     }, 1.0F).build();
     public static final FoodProperties SEAL_SANDWICH = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.6F).effect(() -> {
@@ -243,6 +243,9 @@ public class AMDFoodValues {
         return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
     }, 1.0F).effect(() -> {
         return new MobEffectInstance((MobEffect)MobEffects.DAMAGE_RESISTANCE, 900, 0);
+    }, 1.0F).build();
+    public static final FoodProperties FLYING_FISH_CAN = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).alwaysEat().effect(() -> {
+        return new MobEffectInstance((MobEffect)MobEffects.HUNGER, 600, 1);
     }, 1.0F).build();
 
     //public static final Map<Item, FoodProperties> VANILLA_SOUP_EFFECTS;
