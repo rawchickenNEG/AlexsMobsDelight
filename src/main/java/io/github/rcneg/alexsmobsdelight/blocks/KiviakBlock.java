@@ -1,9 +1,11 @@
 package io.github.rcneg.alexsmobsdelight.blocks;
 
 import com.github.alexthe666.alexsmobs.client.particle.AMParticleRegistry;
+import com.github.alexthe666.alexsmobs.entity.IHurtableMultipart;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -14,6 +16,10 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -34,6 +40,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import vectorwing.farmersdelight.common.tag.ModTags;
+
+import java.util.Iterator;
 
 public class KiviakBlock extends Block {
     public static IntegerProperty COMPOSTING = IntegerProperty.create("composting", 0, 7);
@@ -136,7 +144,21 @@ public class KiviakBlock extends Block {
                 level.playSound(null, pos, SoundEvents.DRAGON_FIREBALL_EXPLODE, SoundSource.BLOCKS, 1.0f, 1.5f);
                 serverLevel.sendParticles(AMParticleRegistry.SMELLY.get(), pos.getX()+0.5, pos.getY()+0.3, pos.getZ()+0.5, 30, 0.0D, 0.0D, 0.0D, 0.2D);
                 serverLevel.sendParticles(ParticleTypes.CLOUD, pos.getX()+0.5, pos.getY()+0.3, pos.getZ()+0.5, 60, 0.0D, 0.0D, 0.0D, 0.12D);
+
+                player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 300, 0));
+
+                for(int i = 0; i < 10 + player.getRandom().nextInt(6); ++i) {
+                    level.addParticle(AMParticleRegistry.SMELLY.get(), player.getRandomX(1.0), player.getRandomY(), player.getRandomZ(1.0), 0.0, 0.0, 0.0);
+                }
+                for (Mob nearby : level.getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(15.0))) {
+                    if (!nearby.isAlliedTo(player) && !(player instanceof IHurtableMultipart)) {
+                        nearby.setLastHurtByMob(player);
+                        nearby.setTarget(player);
+                    }
+                }
+
             }
+
             return InteractionResult.SUCCESS;
         } else if (opened) {
             return InteractionResult.PASS;
