@@ -2,9 +2,13 @@ package io.github.rcneg.alexsmobsdelight.mixin;
 
 import com.github.alexthe666.alexsmobs.entity.EntityDevilsHolePupfish;
 import com.github.alexthe666.alexsmobs.misc.AMTagRegistry;
+import io.github.rcneg.alexsmobsdelight.config.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -15,14 +19,17 @@ public class EntityDevilsHolePupfishMixin{
 
     @Inject(method = "spawnBabiesWith", at = @At("TAIL"), remap = false)
     private void amd$breakBlockWhenSpawnBabies(EntityDevilsHolePupfish chasePartner, CallbackInfo ci) {
+        if(!Config.PUPFISH_BREAK.get()) return;
         Level level = chasePartner.level();
+        if(!level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING)) return;
         BlockPos pos = chasePartner.getOnPos().above();
         for(Direction dir : Direction.values()){
-            if(level.getBlockState(pos.relative(dir)).is(AMTagRegistry.PUPFISH_EATABLES)){
-                level.destroyBlock(pos.relative(dir), true, chasePartner);
+            BlockPos tempos = pos.relative(dir);
+            if(level.getBlockState(tempos).is(AMTagRegistry.PUPFISH_EATABLES)){
+                level.levelEvent(2001, tempos, Block.getId(level.getBlockState(tempos)));
+                level.setBlock(tempos, Blocks.AIR.defaultBlockState(), 3);
                 break;
             }
         }
-
     }
 }

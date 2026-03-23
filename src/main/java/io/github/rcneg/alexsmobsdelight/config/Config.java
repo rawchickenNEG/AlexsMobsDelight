@@ -21,6 +21,9 @@ public class Config
     public static ForgeConfigSpec.IntValue CROCODILE_KNIFE_LOOT;
     public static ForgeConfigSpec.DoubleValue CROCODILE_KNIFE_HEALTH;
     public static ForgeConfigSpec.BooleanValue CROCODILE_KNIFE_FULL_DROP;
+    public static ForgeConfigSpec.IntValue ORCA_GIFT_CHANCE;
+    public static ForgeConfigSpec.BooleanValue STACKABLE_SOUP_ITEMS;
+    public static ForgeConfigSpec.BooleanValue PUPFISH_BREAK;
 
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ETERNAL_FOODS;
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> LOOTING_ENTITIES_BLACKLIST;
@@ -55,6 +58,17 @@ public class Config
                 .defineListAllowEmpty("LootingEntitiesBlacklist",
                         List.of("alexsmobs:void_worm"
                         ), Config::validateEntityTypeName);
+        COMMON_BUILDER.pop();
+        COMMON_BUILDER.push("Orca‘s Leap Stew");
+        ORCA_GIFT_CHANCE = COMMON_BUILDER.comment("Define the chance of obtaining Orca's Leap Stew after you feed orca by seal meat.")
+                .defineInRange("GiveChance", 30, 0, 100);
+        COMMON_BUILDER.pop();
+
+        COMMON_BUILDER.push("Misc");
+        STACKABLE_SOUP_ITEMS = COMMON_BUILDER.comment("Should BowlFoodItems in the Alex's Mobs become stackable to 16?")
+                .define("StackableSoupItems", true);
+        PUPFISH_BREAK = COMMON_BUILDER.comment("This mod enable Devil's Hole Pupfish in the Alex's Mobs breaks pupfish food blocks when breeding, should this feature active?")
+                .define("PupfishBreakFoodBlocks", true);
         COMMON_BUILDER.pop();
         COMMON_CONFIG = COMMON_BUILDER.build();
     }
