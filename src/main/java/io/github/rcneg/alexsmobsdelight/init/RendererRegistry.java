@@ -1,5 +1,6 @@
 package io.github.rcneg.alexsmobsdelight.init;
 
+import io.github.rcneg.alexsmobsdelight.client.renderer.SuperSeagullRenderer;
 import io.github.rcneg.alexsmobsdelight.client.renderer.ThrownDartRenderer;
 import io.github.rcneg.alexsmobsdelight.client.renderer.ThrownPointedItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,7 +15,7 @@ public class RendererRegistry {
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(EntityTypeRegistry.THROWN_DART.get(), ThrownDartRenderer::new);
         event.registerEntityRenderer(EntityTypeRegistry.THROWN_BANANA.get(), ThrownPointedItemRenderer::new);
-
+        event.registerEntityRenderer(EntityTypeRegistry.SUPER_SEAGULL.get(), SuperSeagullRenderer::new);
     }
 
 }
