@@ -184,6 +184,9 @@
   "item.alexsmobsdelight.whale_meat_with_tentacles": "Chum Platter",
   "item.alexsmobsdelight.whale_skin_stew": "Whale Skin Stew",
   "item.alexsmobsdelight.whale_tooth_pickaxe": "Whale Tooth Pickaxe",
+  "item.alexsmobsdelight.seagull_wand": "Seagull Wand",
+  "item.alexsmobsdelight.surflygfisk": "Surflygfisk",
+  "item.alexsmobsdelight.surflygfisk_open": "Opened Surflygfisk",
 
   "tooltip.alexsmobsdelight.effect_desc": "%s%s (%s)",
   "tooltip.alexsmobsdelight.lobster_knife": "Hold down the right mouse button to sprint forward and attack the first target. If you successfully hit the target, you will jump very high.",
@@ -193,6 +196,9 @@
   "tooltip.alexsmobsdelight.acacia_blossom": "Can be planted on Acacia Log blocks.",
   "tooltip.alexsmobsdelight.banana_bow": "Can shoot banana and leave banana peel on floor.",
   "tooltip.alexsmobsdelight.whale_tools": "Aqua Affinity",
+  "tooltip.alexsmobsdelight.seagull_wand": "Hold down the right mouse button to steal target's food Item like the seagull.",
+  "tooltip.alexsmobsdelight.surflygfisk": "You'd better not open it...",
+  "tooltip.alexsmobsdelight.surflygfisk_open": "Smells extremely bad! Put it into a container to stop Raccoon stealing foods.",
 
   "farmersdelight.tooltip.mimicandy": "Using similar to Mimicream, but it duplicate food items.",
   "farmersdelight.tooltip.seal_meat": "Orca's favorite.",

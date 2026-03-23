@@ -1,8 +1,21 @@
 - 1.0.2
    Apply the rate of applying food effects when seagull store food effects.
-   Add more foods and tool items (whale, seal, giant squid).
+   Add JEI integration for Kiviak.
+   Add more foods and tool items (whale, seal, giant squid, banana slug).
+   Add more effects.
+   Add Super Seagull (WIP).
+   Add Dimensional Food (WIP).
+   Add cutting recipe for Big Max to Hamburger.
+   Add a setting for Pupfish eat blocks.
+   Add cooking recipe for Sopa De Macaco and Mosquito Repellent Stew.
    Change thrown Lobster Dart hit damage.
+   Change effect duration from Kiviak.
+   Change stack size of Sopa De Macaco and Mosquito Repellent Stew.
+   Change recipe for Whale Tooth Pickaxe.
    Fix wrong output recipe issue of cutting tusklin meat piece.
+   Fix food type issue for fish stew foods.
+   Fix Honey Bear Meat block collision issue.
+   Fix loot table issue.
    Remove redundant damage addition on Crocodile Death Roll effect.
 - 1.0.1
    Add Moose Antler loot in Moose loot table.
