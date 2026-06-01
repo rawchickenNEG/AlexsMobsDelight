@@ -2,6 +2,7 @@ package io.github.rcneg.alexsmobsdelight.events;
 
 
 import io.github.rcneg.alexsmobsdelight.AlexsMobsDelight;
+import io.github.rcneg.alexsmobsdelight.init.EffectRegistry;
 import io.github.rcneg.alexsmobsdelight.init.NetworkRegistry;
 import io.github.rcneg.alexsmobsdelight.packet.WingBoostC2S;
 import net.minecraft.client.Minecraft;
@@ -25,7 +26,7 @@ public class ClientForgeEvents {
             if (player != null){
 
                 boolean boost = mc.options.keyJump.isDown();
-                if(player.isFallFlying()){
+                if(player.isFallFlying() && player.hasEffect(EffectRegistry.FLUTTERING.get())){
                     if(boost && !lastBoostPressed){
                         NetworkRegistry.sendToServer(new WingBoostC2S());
                     }

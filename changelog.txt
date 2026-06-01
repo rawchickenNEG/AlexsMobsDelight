@@ -1,3 +1,5 @@
+- 1.0.5
+   Fix Fluttering effect active issue.
 - 1.0.4
    Add more foods items (centipede, maggot, tarantula hawk, leafcut ant, cockroach).
    Add stealing villagers' trade list food items ability for Seagull Wand.
