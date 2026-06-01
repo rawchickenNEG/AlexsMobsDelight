@@ -166,7 +166,6 @@ public class ItemRegistry {
 
     public static final RegistryObject<Item> DETOXIFY_JELLY = ITEMS.register("detoxify_jelly", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.DETOXIFY_JELLY), true));
     public static final RegistryObject<Item> DETOXIFY_SOUP = ITEMS.register("detoxify_soup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.DETOXIFY_SOUP), true));
-    public static final RegistryObject<Item> DETOXIFY_SOUP_CUP = ITEMS.register("detoxify_soup_cup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.DETOXIFY_SOUP), true));
     public static final RegistryObject<Item> DETOXIFY_TEA = ITEMS.register("detoxify_tea", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.DETOXIFY_TEA), true));
 
     public static final RegistryObject<Item> DIMENSIONAL_FOOD = ITEMS.register("dimensional_food", () -> new DimensionalFoods(defaultBuilder().rarity(Rarity.EPIC)));
@@ -192,10 +191,11 @@ public class ItemRegistry {
     public static final RegistryObject<Item> COCKROACH_PROTEIN_SOUP = ITEMS.register("cockroach_protein_soup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.PROTEIN_SOUP), true));
     public static final RegistryObject<Item> MAGGOT_CREAM_SOUP = ITEMS.register("maggot_cream_soup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.MAGGOT_SOUP), true));
 
-    public static final RegistryObject<Item> CAVE_CENTIPEDE_SOUP_CUP = ITEMS.register("cave_centipede_soup_cup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.WHALE_SKIN_STEW), true));
-    public static final RegistryObject<Item> COCKROACH_PROTEIN_SOUP_CUP = ITEMS.register("cockroach_protein_soup_cup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.WHALE_SKIN_STEW), true));
-    public static final RegistryObject<Item> MOSQUITO_REPELLENT_STEW_CUP = ITEMS.register("mosquito_repellent_stew_cup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.WHALE_SKIN_STEW), true));
-    public static final RegistryObject<Item> SOPA_DE_MACACO_CUP = ITEMS.register("sopa_de_macaco_cup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.WHALE_SKIN_STEW), true));
+    public static final RegistryObject<Item> CAVE_CENTIPEDE_SOUP_CUP = ITEMS.register("cave_centipede_soup_cup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.CENTIPEDE_SOUP_CUP), true));
+    public static final RegistryObject<Item> COCKROACH_PROTEIN_SOUP_CUP = ITEMS.register("cockroach_protein_soup_cup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.PROTEIN_SOUP_CUP), true));
+    public static final RegistryObject<Item> DETOXIFY_SOUP_CUP = ITEMS.register("detoxify_soup_cup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.DETOXIFY_SOUP_CUP), true));
+    public static final RegistryObject<Item> MOSQUITO_REPELLENT_STEW_CUP = ITEMS.register("mosquito_repellent_stew_cup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.MOSQUITO_REPELLENT_STEW_CUP), true));
+    public static final RegistryObject<Item> SOPA_DE_MACACO_CUP = ITEMS.register("sopa_de_macaco_cup", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.SOPA_DE_MACACO_CUP), true));
 
     //碗装食物
     public static final RegistryObject<Item> BISON_TARTARE = ITEMS.register("bison_tartare", () -> new ConsumableItem(bowlFoodBuilder(AMDFoodValues.BISON_TARTARE), true));
@@ -250,6 +250,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> POLAR_KIVIAK = ITEMS.register("polar_kiviak", () -> new BlockItem(BlockRegistry.POLAR_KIVIAK.get(), defaultBuilder().stacksTo(1)));
     public static final RegistryObject<Item> SEAL_FUR_CARPET_BROWN = ITEMS.register("seal_fur_carpet_brown", () -> new BlockItem(BlockRegistry.SEAL_FUR_CARPET_BROWN.get(), defaultBuilder()));
     public static final RegistryObject<Item> SEAL_FUR_CARPET_GRAY = ITEMS.register("seal_fur_carpet_gray", () -> new BlockItem(BlockRegistry.SEAL_FUR_CARPET_GRAY.get(), defaultBuilder()));
+    public static final RegistryObject<Item> MAGGOT_FARM = ITEMS.register("maggot_farm", () -> new BlockItem(BlockRegistry.MAGGOT_FARM_BLOCK.get(), defaultBuilder()));
 
 
     private static Item.Properties defaultBuilder() {

@@ -1,6 +1,7 @@
 package io.github.rcneg.alexsmobsdelight;
 
 import com.github.alexthe666.alexsmobs.item.AMItemRegistry;
+import io.github.rcneg.alexsmobsdelight.blocks.MaggotFarmBlock;
 import io.github.rcneg.alexsmobsdelight.config.Config;
 import io.github.rcneg.alexsmobsdelight.init.*;
 import net.minecraft.world.item.BowlFoodItem;
@@ -44,6 +45,7 @@ public class AlexsMobsDelight
     {
         event.enqueueWork(() -> {
             registerStackSizeOverrides();
+            MaggotFarmBlock.bootStrap();
         });
     }
 

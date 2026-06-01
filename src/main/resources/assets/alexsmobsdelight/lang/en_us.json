@@ -17,6 +17,7 @@
   "block.alexsmobsdelight.banana_block": "Planted Banana",
   "block.alexsmobsdelight.fried_tarantula_hawk": "Fried Tarantula Hawk",
   "block.alexsmobsdelight.mushrooms_braised_with_centipede": "Mushrooms Braised With Centipede",
+  "block.alexsmobsdelight.maggot_farm": "Maggot Farm",
 
   "effect.alexsmobsdelight.crocodile_crush": "Crocodile Crush",
   "effect.alexsmobsdelight.crocodile_toughness": "Crocodile Toughness",
@@ -233,6 +234,7 @@
   "item.alexsmobsdelight.tarantula_hawk_sashimi": "Tarantula Hawk Sashimi",
   "item.alexsmobsdelight.true_ants_climbing_a_tree": "True Ants Climbing A Tree",
   "item.alexsmobsdelight.tempura": "Lobster Tempura",
+  "item.alexsmobsdelight.maggot_farm": "Maggot Farm",
 
   "tooltip.alexsmobsdelight.effect_desc": "%s%s (%s)",
   "tooltip.alexsmobsdelight.lobster_knife": "Hold down the right mouse button to sprint forward and attack the first target. If you successfully hit the target, you will jump very high.",

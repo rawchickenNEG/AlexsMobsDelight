@@ -162,7 +162,22 @@ public class AMDFoodValues {
     }, 1.0F).effect(() -> {
         return new MobEffectInstance((MobEffect)EffectRegistry.POISON_FANGS.get(), 1200, 0);
     }, 1.0F).build();
+    public static final FoodProperties CENTIPEDE_SOUP_CUP = (new FoodProperties.Builder()).nutrition(5).saturationMod(0.8F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect)EffectRegistry.POISON_FANGS.get(), 1200, 0);
+    }, 1.0F).build();
+    public static final FoodProperties SOPA_DE_MACACO_CUP = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.8F).build();
+    public static final FoodProperties MOSQUITO_REPELLENT_STEW_CUP = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.8F).effect(() -> {
+        return new MobEffectInstance((MobEffect)AMEffectRegistry.MOSQUITO_REPELLENT.get(), 24000);
+    }, 1.0F).build();
+
     public static final FoodProperties PROTEIN_SOUP = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect)AMEffectRegistry.BUG_PHEROMONES.get(), 3000, 0);
+    }, 1.0F).build();
+    public static final FoodProperties PROTEIN_SOUP_CUP = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.8F).effect(() -> {
         return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
     }, 1.0F).effect(() -> {
         return new MobEffectInstance((MobEffect)AMEffectRegistry.BUG_PHEROMONES.get(), 3000, 0);
@@ -171,6 +186,11 @@ public class AMDFoodValues {
         return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
     }, 1.0F).build();
     public static final FoodProperties DETOXIFY_SOUP = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect)AMEffectRegistry.POISON_RESISTANCE.get(), 3600, 0);
+    }, 1.0F).build();
+    public static final FoodProperties DETOXIFY_SOUP_CUP = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.8F).effect(() -> {
         return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
     }, 1.0F).effect(() -> {
         return new MobEffectInstance((MobEffect)AMEffectRegistry.POISON_RESISTANCE.get(), 3600, 0);

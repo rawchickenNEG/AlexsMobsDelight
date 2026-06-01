@@ -3,10 +3,13 @@
    Add stealing villagers' trade list food items ability for Seagull Wand.
    Add config for foods which can not used to convert to the Enchanted Seagull (Especially sandwich in SAR, too imba!)
    Add Fluttering effect.
+   Add some Miners Delight compat foods.
+   Add Maggot Farm block.
    Change Cthulhus Breakfast to always eat food.
    Change some food ingredients eating speed.
    Change stack size for Surflygfisk.
    Change Crocodile Catfish Stew food properties.
+   Change recipe for Cockroach Wing and Tarantula Hawk Wing in Alexsmobs.
    Change Seagull Anorexia effect to make it stronger.
    Fix Seagull Wand stealing player issue.
    Seagull can be enchanted by foods with Effect NBT.

@@ -62,4 +62,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> SEAL_FUR_CARPET_GRAY = BLOCKS.register("seal_fur_carpet_gray", () -> {
         return new SealCarpet(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_CARPET));
     });
+
+    public static final RegistryObject<Block> MAGGOT_FARM_BLOCK = BLOCKS.register("maggot_farm", () -> new MaggotFarmBlock(Block.Properties.copy(Blocks.COMPOSTER)));
+
 }

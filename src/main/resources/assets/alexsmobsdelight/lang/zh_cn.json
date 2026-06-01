@@ -17,6 +17,7 @@
   "block.alexsmobsdelight.banana_block": "种植的香蕉",
   "block.alexsmobsdelight.fried_tarantula_hawk": "炸蛛蜂",
   "block.alexsmobsdelight.mushrooms_braised_with_centipede": "蘑菇红烩蜈蚣",
+  "block.alexsmobsdelight.maggot_farm": "蛆虫农场",
 
   "effect.alexsmobsdelight.crocodile_crush": "鳄足重踏",
   "effect.alexsmobsdelight.crocodile_toughness": "鳄鳞坚盾",
@@ -233,6 +234,7 @@
   "item.alexsmobsdelight.tarantula_hawk_sashimi": "沙漠蛛蜂刺身",
   "item.alexsmobsdelight.true_ants_climbing_a_tree": "真正的蚂蚁上树",
   "item.alexsmobsdelight.tempura": "龙虾天妇罗",
+  "item.alexsmobsdelight.maggot_farm": "蛆虫农场",
 
   "tooltip.alexsmobsdelight.effect_desc": "%s%s（%s）",
   "tooltip.alexsmobsdelight.lobster_knife": "右键蓄力向前冲刺，对第一名敌人造成伤害，成功造成伤害后起跳。",
