@@ -24,6 +24,7 @@ public class Config
     public static ForgeConfigSpec.IntValue ORCA_GIFT_CHANCE;
     public static ForgeConfigSpec.BooleanValue STACKABLE_SOUP_ITEMS;
     public static ForgeConfigSpec.BooleanValue PUPFISH_BREAK;
+    public static ForgeConfigSpec.IntValue TIGER_SUMMON_RANGE;
 
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ETERNAL_FOODS;
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ENCHANTED_SEAGULL_BLACKLIST;
@@ -66,9 +67,15 @@ public class Config
                         List.of("alexsmobs:void_worm"
                         ), Config::validateEntityTypeName);
         COMMON_BUILDER.pop();
+
         COMMON_BUILDER.push("Orca‘s Leap Stew");
         ORCA_GIFT_CHANCE = COMMON_BUILDER.comment("Define the chance of obtaining Orca's Leap Stew after you feed orca by seal meat.")
                 .defineInRange("GiveChance", 30, 0, 100);
+        COMMON_BUILDER.pop();
+
+        COMMON_BUILDER.push("Tiger Cake Roll");
+        TIGER_SUMMON_RANGE = COMMON_BUILDER.comment("Define the summon range of tiger cake roll item summoning tiger.")
+                .defineInRange("TigerSummonRage", 16, 0, 128);
         COMMON_BUILDER.pop();
 
         COMMON_BUILDER.push("Misc");

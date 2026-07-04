@@ -1,0 +1,25 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "alexsmobsdelight:alligator_snapping_turtle_shell"
+    }
+  ],
+  "result": [
+    {
+      "item": "alexsmobs:spiked_scute"
+    },
+    {
+      "chance": 0.65,
+      "item": "alexsmobs:spiked_scute"
+    },
+    {
+      "chance": 0.15,
+      "item": "alexsmobs:spiked_scute"
+    }
+  ],
+  "tool": {
+    "type": "farmersdelight:tool_action",
+    "action": "axe_dig"
+  }
+}

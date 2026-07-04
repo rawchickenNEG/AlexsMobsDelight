@@ -190,7 +190,7 @@ public class ThrownDartEntity extends AbstractArrow implements ItemSupplier {
     }
 
     static {
-        ID_LOYALTY = SynchedEntityData.defineId(ThrownTrident.class, EntityDataSerializers.BYTE);
-        ID_FOIL = SynchedEntityData.defineId(ThrownTrident.class, EntityDataSerializers.BOOLEAN);
+        ID_LOYALTY = SynchedEntityData.defineId(ThrownDartEntity.class, EntityDataSerializers.BYTE);
+        ID_FOIL = SynchedEntityData.defineId(ThrownDartEntity.class, EntityDataSerializers.BOOLEAN);
     }
 }

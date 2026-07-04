@@ -41,6 +41,9 @@ public class BlockRegistry {
     public static final RegistryObject<Block> FRIED_TARANTULA_HAWK = BLOCKS.register("fried_tarantula_hawk", () -> {
         return new FriedTarantulaHawkBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ItemRegistry.SERVE_OF_FRIED_TARANTULA_HAWK, true);
     });
+    public static final RegistryObject<Block> STUFFED_GRILLED_ANACONDA = BLOCKS.register("stuffed_grilled_anaconda", () -> {
+        return new StuffedGrilledAnacondaBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).sound(SoundType.BONE_BLOCK), ItemRegistry.BOWL_OF_STUFFED_GRILLED_ANACONDA, true);
+    });
     public static final RegistryObject<Block> MUSHROOMS_BRAISED_WITH_CENTIPEDE = BLOCKS.register("mushrooms_braised_with_centipede", () -> {
         return new MushroomsBraisedWithCentipedeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).sound(SoundType.COPPER), ItemRegistry.PLATE_OF_MUSHROOMS_BRAISED_WITH_CENTIPEDE, true);
     });

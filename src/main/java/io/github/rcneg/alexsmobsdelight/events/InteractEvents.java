@@ -1,9 +1,7 @@
 package io.github.rcneg.alexsmobsdelight.events;
 
-import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
-import com.github.alexthe666.alexsmobs.entity.EntityGrizzlyBear;
-import com.github.alexthe666.alexsmobs.entity.EntityOrca;
-import com.github.alexthe666.alexsmobs.entity.EntitySeaBear;
+import com.github.alexthe666.alexsmobs.effect.AMEffectRegistry;
+import com.github.alexthe666.alexsmobs.entity.*;
 import com.github.alexthe666.alexsmobs.item.AMItemRegistry;
 import com.github.alexthe666.alexsmobs.misc.AMSoundRegistry;
 import io.github.rcneg.alexsmobsdelight.config.Config;
@@ -104,6 +102,17 @@ public class InteractEvents {
                     ItemStack drop = new ItemStack(ItemRegistry.ORCAS_LEAP_SOUP.get());
                     orca.spawnAtLocation(drop);
                 }
+                if (!event.getEntity().getAbilities().instabuild) {
+                    event.getEntity().getMainHandItem().shrink(1);
+                }
+            }
+            if(event.getEntity().getMainHandItem().is(Items.CAKE) && event.getEntity().hasEffect(AMEffectRegistry.TIGERS_BLESSING.get()) && event.getTarget() instanceof EntityTiger tiger){
+                if(event.getLevel() instanceof ServerLevel serverLevel){
+                    serverLevel.sendParticles(ParticleTypes.HAPPY_VILLAGER, tiger.getX(), tiger.getY(), tiger.getZ(), 15, 0.5D, 0.35D, 0.5D, 3.0D);
+                }
+                tiger.playSound(SoundEvents.GENERIC_EAT, 1, 0.5f);
+                ItemStack drop = new ItemStack(ItemRegistry.TIGER_CAKE_ROLL.get());
+                tiger.spawnAtLocation(drop);
                 if (!event.getEntity().getAbilities().instabuild) {
                     event.getEntity().getMainHandItem().shrink(1);
                 }

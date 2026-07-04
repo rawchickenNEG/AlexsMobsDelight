@@ -1,0 +1,26 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 400,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "alexsmobs:rattlesnake_rattle"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "tag": "forge:crops/onion"
+    },
+    {
+      "item": "farmersdelight:wild_tomatoes"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "alexsmobsdelight:grilled_rattle_tail"
+  }
+}

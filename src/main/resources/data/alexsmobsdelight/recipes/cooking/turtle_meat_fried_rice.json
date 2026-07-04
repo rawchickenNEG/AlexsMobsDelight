@@ -1,0 +1,26 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "alexsmobsdelight:terrapin_shell"
+  },
+  "cookingtime": 400,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "alexsmobsdelight:raw_turtle_meat"
+    },
+    {
+      "tag": "forge:crops/onion"
+    },
+    {
+      "tag": "forge:crops/rice"
+    },
+    {
+      "tag": "forge:salad_ingredients"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "alexsmobsdelight:turtle_meat_fried_rice"
+  }
+}

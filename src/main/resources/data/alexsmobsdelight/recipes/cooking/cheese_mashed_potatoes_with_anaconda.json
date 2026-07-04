@@ -1,0 +1,29 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 400,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "minecraft:baked_potato"
+    },
+    {
+      "item": "alexsmobsdelight:raw_anaconda"
+    },
+    {
+      "item": "minecraft:baked_potato"
+    },
+    {
+      "tag": "forge:milk"
+    },
+    {
+      "tag": "forge:salad_ingredients"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "alexsmobsdelight:cheese_mashed_potatoes_with_anaconda"
+  }
+}

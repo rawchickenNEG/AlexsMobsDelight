@@ -1,0 +1,37 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "alexsmobsdelight:alligator_snapping_turtle_shell"
+  },
+  "cookingtime": 400,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "alexsmobsdelight:raw_anaconda"
+    },
+    {
+      "item": "alexsmobsdelight:raw_anaconda"
+    },
+    [
+      {
+        "item": "alexsmobs:raw_catfish"
+      },
+      {
+        "item": "alexsmobsdelight:raw_catfish_slice"
+      }
+    ],
+    {
+      "tag": "forge:crops/tomato"
+    },
+    {
+      "tag": "forge:crops/onion"
+    },
+    {
+      "tag": "forge:salad_ingredients"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "alexsmobsdelight:stuffed_grilled_anaconda"
+  }
+}

@@ -1,3 +1,9 @@
+- 1.0.6
+   Add Turtle, Anaconda, Rattle Snake, Tiger foods (Tiger food not contain any Tiger meat!).
+   Add Spiked Scute cutting recipe.
+   Fix seagull suspicious sand server crashing issue.
+   Fix cup food items remain bowl item issue.
+   Fix Thrown Dart static data error.
 - 1.0.5
    Fix Fluttering effect active issue.
 - 1.0.4
