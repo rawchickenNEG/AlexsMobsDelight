@@ -1,3 +1,5 @@
+- 1.0.7
+   Fix Stuffed Grilled Anaconda block loot table issue.
 - 1.0.6
    Add Turtle, Anaconda, Rattle Snake, Tiger foods (Tiger food not contain any Tiger meat!).
    Add Spiked Scute cutting recipe.
