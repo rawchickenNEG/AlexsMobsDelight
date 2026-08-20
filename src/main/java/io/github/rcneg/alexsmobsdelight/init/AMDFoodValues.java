@@ -40,7 +40,7 @@ public class AMDFoodValues {
     public static final FoodProperties ALWAYS_EAT_COOKED_SEAGULL = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).alwaysEat().build();
     public static final FoodProperties KIVIAK = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.6F).alwaysEat().effect(() -> {
         return new MobEffectInstance(EffectRegistry.SEAGULL_ANOREXIA.get(), 24000, 0);
-}, 1.0F).build();
+    }, 1.0F).build();
 
     public static final FoodProperties MANTIS_SHRIMP_TAIL = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.3F).build();
     public static final FoodProperties COOKED_MANTIS_SHRIMP_TAIL = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.6F).build();
@@ -99,6 +99,12 @@ public class AMDFoodValues {
     public static final FoodProperties COOKED_TURTLE_MEAT = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.6F).build();
     public static final FoodProperties RAW_ANACONDA = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.3F).build();
     public static final FoodProperties COOKED_ANACONDA = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).build();
+    public static final FoodProperties RAW_EMU_MEAT = (new FoodProperties.Builder()).nutrition(5).saturationMod(0.3F).build();
+    public static final FoodProperties COOKED_EMU_MEAT = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.6F).build();
+    public static final FoodProperties RAW_HUMMINGBIRD = (new FoodProperties.Builder()).nutrition(1).saturationMod(0.3F).build();
+    public static final FoodProperties COOKED_HUMMINGBIRD = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.6F).build();
+    public static final FoodProperties RAW_EMU_LEG = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).build();
+    public static final FoodProperties COOKED_EMU_LEG = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).build();
 
     public static final FoodProperties PROTEIN_BLOCK = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.5F).alwaysEat().effect(() -> {
         return new MobEffectInstance((MobEffect)AMEffectRegistry.BUG_PHEROMONES.get(), 3600, 0);
@@ -122,6 +128,9 @@ public class AMDFoodValues {
     }, 1.0F).build();
     public static final FoodProperties SEAL_SANDWICH = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.6F).effect(() -> {
         return new MobEffectInstance((MobEffect)MobEffects.LUCK, 3000, 0);
+    }, 1.0F).build();
+    public static final FoodProperties GONGYLIDIA_SANDWICH = (new FoodProperties.Builder()).nutrition(10).saturationMod(0.6F).effect(() -> {
+        return new MobEffectInstance((MobEffect)MobEffects.DIG_SPEED, 3000, 1);
     }, 1.0F).build();
 
     public static final FoodProperties BANANA_CUSTARD = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.6F).alwaysEat().effect(() -> {
@@ -175,6 +184,10 @@ public class AMDFoodValues {
     public static final FoodProperties MOSQUITO_REPELLENT_STEW_CUP = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.8F).effect(() -> {
         return new MobEffectInstance((MobEffect)AMEffectRegistry.MOSQUITO_REPELLENT.get(), 24000);
     }, 1.0F).build();
+    public static final FoodProperties CHEESE_EMU_LEG = (new FoodProperties.Builder()).nutrition(10).saturationMod(0.8F).effect(() -> {
+        return new MobEffectInstance((MobEffect)EffectRegistry.DODGE.get(), 3000, 0);
+    }, 1.0F).build();
+    public static final FoodProperties STICK_HUMMINGBIRD = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.8F).build();
 
     public static final FoodProperties PROTEIN_SOUP = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).effect(() -> {
         return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
@@ -185,6 +198,11 @@ public class AMDFoodValues {
         return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
     }, 1.0F).effect(() -> {
         return new MobEffectInstance((MobEffect)AMEffectRegistry.BUG_PHEROMONES.get(), 3000, 0);
+    }, 1.0F).build();
+    public static final FoodProperties GONGYLIDIA_SOUP = (new FoodProperties.Builder()).nutrition(10).saturationMod(0.8F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect)MobEffects.DIG_SPEED, 3000, 1);
     }, 1.0F).build();
     public static final FoodProperties MAGGOT_SOUP = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).effect(() -> {
         return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
@@ -443,6 +461,29 @@ public class AMDFoodValues {
     public static final FoodProperties TIGER_CAKE_ROLL = (new FoodProperties.Builder()).nutrition(6).saturationMod(0.6F).effect(() -> {
         return new MobEffectInstance((MobEffect)AMEffectRegistry.TIGERS_BLESSING.get(), 3600, 0);
     }, 1.0F).alwaysEat().build();
+    public static final FoodProperties POT_OF_HUMMINGBIRD_STEW = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.6F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.COMFORT.get(), 3000, 0);
+    }, 1.0F).build();
+    public static final FoodProperties HANDTORN_EMU_MEAT_WITH_RICE = (new FoodProperties.Builder()).nutrition(14).saturationMod(0.6F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.NOURISHMENT.get(), 6000, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect)EffectRegistry.DODGE.get(), 3600, 0);
+    }, 1.0F).build();
+    public static final FoodProperties PLATE_OF_BEGGARS_EMU = (new FoodProperties.Builder()).nutrition(14).saturationMod(0.6F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.NOURISHMENT.get(), 6000, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect)EffectRegistry.DODGE.get(), 1200, 1);
+    }, 1.0F).build();
+    public static final FoodProperties SALVIA_POPSICLE = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.2F).effect(() -> {
+        return new MobEffectInstance((MobEffect)MobEffects.POISON, 100, 0);
+    }, 1.0F).fast().alwaysEat().build();
+    public static final FoodProperties SALVIA_CUSTARD = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.6F).alwaysEat().effect(() -> new MobEffectInstance(MobEffects.POISON, 100, 0), 1.0F).build();
+    public static final FoodProperties EMU_CUSTARD = (new FoodProperties.Builder()).nutrition(8).saturationMod(0.7F).alwaysEat().effect(() -> new MobEffectInstance(EffectRegistry.DODGE.get(), 1200, 0), 1.0F).build();
+    public static final FoodProperties EMU_FRIED_RICE = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.75F).effect(() -> {
+        return new MobEffectInstance((MobEffect)ModEffects.NOURISHMENT.get(), 3600, 0);
+    }, 1.0F).effect(() -> {
+        return new MobEffectInstance((MobEffect)EffectRegistry.DODGE.get(), 1200, 0);
+    }, 1.0F).build();
 
     //public static final Map<Item, FoodProperties> VANILLA_SOUP_EFFECTS;
 

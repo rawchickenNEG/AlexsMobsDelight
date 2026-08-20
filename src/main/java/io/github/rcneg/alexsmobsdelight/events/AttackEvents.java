@@ -7,23 +7,30 @@ import io.github.rcneg.alexsmobsdelight.accessor.IEntitySeagullData;
 import io.github.rcneg.alexsmobsdelight.config.Config;
 import io.github.rcneg.alexsmobsdelight.init.EffectRegistry;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
+import io.github.rcneg.alexsmobsdelight.mixin.LootTableAccessor;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -34,13 +41,16 @@ import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Mod.EventBusSubscriber
 public class AttackEvents {
@@ -150,7 +160,9 @@ public class AttackEvents {
                                     .withOptionalParameter(LootContextParams.KILLER_ENTITY, attacker)
                                     .create(LootContextParamSets.ENTITY)
                     ).create(null);
-                    for (LootPool pool : lootTable.pools) {
+                    LootTableAccessor accessor = (LootTableAccessor) lootTable;
+                    List<LootPool> pools = accessor.amd$getLootTablePools();
+                    for (LootPool pool : pools) {
                         for (LootPoolEntryContainer entry : pool.entries) {
                             if (entry instanceof LootPoolSingletonContainer singleton) {
                                 if(singleton instanceof LootItem lootItem){
@@ -176,6 +188,20 @@ public class AttackEvents {
                             addEntityDrops(event, drop);
                         }
                     }
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void OnLivingAttackEvent(LivingAttackEvent event){
+        Level level = event.getEntity().level();
+        if (!level.isClientSide()) {
+            LivingEntity entity = event.getEntity();
+            if(entity.hasEffect(EffectRegistry.DODGE.get()) && event.getSource().getDirectEntity() instanceof Projectile){
+                if(entity.getRandom().nextInt(10) > Math.pow(0.5, (entity.getEffect(EffectRegistry.DODGE.get()).getAmplifier() + 1))){
+                    level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.WOOL_PLACE, SoundSource.NEUTRAL, 1.0F, 0.3F);
+                    event.setCanceled(true);
                 }
             }
         }

@@ -10,6 +10,7 @@
     "EntityRaccoonMixin",
     "EntitySeagullMixin",
     "LivingEntityMixin",
+    "LootTableAccessor",
     "SeagullAIStealFromPlayersMixin"
   ],
   "injectors": {

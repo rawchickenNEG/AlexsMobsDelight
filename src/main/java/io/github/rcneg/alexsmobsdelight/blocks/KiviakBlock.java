@@ -58,7 +58,7 @@ public class KiviakBlock extends Block {
     }
 
     public boolean isRandomlyTicking(BlockState state) {
-        return true;
+        return state.getValue(COMPOSTING) != 7;
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext context) {

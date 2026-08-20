@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "-": {
+      "tag": "forge:bones"
+    },
+    "p": {
+      "item": "alexsmobs:komodo_spit"
+    },
+    "s": {
+      "item": "minecraft:snowball"
+    }
+  },
+  "pattern": [
+    " ss",
+    "pss",
+    "-p "
+  ],
+  "result": {
+    "item": "alexsmobsdelight:spit_popsicle"
+  },
+  "show_notification": true
+}

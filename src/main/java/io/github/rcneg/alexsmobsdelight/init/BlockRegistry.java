@@ -44,8 +44,14 @@ public class BlockRegistry {
     public static final RegistryObject<Block> STUFFED_GRILLED_ANACONDA = BLOCKS.register("stuffed_grilled_anaconda", () -> {
         return new StuffedGrilledAnacondaBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).sound(SoundType.BONE_BLOCK), ItemRegistry.BOWL_OF_STUFFED_GRILLED_ANACONDA, true);
     });
+    public static final RegistryObject<Block> BEGGARS_EMU = BLOCKS.register("beggars_emu", () -> {
+        return new BeggarsEmuBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ItemRegistry.PLATE_OF_BEGGARS_EMU, true);
+    });
     public static final RegistryObject<Block> MUSHROOMS_BRAISED_WITH_CENTIPEDE = BLOCKS.register("mushrooms_braised_with_centipede", () -> {
         return new MushroomsBraisedWithCentipedeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).sound(SoundType.COPPER), ItemRegistry.PLATE_OF_MUSHROOMS_BRAISED_WITH_CENTIPEDE, true);
+    });
+    public static final RegistryObject<Block> BEGGARS_EMU_IN_THE_MUD = BLOCKS.register("beggars_emu_in_the_mud", () -> {
+        return new BeggarsEmuInTheMudBlock(BlockBehaviour.Properties.copy(Blocks.PACKED_MUD).randomTicks());
     });
     public static final RegistryObject<Block> BANANA_BLOCK = BLOCKS.register("banana_block", () -> {
         return new BananaBlock(BlockBehaviour.Properties.copy(Blocks.COCOA).sound(SoundType.BIG_DRIPLEAF).noCollission());

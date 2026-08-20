@@ -1,5 +1,12 @@
 - 1.0.7
+   Add Emu, Komodo, Gongylidia, Hummingbird foods.
+   Add Dodge effect.
+   Change Turtle and Anaconda meat food level.
    Fix Stuffed Grilled Anaconda block loot table issue.
+   Fix Seal Sandwich no effect tooltip issue.
+   Fix custard food cooking recipes missing glass bottle requirement issue.
+   Fix Beggar's Emu block has no particle texture issue.
+   Optimize Kiviak block random ticking.
 - 1.0.6
    Add Turtle, Anaconda, Rattle Snake, Tiger foods (Tiger food not contain any Tiger meat!).
    Add Spiked Scute cutting recipe.
