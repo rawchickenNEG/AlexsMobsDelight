@@ -3,22 +3,22 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:bread"
+      "tag": "c:foods/bread"
     },
     {
       "tag": "alexsmobsdelight:large_cooked_meat"
     },
     {
-      "tag": "forge:salad_ingredients"
+      "tag": "c:foods/vegetable"
     },
     {
       "item": "minecraft:sea_pickle"
     },
     {
-      "tag": "forge:crops/tomato"
+      "tag": "c:crops/tomato"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     }
   ],
   "result": {

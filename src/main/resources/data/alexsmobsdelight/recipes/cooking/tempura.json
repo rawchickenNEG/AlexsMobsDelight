@@ -4,22 +4,22 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "alexsmobs:lobster_tail"
+      "item": "alexsmobsup:lobster_tail"
     },
     {
-      "item": "alexsmobs:lobster_tail"
+      "item": "alexsmobsup:lobster_tail"
     },
     {
-      "item": "alexsmobs:lobster_tail"
+      "item": "alexsmobsup:lobster_tail"
     },
     {
-      "item": "alexsmobs:lobster_tail"
+      "item": "alexsmobsup:lobster_tail"
     },
     {
-      "tag": "forge:dough"
+      "tag": "c:foods/dough"
     },
     {
-      "item": "alexsmobs:fish_oil"
+      "item": "alexsmobsup:fish_oil"
     }
   ],
   "recipe_book_tab": "meals",

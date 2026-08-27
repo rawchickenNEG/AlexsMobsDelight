@@ -14,7 +14,7 @@ public class EternalFoodItem extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity entity) {
-        if (isEdible()) {
+        if (stack.getFoodProperties(entity) != null) {
             entity.eat(world, stack.copy());
             if(entity instanceof Player player){
                 player.getCooldowns().addCooldown(stack.getItem(), Config.ETERNAL_SEAGULL_COOLDOWN.get());

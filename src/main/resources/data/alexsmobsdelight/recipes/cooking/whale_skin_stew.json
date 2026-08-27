@@ -10,13 +10,13 @@
       "item": "alexsmobsdelight:whale_meat"
     },
     {
-      "tag": "forge:milk"
+      "tag": "c:drinks/milk"
     },
     {
-      "tag": "forge:raw_fishes/cod"
+      "tag": "c:foods/raw_cod"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     }
   ],
   "recipe_book_tab": "meals",

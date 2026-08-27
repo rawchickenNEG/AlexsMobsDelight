@@ -14,20 +14,20 @@
     },
     [
       {
-        "item": "alexsmobs:raw_catfish"
+        "item": "alexsmobsup:raw_catfish"
       },
       {
         "item": "alexsmobsdelight:raw_catfish_slice"
       }
     ],
     {
-      "tag": "forge:crops/tomato"
+      "tag": "c:crops/tomato"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     },
     {
-      "tag": "forge:salad_ingredients"
+      "tag": "c:foods/vegetable"
     }
   ],
   "recipe_book_tab": "meals",

@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -121,10 +122,9 @@ public class SteamedStuffedCrocodileBlock extends Block {
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         if (level.isClientSide) {
-            super.playerWillDestroy(level, pos, state, player);
-            return;
+            return super.playerWillDestroy(level, pos, state, player);
         }
         BlockPos front = getStartPos(pos, state);
         Direction facing = state.getValue(FACING);
@@ -142,6 +142,7 @@ public class SteamedStuffedCrocodileBlock extends Block {
                 level.setBlock(p, Blocks.AIR.defaultBlockState(), flags);
             }
         }
+        return state;
     }
 
     @Override
@@ -220,9 +221,12 @@ public class SteamedStuffedCrocodileBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (level.isClientSide) return InteractionResult.SUCCESS;
-        return this.takeServing(level, pos, state, player, hand);
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+                                               Player player, InteractionHand hand, BlockHitResult hit) {
+        if (level.isClientSide) return ItemInteractionResult.SUCCESS;
+        return this.takeServing(level, pos, state, player, hand) == InteractionResult.SUCCESS
+                ? ItemInteractionResult.CONSUME
+                : ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     protected InteractionResult takeServing(LevelAccessor level, BlockPos pos, BlockState state, Player player, InteractionHand hand) {
@@ -263,7 +267,7 @@ public class SteamedStuffedCrocodileBlock extends Block {
                 player.drop(serving, false);
             }
 
-            level.playSound(null, front, SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.playSound(null, front, SoundEvents.ARMOR_EQUIP_GENERIC.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
             return InteractionResult.SUCCESS;
         }
 

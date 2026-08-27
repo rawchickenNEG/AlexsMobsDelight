@@ -10,7 +10,7 @@
       "tag": "alexsmobsdelight:raw_kangaroo_meat"
     },
     {
-      "item": "alexsmobs:acacia_blossom"
+      "item": "alexsmobsup:acacia_blossom"
     },
     {
       "item": "minecraft:baked_potato"
@@ -19,10 +19,10 @@
       "item": "farmersdelight:cooked_bacon"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     },
     {
-      "tag": "forge:milk"
+      "tag": "c:drinks/milk"
     }
   ],
   "recipe_book_tab": "meals",

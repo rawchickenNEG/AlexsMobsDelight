@@ -18,7 +18,7 @@
       "item": "minecraft:mangrove_propagule"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     }
   ],
   "recipe_book_tab": "meals",

@@ -12,10 +12,10 @@
     },
     {
       "count": 2,
-      "item": "alexsmobs:crocodile_scute"
+      "item": "alexsmobsup:crocodile_scute"
     }
   ],
   "tool": {
-    "tag": "forge:tools/knives"
+    "tag": "c:tools/knife"
   }
 }

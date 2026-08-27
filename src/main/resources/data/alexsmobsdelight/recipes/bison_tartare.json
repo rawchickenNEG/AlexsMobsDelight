@@ -9,13 +9,13 @@
       "tag": "alexsmobsdelight:raw_bison_meat"
     },
     {
-      "tag": "forge:salad_ingredients"
+      "tag": "c:foods/vegetable"
     },
     {
-      "tag": "forge:eggs"
+      "tag": "c:eggs"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     },
     {
       "item": "minecraft:bowl"

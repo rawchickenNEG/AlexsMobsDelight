@@ -10,13 +10,13 @@
       "item": "alexsmobsdelight:raw_turtle_meat"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     },
     {
-      "tag": "forge:crops/rice"
+      "tag": "c:crops/rice"
     },
     {
-      "tag": "forge:salad_ingredients"
+      "tag": "c:foods/vegetable"
     }
   ],
   "recipe_book_tab": "meals",

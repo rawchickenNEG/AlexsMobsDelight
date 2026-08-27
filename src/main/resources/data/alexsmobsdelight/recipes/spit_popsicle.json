@@ -3,10 +3,10 @@
   "category": "misc",
   "key": {
     "-": {
-      "tag": "forge:bones"
+      "tag": "c:bones"
     },
     "p": {
-      "item": "alexsmobs:komodo_spit"
+      "item": "alexsmobsup:komodo_spit"
     },
     "s": {
       "item": "minecraft:snowball"

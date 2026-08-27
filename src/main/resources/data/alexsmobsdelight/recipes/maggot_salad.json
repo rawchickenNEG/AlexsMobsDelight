@@ -3,22 +3,22 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "alexsmobs:maggot"
+      "item": "alexsmobsup:maggot"
     },
     {
-      "item": "alexsmobs:maggot"
+      "item": "alexsmobsup:maggot"
     },
     {
-      "item": "alexsmobs:maggot"
+      "item": "alexsmobsup:maggot"
     },
     {
-      "tag": "forge:salad_ingredients"
+      "tag": "c:foods/vegetable"
     },
     {
       "item": "minecraft:bowl"
     },
     {
-      "tag": "forge:crops/tomato"
+      "tag": "c:crops/tomato"
     }
   ],
   "result": {

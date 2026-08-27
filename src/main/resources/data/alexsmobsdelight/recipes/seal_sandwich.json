@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:bread"
+      "tag": "c:foods/bread"
     },
     {
       "item": "alexsmobsdelight:cooked_seal_meat"

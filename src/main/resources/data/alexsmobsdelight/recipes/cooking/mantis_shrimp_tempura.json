@@ -13,13 +13,13 @@
       "tag": "alexsmobsdelight:mantis_shrimp_tails"
     },
     {
-      "tag": "forge:dough"
+      "tag": "c:foods/dough"
     },
     {
-      "item": "alexsmobs:fish_oil"
+      "item": "alexsmobsup:fish_oil"
     },
     {
-      "item": "alexsmobs:fish_oil"
+      "item": "alexsmobsup:fish_oil"
     }
   ],
   "recipe_book_tab": "meals",

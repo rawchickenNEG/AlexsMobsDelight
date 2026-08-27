@@ -6,13 +6,13 @@
       "item": "minecraft:dirt"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     },
     {
       "item": "minecraft:dirt"
     },
     {
-      "tag": "forge:crops/rice"
+      "tag": "c:crops/rice"
     },
     {
       "item": "alexsmobsdelight:raw_emu"

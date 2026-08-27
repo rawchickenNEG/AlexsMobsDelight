@@ -8,7 +8,7 @@
   "ingredients": [
     [
       {
-        "item": "alexsmobs:raw_catfish"
+        "item": "alexsmobsup:raw_catfish"
       },
       {
         "item": "alexsmobsdelight:raw_catfish_slice"
@@ -18,7 +18,7 @@
       "item": "alexsmobsdelight:raw_crocodile_meat"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     }
   ],
   "recipe_book_tab": "meals",

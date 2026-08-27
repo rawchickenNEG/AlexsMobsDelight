@@ -19,10 +19,10 @@
       "item": "farmersdelight:tomato_sauce"
     },
     {
-      "tag": "forge:salad_ingredients"
+      "tag": "c:foods/vegetable"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     }
   ],
   "recipe_book_tab": "meals",

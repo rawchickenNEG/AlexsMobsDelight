@@ -2,10 +2,10 @@ package io.github.rcneg.alexsmobsdelight.mixin;
 
 import com.alexsmobsup.entity.EntitySeagull;
 import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
 import io.github.rcneg.alexsmobsdelight.accessor.IEntitySeagullData;
 import io.github.rcneg.alexsmobsdelight.config.Config;
 import io.github.rcneg.alexsmobsdelight.helper.EntityHelper;
+import io.github.rcneg.alexsmobsdelight.helper.ItemStackDataCompat;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -13,8 +13,6 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
@@ -26,8 +24,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BrushableBlockEntity;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -83,20 +79,21 @@ public class EntitySeagullMixin implements IEntitySeagullData {
             if (food != null){
                 EntitySeagull seagull = (EntitySeagull) (Object) this;
                 Map<MobEffect, MobEffectInstance> foodEffects = Maps.newHashMap();
-                if(!food.getEffects().isEmpty() && !Config.ENCHANTED_SEAGULL_BLACKLIST_ITEMS.contains(heldItem.getItem())) {
+                if(!food.effects().isEmpty() && !Config.ENCHANTED_SEAGULL_BLACKLIST_ITEMS.contains(heldItem.getItem())) {
                     //获取食物效果
-                    List<Pair<MobEffectInstance, Float>> foodEffectsWithChance = food.getEffects();
+                    List<FoodProperties.PossibleEffect> foodEffectsWithChance = food.effects();
 
-                    for(Pair<MobEffectInstance, Float> effectPair : foodEffectsWithChance){
-                        if(seagull.getRandom().nextFloat() <= effectPair.getSecond()){
-                            MobEffectInstance effectIns = effectPair.getFirst();
-                            foodEffects.put(effectIns.getEffect(), effectIns);
+                    for(FoodProperties.PossibleEffect effectPair : foodEffectsWithChance){
+                        if(seagull.getRandom().nextFloat() <= effectPair.probability()){
+                            MobEffectInstance effectIns = effectPair.effect();
+                            foodEffects.put(effectIns.getEffect().value(), effectIns);
                         }
                     }
                 }
-                if(heldItem.getTag() != null){
+                CompoundTag heldItemData = ItemStackDataCompat.read(heldItem);
+                if(!heldItemData.isEmpty()){
                     //获取不了就获取NBT（比如附魔海鸥）
-                    CompoundTag tag = heldItem.getTag();
+                    CompoundTag tag = heldItemData;
                     Set<String> tagName = tag.getAllKeys();
                     for(String string : tagName){
                         ListTag listtag = tag.getList(string, 10);
@@ -104,14 +101,14 @@ public class EntitySeagullMixin implements IEntitySeagullData {
                             CompoundTag compoundtag = listtag.getCompound(i);
                             MobEffectInstance mei = MobEffectInstance.load(compoundtag);
                             if (mei != null) {
-                                if(foodEffects.containsKey(mei.getEffect())){
-                                    MobEffect me = mei.getEffect();
-                                    MobEffectInstance mei1 = new MobEffectInstance(me,
+                                if(foodEffects.containsKey(mei.getEffect().value())){
+                                    MobEffect me = mei.getEffect().value();
+                                    MobEffectInstance mei1 = new MobEffectInstance(mei.getEffect(),
                                             Math.max(mei.getDuration(), foodEffects.get(me).getDuration()),
                                             Math.max(mei.getAmplifier(), foodEffects.get(me).getAmplifier()));
                                     foodEffects.put(me, mei1);
                                 } else {
-                                    foodEffects.put(mei.getEffect(), mei);
+                                    foodEffects.put(mei.getEffect().value(), mei);
                                 }
                             }
                         }
@@ -156,7 +153,7 @@ public class EntitySeagullMixin implements IEntitySeagullData {
                 }
                 if(flag){
                     BlockState treasureSand = level.getBlockState(pos1.below()).is(Blocks.GRAVEL) || level.getBlockState(pos1.below()).is(Blocks.STONE) ? Blocks.SUSPICIOUS_GRAVEL.defaultBlockState() : Blocks.SUSPICIOUS_SAND.defaultBlockState();
-                    CompoundTag tag = level.getBlockEntity(pos1).saveWithoutMetadata();
+                    CompoundTag tag = level.getBlockEntity(pos1).saveWithoutMetadata(level.registryAccess());
                     if(level.getBlockEntity(pos1) instanceof RandomizableContainerBlockEntity chestEntity && tag != null && tag.contains("LootTable", 8)){
                         if(level.setBlock(pos1.below(), treasureSand, 3)){
                             BlockEntity entity = level.getBlockEntity(pos1.below());
@@ -164,7 +161,7 @@ public class EntitySeagullMixin implements IEntitySeagullData {
                                 if (player != null) {
                                     chestEntity.unpackLootTable(player);
                                 }
-                                brushable.setLootTable(new ResourceLocation("alexsmobsdelight:gameplay/seagull_treasure_sand"), tag.getLong("LootTableSeed"));
+                                brushable.setLootTable(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath("alexsmobsdelight", "gameplay/seagull_treasure_sand")), tag.getLong("LootTableSeed"));
                                 brushable.setChanged();
                                 level.sendBlockUpdated(pos1.below(), treasureSand, treasureSand, Block.UPDATE_CLIENTS);
                             }
@@ -183,7 +180,7 @@ public class EntitySeagullMixin implements IEntitySeagullData {
         if (!this.amd$consumedFoodEffects.isEmpty()) {
             ListTag listtag = new ListTag();
             for (MobEffectInstance mobeffectinstance : this.amd$consumedFoodEffects.values()) {
-                listtag.add(mobeffectinstance.save(new CompoundTag()));
+                listtag.add(mobeffectinstance.save());
             }
             tag.put("AmdConsumedFoodEffects", listtag);
         }
@@ -201,7 +198,7 @@ public class EntitySeagullMixin implements IEntitySeagullData {
                 CompoundTag compoundtag = listtag.getCompound(i);
                 MobEffectInstance mobeffectinstance = MobEffectInstance.load(compoundtag);
                 if (mobeffectinstance != null) {
-                    this.amd$consumedFoodEffects.put(mobeffectinstance.getEffect(), mobeffectinstance);
+                    this.amd$consumedFoodEffects.put(mobeffectinstance.getEffect().value(), mobeffectinstance);
                 }
             }
         }

@@ -7,7 +7,7 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "tag": "forge:crops/rice"
+      "tag": "c:crops/rice"
     },
     {
       "item": "alexsmobsdelight:raw_anaconda"

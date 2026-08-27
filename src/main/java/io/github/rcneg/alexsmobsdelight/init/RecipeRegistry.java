@@ -5,12 +5,12 @@ import io.github.rcneg.alexsmobsdelight.recipes.RecipeMimicandyDuplicate;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class RecipeRegistry {
     public static final DeferredRegister<RecipeSerializer<?>> DEF_REG;
-    public static final RegistryObject<RecipeSerializer<?>> MIMICANDY_RECIPE;
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> MIMICANDY_RECIPE;
 
     public RecipeRegistry() {
     }

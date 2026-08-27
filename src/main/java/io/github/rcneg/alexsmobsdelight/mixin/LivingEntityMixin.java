@@ -23,7 +23,7 @@ public class LivingEntityMixin {
 
     private void amd$spinningWithoutAttackCheck(AABB p_21072_, AABB p_21073_, CallbackInfo ci) {
         LivingEntity entity = (LivingEntity) (Object) this;
-        if (entity.hasEffect(EffectRegistry.CROCODILE_DEATH_ROLL.get())){
+        if (entity.hasEffect(EffectRegistry.CROCODILE_DEATH_ROLL)){
             AABB aabb = p_21072_.minmax(p_21073_);
             List<Entity> list = entity.level().getEntities(entity, aabb);
             if (!list.isEmpty()) {
@@ -45,8 +45,8 @@ public class LivingEntityMixin {
     )
     private void amd$onChangeBlock(net.minecraft.server.level.ServerLevel level, BlockPos pos, CallbackInfo ci) {
         LivingEntity entity = (LivingEntity) (Object) this;
-        if (entity.hasEffect(EffectRegistry.CRYSTALLIZE_WALKER.get())){
-            int i = entity.getEffect(EffectRegistry.CRYSTALLIZE_WALKER.get()).getAmplifier() + 1;
+        if (entity.hasEffect(EffectRegistry.CRYSTALLIZE_WALKER)){
+            int i = entity.getEffect(EffectRegistry.CRYSTALLIZE_WALKER).getAmplifier() + 1;
             CrystallizeWalkerEffect.onEntityMoved(entity, level, pos, i);
         }
     }

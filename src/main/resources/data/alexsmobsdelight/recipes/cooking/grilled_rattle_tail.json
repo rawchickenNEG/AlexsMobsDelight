@@ -7,13 +7,13 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "alexsmobs:rattlesnake_rattle"
+      "item": "alexsmobsup:rattlesnake_rattle"
     },
     {
       "item": "minecraft:carrot"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     },
     {
       "item": "farmersdelight:wild_tomatoes"

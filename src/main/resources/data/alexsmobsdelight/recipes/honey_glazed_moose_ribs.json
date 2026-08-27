@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     },
     {
       "item": "minecraft:honey_bottle"
@@ -12,10 +12,10 @@
       "item": "minecraft:sweet_berries"
     },
     {
-      "item": "alexsmobs:cooked_moose_ribs"
+      "item": "alexsmobsup:cooked_moose_ribs"
     },
     {
-      "tag": "forge:salad_ingredients"
+      "tag": "c:foods/vegetable"
     },
     {
       "item": "minecraft:bowl"

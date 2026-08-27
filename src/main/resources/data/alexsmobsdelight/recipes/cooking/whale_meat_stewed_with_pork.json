@@ -10,16 +10,16 @@
       "item": "alexsmobsdelight:whale_meat"
     },
     {
-      "tag": "forge:raw_pork"
+      "tag": "c:foods/raw_pork"
     },
     {
       "item": "minecraft:pufferfish"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     },
     {
-      "tag": "forge:milk"
+      "tag": "c:drinks/milk"
     },
     {
       "item": "minecraft:dried_kelp"

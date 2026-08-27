@@ -1,6 +1,6 @@
 package io.github.rcneg.alexsmobsdelight.effects;
 
-import com.github.alexthe666.alexsmobs.entity.EntitySeagull;
+import com.alexsmobsup.entity.EntitySeagull;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,7 +13,7 @@ public class SeagullAnorexiaEffect extends MobEffect {
         super(p_19451_, p_19452_);
     }
 
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
+    public boolean applyEffectTick(LivingEntity entity, int amplifier) {
         AABB aabb = entity.getBoundingBox().inflate(16);
         List<EntitySeagull> list = entity.level().getEntitiesOfClass(EntitySeagull.class, aabb);
         if (!list.isEmpty()) {
@@ -21,6 +21,7 @@ public class SeagullAnorexiaEffect extends MobEffect {
                 if(seagull.stealCooldown < 200) seagull.stealCooldown = 200;
             }
         }
+        return true;
     }
 
     public boolean isDurationEffectTick(int duration, int amplifier) {

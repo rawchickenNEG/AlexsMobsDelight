@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     },
     {
       "item": "alexsmobsdelight:mantis_shrimp_tempura"
@@ -12,13 +12,13 @@
       "item": "alexsmobsdelight:shrimp_fried_egg"
     },
     {
-      "tag": "forge:salad_ingredients"
+      "tag": "c:foods/vegetable"
     },
     {
-      "item": "alexsmobs:shrimp_fried_rice"
+      "item": "alexsmobsup:shrimp_fried_rice"
     },
     {
-      "tag": "forge:salad_ingredients"
+      "tag": "c:foods/vegetable"
     }
   ],
   "result": {

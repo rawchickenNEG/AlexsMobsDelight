@@ -20,7 +20,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @SuppressWarnings("unused")
 public class JEIPlugin implements IModPlugin
 {
-    private static final ResourceLocation ID = new ResourceLocation(AlexsMobsDelight.MODID, "jei_plugin");
+    private static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(AlexsMobsDelight.MODID, "jei_plugin");
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {

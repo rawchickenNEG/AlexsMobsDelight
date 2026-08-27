@@ -1,7 +1,7 @@
 {
 	"entries": [
 		{
-			"bowl": "alexsmobs:mosquito_repellent_stew",
+			"bowl": "alexsmobsup:mosquito_repellent_stew",
 			"cup": "alexsmobsdelight:mosquito_repellent_stew_cup"
 		},
 		{
@@ -17,7 +17,7 @@
 			"cup": "alexsmobsdelight:cave_centipede_soup_cup"
 		},
 		{
-			"bowl": "alexsmobs:sopa_de_macaco",
+			"bowl": "alexsmobsup:sopa_de_macaco",
 			"cup": "alexsmobsdelight:sopa_de_macaco_cup"
 		}
 	]

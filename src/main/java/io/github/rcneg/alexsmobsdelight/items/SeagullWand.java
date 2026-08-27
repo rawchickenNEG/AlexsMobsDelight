@@ -1,10 +1,10 @@
 package io.github.rcneg.alexsmobsdelight.items;
 
-import com.github.alexthe666.alexsmobs.config.AMConfig;
-import com.github.alexthe666.alexsmobs.entity.EntityRaccoon;
-import com.github.alexthe666.alexsmobs.misc.AMAdvancementTriggerRegistry;
+import com.alexsmobsup.config.AMConfig;
+import com.alexsmobsup.misc.AMAdvancementTriggerRegistry;
 import io.github.rcneg.alexsmobsdelight.helper.ItemHelper;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,17 +21,15 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SeagullWand extends HoeItem {
     public SeagullWand(Tier tier, int attackDamage, float attackSpeed, Properties properties) {
-        super(tier, attackDamage, attackSpeed, properties);
+        super(tier, properties.attributes(DiggerItem.createAttributes(tier, attackDamage, attackSpeed)));
     }
 
     @Override
@@ -41,7 +39,7 @@ public class SeagullWand extends HoeItem {
 
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity p_40669_, int p_40670_) {
-        int tick = this.getUseDuration(stack) - p_40670_;
+        int tick = this.getUseDuration(stack, p_40669_) - p_40670_;
         if (p_40669_ instanceof Player player && tick > 20) {
             AABB box = new AABB(player.getBoundingBox().getCenter().add(player.getViewVector(1f)), player.getBoundingBox().getCenter().add(player.getViewVector(1))).inflate(1);
             List<Entity> hits = level.getEntities(player, box, e -> e instanceof LivingEntity && e != player);
@@ -63,7 +61,7 @@ public class SeagullWand extends HoeItem {
                     MerchantOffers offers = new MerchantOffers();
                     if (!originalOffers.isEmpty()) {
                         for(MerchantOffer o : originalOffers){
-                            if(!o.isOutOfStock() && (o.getResult().isEdible() || o.getBaseCostA().isEdible())){
+                            if(!o.isOutOfStock() && (o.getResult().getFoodProperties(null) != null || o.getBaseCostA().getFoodProperties(null) != null)){
                                 offers.add(o);
                             }
                         }
@@ -102,7 +100,7 @@ public class SeagullWand extends HoeItem {
                         player.drop(copy, false);
                     }
                     if (target instanceof ServerPlayer) {
-                        AMAdvancementTriggerRegistry.SEAGULL_STEAL.trigger((ServerPlayer)target);
+                        AMAdvancementTriggerRegistry.SEAGULL_STEAL.get().trigger((ServerPlayer)target);
                     }
                 }
             }
@@ -118,7 +116,7 @@ public class SeagullWand extends HoeItem {
 
     public boolean isStealableFood(ItemStack stack){
         boolean blackListed = false;
-        ResourceLocation loc = ForgeRegistries.ITEMS.getKey(stack.getItem());
+        ResourceLocation loc = BuiltInRegistries.ITEM.getKey(stack.getItem());
         if (loc != null) {
             for (String str : AMConfig.seagullStealingBlacklist) {
                 if (loc.toString().equals(str)) {
@@ -126,11 +124,11 @@ public class SeagullWand extends HoeItem {
                 }
             }
         }
-        return stack.isEdible() && !blackListed && !stack.is(ItemRegistry.KIVIAK.get());
+        return stack.getFoodProperties(null) != null && !blackListed && !stack.is(ItemRegistry.KIVIAK.get());
     }
 
     @Override
-    public int getUseDuration(ItemStack p_40680_) {
+    public int getUseDuration(ItemStack p_40680_, LivingEntity entity) {
         return 72000;
     }
 
@@ -150,9 +148,9 @@ public class SeagullWand extends HoeItem {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flagIn)
     {
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, context, tooltip, flagIn);
         tooltip.add(ItemHelper.customColor(Component.translatable("tooltip.alexsmobsdelight.seagull_wand"), 251, 198, 69));
         tooltip.add(ItemHelper.customColor(Component.translatable("tooltip.alexsmobsdelight.seagull_wand_1"), 251, 198, 69));
     }

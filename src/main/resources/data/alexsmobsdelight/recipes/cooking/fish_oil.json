@@ -7,18 +7,18 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "alexsmobs:blobfish"
+      "item": "alexsmobsup:blobfish"
     },
     {
-      "item": "alexsmobs:blobfish"
+      "item": "alexsmobsup:blobfish"
     },
     {
-      "item": "alexsmobs:blobfish"
+      "item": "alexsmobsup:blobfish"
     }
   ],
   "recipe_book_tab": "misc",
   "result": {
-    "item": "alexsmobs:fish_oil",
+    "item": "alexsmobsup:fish_oil",
     "count": 3
   }
 }

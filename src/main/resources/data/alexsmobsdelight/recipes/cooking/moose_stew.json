@@ -10,10 +10,10 @@
       "tag": "alexsmobsdelight:raw_moose_meat"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     },
     {
-      "tag": "forge:crops/onion"
+      "tag": "c:crops/onion"
     }
   ],
   "recipe_book_tab": "meals",

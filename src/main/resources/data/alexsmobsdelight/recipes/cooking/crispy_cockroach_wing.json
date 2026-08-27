@@ -7,13 +7,13 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "alexsmobs:cockroach_wing"
+      "item": "alexsmobsup:cockroach_wing"
     },
     {
-      "item": "alexsmobs:cockroach_wing"
+      "item": "alexsmobsup:cockroach_wing"
     },
     {
-      "item": "alexsmobs:fish_oil"
+      "item": "alexsmobsup:fish_oil"
     }
   ],
   "recipe_book_tab": "meals",

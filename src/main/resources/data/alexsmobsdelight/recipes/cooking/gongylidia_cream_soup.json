@@ -7,16 +7,16 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "alexsmobs:gongylidia"
+      "item": "alexsmobsup:gongylidia"
     },
     {
-      "item": "alexsmobs:gongylidia"
+      "item": "alexsmobsup:gongylidia"
     },
     {
       "item": "minecraft:brown_mushroom"
     },
     {
-      "tag": "forge:milk"
+      "tag": "c:drinks/milk"
     }
   ],
   "recipe_book_tab": "misc",

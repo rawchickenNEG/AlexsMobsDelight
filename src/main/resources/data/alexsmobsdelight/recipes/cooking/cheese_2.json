@@ -4,16 +4,16 @@
   "experience": 3.0,
   "ingredients": [
     {
-      "tag": "forge:milk"
+      "tag": "c:drinks/milk"
     },
     {
-      "tag": "forge:milk"
+      "tag": "c:drinks/milk"
     },
     {
-      "tag": "forge:milk"
+      "tag": "c:drinks/milk"
     },
     {
-      "item": "alexsmobs:mungal_spores"
+      "item": "alexsmobsup:mungal_spores"
     }
   ],
   "recipe_book_tab": "meals",

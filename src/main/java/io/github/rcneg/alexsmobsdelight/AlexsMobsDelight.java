@@ -1,35 +1,29 @@
 package io.github.rcneg.alexsmobsdelight;
 
-import com.github.alexthe666.alexsmobs.item.AMItemRegistry;
 import io.github.rcneg.alexsmobsdelight.blocks.MaggotFarmBlock;
 import io.github.rcneg.alexsmobsdelight.config.Config;
 import io.github.rcneg.alexsmobsdelight.init.*;
-import net.minecraft.world.item.BowlFoodItem;
-import net.minecraft.world.item.Item;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
-
-import java.util.List;
+import net.minecraft.core.component.DataComponents;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 
 @Mod(AlexsMobsDelight.MODID)
 public class AlexsMobsDelight
 {
     public static final String MODID = "alexsmobsdelight";
 
-    public AlexsMobsDelight()
+    public AlexsMobsDelight(IEventBus modEventBus, ModContainer modContainer)
     {
         CriticalTriggerRegistry.init();
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_CONFIG);
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.COMMON_CONFIG);
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
+        modEventBus.addListener(this::modifyDefaultComponents);
         ItemRegistry.ITEMS.register(modEventBus);
         BlockRegistry.BLOCKS.register(modEventBus);
         RecipeRegistry.DEF_REG.register(modEventBus);
@@ -37,26 +31,31 @@ public class AlexsMobsDelight
         EntityTypeRegistry.ENTITY_TYPES.register(modEventBus);
         LootModifierRegistry.LOOT_MODIFIER.register(modEventBus);
         TabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
-        NetworkRegistry.register();
-        MinecraftForge.EVENT_BUS.register(this);
+        modEventBus.addListener(NetworkRegistry::register);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         event.enqueueWork(() -> {
-            registerStackSizeOverrides();
             MaggotFarmBlock.bootStrap();
         });
     }
 
-    public static void registerStackSizeOverrides() {
-        if (!Config.STACKABLE_SOUP_ITEMS.get()) return;
-        List<Item> soupItems = List.of(AMItemRegistry.MOSQUITO_REPELLENT_STEW.get(), AMItemRegistry.SOPA_DE_MACACO.get());
-        soupItems.forEach((item) -> {
-            if (item instanceof BowlFoodItem) {
-                ObfuscationReflectionHelper.setPrivateValue(Item.class, item, 16, "f_41370_");
-            }
-        });
+    private void modifyDefaultComponents(ModifyDefaultComponentsEvent event) {
+        // Datagen fires this event before NeoForge has loaded the common config.  Use
+        // the declared default in that phase, while retaining the configured value
+        // during a normal client/server launch.
+        boolean stackableSoupItems;
+        try {
+            stackableSoupItems = Config.STACKABLE_SOUP_ITEMS.get();
+        } catch (IllegalStateException ignored) {
+            stackableSoupItems = Config.STACKABLE_SOUP_ITEMS.getDefault();
+        }
+        if (!stackableSoupItems) return;
+        event.modify(com.alexsmobsup.item.AMItemRegistry.MOSQUITO_REPELLENT_STEW.get(),
+                patch -> patch.set(DataComponents.MAX_STACK_SIZE, 16));
+        event.modify(com.alexsmobsup.item.AMItemRegistry.SOPA_DE_MACACO.get(),
+                patch -> patch.set(DataComponents.MAX_STACK_SIZE, 16));
     }
 
     private void clientSetup(FMLClientSetupEvent event) {

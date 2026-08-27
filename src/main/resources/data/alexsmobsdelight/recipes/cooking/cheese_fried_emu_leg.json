@@ -7,13 +7,13 @@
       "item": "alexsmobsdelight:raw_emu_leg"
     },
     {
-      "tag": "forge:cheese"
+      "tag": "c:foods/cheese"
     },
     {
-      "item": "alexsmobs:acacia_blossom"
+      "item": "alexsmobsup:acacia_blossom"
     },
     {
-      "item": "alexsmobs:fish_oil"
+      "item": "alexsmobsup:fish_oil"
     }
   ],
   "recipe_book_tab": "meals",

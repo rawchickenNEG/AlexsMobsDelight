@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smoking",
   "ingredient": {
-    "item": "alexsmobs:centipede_leg"
+    "item": "alexsmobsup:centipede_leg"
   },
   "result": "alexsmobsdelight:cooked_centipede_leg",
   "experience": 0.35,

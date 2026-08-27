@@ -13,7 +13,7 @@
       "item": "farmersdelight:tomato_sauce"
     },
     {
-      "tag": "forge:milk"
+      "tag": "c:drinks/milk"
     }
   ],
   "recipe_book_tab": "meals",

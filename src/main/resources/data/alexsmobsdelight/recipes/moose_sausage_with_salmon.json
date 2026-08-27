@@ -12,13 +12,13 @@
       "item": "alexsmobsdelight:cooked_moose_rib_piece"
     },
     {
-      "tag": "forge:cooked_fishes/salmon"
+      "tag": "c:foods/cooked_salmon"
     },
     {
-      "tag": "forge:salad_ingredients"
+      "tag": "c:foods/vegetable"
     },
     {
-      "item": "alexsmobs:moose_antler"
+      "item": "alexsmobsup:moose_antler"
     }
   ],
   "result": {

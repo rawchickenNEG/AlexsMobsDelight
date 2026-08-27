@@ -1,7 +1,7 @@
 package io.github.rcneg.alexsmobsdelight.client.renderer.layers;
 
-import com.github.alexthe666.alexsmobs.client.model.ModelSeagull;
-import com.github.alexthe666.alexsmobs.entity.EntitySeagull;
+import com.alexsmobsup.client.model.ModelSeagull;
+import com.alexsmobsup.entity.EntitySeagull;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import io.github.rcneg.alexsmobsdelight.entities.SuperSeagull;
@@ -12,14 +12,15 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class SuperSeagullArmorLayer extends RenderLayer<EntitySeagull, ModelSeagull> {
 
-    private static final ResourceLocation ARMOR_TEXTURE = new ResourceLocation("textures/entity/wither/wither_armor.png");
+    private static final ResourceLocation ARMOR_TEXTURE = ResourceLocation.withDefaultNamespace("textures/entity/wither/wither_armor.png");
 
     public SuperSeagullArmorLayer(RenderLayerParent<EntitySeagull, ModelSeagull> parent) {
         super(parent);
@@ -41,7 +42,8 @@ public class SuperSeagullArmorLayer extends RenderLayer<EntitySeagull, ModelSeag
             model.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
             float color1 = superSeagull.getHealth() * 2 > superSeagull.getMaxHealth() ? 0.5F : 1.0F;
             float color2 = superSeagull.getHealth() * 2 > superSeagull.getMaxHealth() ? 1.0F : 0.5F;
-            model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, color1, 0.5F, color2, 0.5F);
+            model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY,
+                    FastColor.ARGB32.colorFromFloat(0.5F, color1, 0.5F, color2));
         }
   }
 }

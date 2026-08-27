@@ -22,7 +22,7 @@
       "item": "minecraft:lily_of_the_valley"
     },
     {
-      "tag": "forge:milk"
+      "tag": "c:drinks/milk"
     }
   ],
   "recipe_book_tab": "misc",

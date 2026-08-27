@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#c:foods/cabbage",
+    "#c:foods/leafy_green"
+  ]
+}

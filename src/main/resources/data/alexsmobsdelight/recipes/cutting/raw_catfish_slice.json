@@ -2,7 +2,7 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "alexsmobs:raw_catfish"
+      "item": "alexsmobsup:raw_catfish"
     }
   ],
   "result": [
@@ -12,6 +12,6 @@
     }
   ],
   "tool": {
-    "tag": "forge:tools/knives"
+    "tag": "c:tools/knife"
   }
 }

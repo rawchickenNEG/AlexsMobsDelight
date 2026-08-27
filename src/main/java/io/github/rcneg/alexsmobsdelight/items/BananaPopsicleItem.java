@@ -1,7 +1,6 @@
 package io.github.rcneg.alexsmobsdelight.items;
 
-import com.github.alexthe666.alexsmobs.block.AMBlockRegistry;
-import com.github.alexthe666.alexsmobs.entity.util.RainbowUtil;
+import com.alexsmobsup.block.AMBlockRegistry;
 import com.google.common.collect.Lists;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -45,7 +44,7 @@ public class BananaPopsicleItem extends PopsicleItem {
             if (!state.getFluidState().isEmpty()) {
                 ++fullBlocks;
                 if (state.getBlock() instanceof BucketPickup) {
-                    ((BucketPickup)state.getBlock()).pickupBlock(level, blockpos, state);
+                    ((BucketPickup)state.getBlock()).pickupBlock(null, level, blockpos, state);
                     if (level.getBlockState(blockpos).isAir()) {
                         level.setBlockAndUpdate(blockpos, ((Block) AMBlockRegistry.CRYSTALIZED_BANANA_SLUG_MUCUS.get()).defaultBlockState());
                     }
@@ -79,7 +78,7 @@ public class BananaPopsicleItem extends PopsicleItem {
 
                         ++i;
                         ++fullBlocks;
-                        ((BucketPickup) blockstate.getBlock()).pickupBlock(level, blockpos1, blockstate);
+                        ((BucketPickup) blockstate.getBlock()).pickupBlock(null, level, blockpos1, blockstate);
                         if (level.getBlockState(blockpos).isAir()) {
                             level.setBlockAndUpdate(blockpos, ((Block) AMBlockRegistry.CRYSTALIZED_BANANA_SLUG_MUCUS.get()).defaultBlockState());
                         }

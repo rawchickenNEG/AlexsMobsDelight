@@ -5,8 +5,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,11 +21,11 @@ public class TabRegistry {
     );
 
 
-    public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register(AlexsMobsDelight.MODID, () -> CreativeModeTab.builder()
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register(AlexsMobsDelight.MODID, () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.alexsmobsdelight"))
             .icon(ItemRegistry.MANTIS_SHRIMP_TAIL_LIME.get()::getDefaultInstance)
             .displayItems((parameters, output) -> {
-                for(RegistryObject<Item> item: ItemRegistry.ITEMS.getEntries()){
+                for(DeferredHolder<Item, ? extends Item> item: ItemRegistry.ITEMS.getEntries()){
                     if(!NO_TAB_ITEMS.contains(item)) output.accept(item.get());
                 }
             }).build());

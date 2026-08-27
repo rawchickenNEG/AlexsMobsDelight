@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:bread"
+      "tag": "c:foods/bread"
     },
     {
       "tag": "alexsmobsdelight:cooked_squid_tentacles"

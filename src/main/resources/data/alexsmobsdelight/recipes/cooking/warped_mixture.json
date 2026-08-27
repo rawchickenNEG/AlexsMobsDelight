@@ -7,7 +7,7 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "alexsmobs:mungal_spores"
+      "item": "alexsmobsup:mungal_spores"
     },
     {
       "item": "minecraft:warped_wart_block"
@@ -27,6 +27,6 @@
   ],
   "recipe_book_tab": "misc",
   "result": {
-    "item": "alexsmobs:warped_mixture"
+    "item": "alexsmobsup:warped_mixture"
   }
 }

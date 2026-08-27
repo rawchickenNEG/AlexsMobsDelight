@@ -2,7 +2,7 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "alexsmobs:flying_fish"
+      "item": "alexsmobsup:flying_fish"
     }
   ],
   "result": [
@@ -12,6 +12,6 @@
     }
   ],
   "tool": {
-    "tag": "forge:tools/knives"
+    "tag": "c:tools/knife"
   }
 }

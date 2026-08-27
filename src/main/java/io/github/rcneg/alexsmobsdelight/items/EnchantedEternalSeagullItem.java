@@ -1,6 +1,7 @@
 package io.github.rcneg.alexsmobsdelight.items;
 
 import io.github.rcneg.alexsmobsdelight.config.Config;
+import io.github.rcneg.alexsmobsdelight.helper.ItemStackDataCompat;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -11,15 +12,13 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CompassItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class EnchantedEternalSeagullItem extends Item {
@@ -29,8 +28,8 @@ public class EnchantedEternalSeagullItem extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity entity) {
-        if (isEdible()) {
-            CompoundTag tag = stack.getOrCreateTag();
+        if (stack.getFoodProperties(entity) != null) {
+            CompoundTag tag = ItemStackDataCompat.read(stack);
             if((tag.contains("AmdConsumedFoodEffects", 9))){
                 ListTag listtag = tag.getList("AmdConsumedFoodEffects", 10);
 
@@ -58,9 +57,9 @@ public class EnchantedEternalSeagullItem extends Item {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flagIn)
     {
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = ItemStackDataCompat.read(stack);
         if((tag.contains("AmdConsumedFoodEffects", 9))){
             ListTag listtag = tag.getList("AmdConsumedFoodEffects", 10);
 
@@ -69,9 +68,9 @@ public class EnchantedEternalSeagullItem extends Item {
                 MobEffectInstance mobeffectinstance = MobEffectInstance.load(compoundtag);
                 if (mobeffectinstance != null) {
                     String effectLevel = mobeffectinstance.getAmplifier() != 0 ? " " + Component.translatable("enchantment.level." + (mobeffectinstance.getAmplifier() + 1)).getString() : "";
-                    MobEffect effect = mobeffectinstance.getEffect();
+                    MobEffect effect = mobeffectinstance.getEffect().value();
                     ChatFormatting format = effect.getCategory() == MobEffectCategory.BENEFICIAL ? ChatFormatting.BLUE : effect.getCategory() == MobEffectCategory.HARMFUL ? ChatFormatting.RED : ChatFormatting.GRAY;
-                    tooltip.add(Component.translatable("tooltip.alexsmobsdelight.effect_desc", effect.getDisplayName().getString(), effectLevel, MobEffectUtil.formatDuration(mobeffectinstance, 1.0f)).withStyle(format));
+                    tooltip.add(Component.translatable("tooltip.alexsmobsdelight.effect_desc", effect.getDisplayName().getString(), effectLevel, MobEffectUtil.formatDuration(mobeffectinstance, 1.0f, 1.0f)).withStyle(format));
                 }
             }
         }

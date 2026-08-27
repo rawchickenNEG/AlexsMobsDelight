@@ -7,22 +7,22 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "alexsmobs:banana_slug_slime"
+      "item": "alexsmobsup:banana_slug_slime"
     },
     {
-      "item": "alexsmobs:banana_slug_slime"
+      "item": "alexsmobsup:banana_slug_slime"
     },
     {
-      "tag": "forge:milk"
+      "tag": "c:drinks/milk"
     },
     {
-      "tag": "forge:eggs"
+      "tag": "c:eggs"
     },
     {
       "item": "minecraft:sugar"
     },
     {
-      "tag": "forge:fruits/banana"
+      "tag": "c:fruits/banana"
     }
   ],
   "recipe_book_tab": "misc",

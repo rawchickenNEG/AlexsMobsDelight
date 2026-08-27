@@ -12,10 +12,10 @@
       "item": "minecraft:cooked_rabbit"
     },
     {
-      "tag": "forge:salad_ingredients"
+      "tag": "c:foods/vegetable"
     },
     {
-      "tag": "forge:crops/tomato"
+      "tag": "c:crops/tomato"
     }
   ],
   "result": {

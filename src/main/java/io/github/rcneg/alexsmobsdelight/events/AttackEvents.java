@@ -1,17 +1,17 @@
 package io.github.rcneg.alexsmobsdelight.events;
 
-import com.github.alexthe666.alexsmobs.effect.AMEffectRegistry;
-import com.github.alexthe666.alexsmobs.entity.EntityTarantulaHawk;
-import com.github.alexthe666.alexsmobs.misc.AMSoundRegistry;
+import com.alexsmobsup.effect.AMEffectRegistry;
+import com.alexsmobsup.entity.EntityTarantulaHawk;
+import com.alexsmobsup.misc.AMSoundRegistry;
 import io.github.rcneg.alexsmobsdelight.accessor.IEntitySeagullData;
 import io.github.rcneg.alexsmobsdelight.config.Config;
 import io.github.rcneg.alexsmobsdelight.init.EffectRegistry;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
-import io.github.rcneg.alexsmobsdelight.mixin.LootTableAccessor;
 import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -19,8 +19,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -29,8 +27,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -41,22 +39,20 @@ import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class AttackEvents {
 
     @SubscribeEvent
-    public static void onLivingHurt(LivingHurtEvent event){
+    public static void onLivingHurt(LivingIncomingDamageEvent event){
         LivingEntity entity = event.getEntity();
         RandomSource random = entity.getRandom();
         if (event.getEntity().level() instanceof ServerLevel level && event.getSource().getEntity() instanceof LivingEntity attacker) {
@@ -69,14 +65,14 @@ public class AttackEvents {
                         player.displayClientMessage(Component.translatable("message.alexsmobsdelight.crocodile_knife_1").withStyle(ChatFormatting.GOLD), true);
                     }
                     if(random.nextInt(100) <= (float)Config.CROCODILE_KNIFE_LOOT.get() * p){
-                        ResourceLocation lootId = entity.getLootTable();
+                        ResourceKey<LootTable> lootId = entity.getLootTable();
                         LootParams ctx = new LootParams.Builder(level)
                                 .withParameter(LootContextParams.THIS_ENTITY, entity)
                                 .withParameter(LootContextParams.ORIGIN, entity.position())
                                 .withParameter(LootContextParams.DAMAGE_SOURCE, event.getSource())
-                                .withOptionalParameter(LootContextParams.KILLER_ENTITY, attacker)
+                                .withOptionalParameter(LootContextParams.ATTACKING_ENTITY, attacker)
                                 .create(LootContextParamSets.ENTITY);
-                        List<ItemStack> drops = level.getServer().getLootData().getLootTable(lootId).getRandomItems(ctx);
+                        List<ItemStack> drops = level.getServer().reloadableRegistries().getLootTable(lootId).getRandomItems(ctx);
                         if (!drops.isEmpty()) {
                             if(!Config.CROCODILE_KNIFE_FULL_DROP.get()){
                                 ItemStack drop = drops.get(attacker.getRandom().nextInt(drops.size())).copy();
@@ -98,21 +94,21 @@ public class AttackEvents {
                 }
 
             }
-            if(attacker.getMainHandItem().is(ItemTags.create(new ResourceLocation("alexsmobsdelight:tools/mantis_shrimp_tools")))){
-                entity.setSecondsOnFire(20);
+            if(attacker.getMainHandItem().is(ItemTags.create(ResourceLocation.parse("alexsmobsdelight:tools/mantis_shrimp_tools")))){
+                entity.setRemainingFireTicks(400);
                 level.playSound((Player)null, entity.getOnPos(), AMSoundRegistry.MANTIS_SHRIMP_SNAP.get(), SoundSource.PLAYERS);
             }
-            if(attacker instanceof Player player && player.hasEffect(EffectRegistry.CROCODILE_DEATH_ROLL.get()) && player.getFoodData().getFoodLevel() > 0){
-                player.startAutoSpinAttack(20);
+            if(attacker instanceof Player player && player.hasEffect(EffectRegistry.CROCODILE_DEATH_ROLL) && player.getFoodData().getFoodLevel() > 0){
+                player.startAutoSpinAttack(20, 6.0F, player.getMainHandItem());
                 level.playSound((Player)null, entity.getOnPos(), AMSoundRegistry.CROCODILE_BITE.get(), SoundSource.PLAYERS);
             }
-            if(attacker.hasEffect(EffectRegistry.CROCODILE_SHARPNESS.get())){
-                int amp = attacker.getEffect(EffectRegistry.CROCODILE_SHARPNESS.get()).getAmplifier();
-                entity.addEffect(new MobEffectInstance(AMEffectRegistry.EXSANGUINATION.get(), 100, amp));
+            if(attacker.hasEffect(EffectRegistry.CROCODILE_SHARPNESS)){
+                int amp = attacker.getEffect(EffectRegistry.CROCODILE_SHARPNESS).getAmplifier();
+                entity.addEffect(new MobEffectInstance(AMEffectRegistry.EXSANGUINATION, 100, amp));
             }
 
-            if(attacker.hasEffect(EffectRegistry.POISON_FANGS.get())){
-                int amp = attacker.getEffect(EffectRegistry.POISON_FANGS.get()).getAmplifier();
+            if(attacker.hasEffect(EffectRegistry.POISON_FANGS)){
+                int amp = attacker.getEffect(EffectRegistry.POISON_FANGS).getAmplifier();
                 entity.addEffect(new MobEffectInstance(MobEffects.POISON, 100 * amp, 1));
             }
         }
@@ -124,12 +120,12 @@ public class AttackEvents {
             if (entity instanceof IEntitySeagullData seagull){
                 if(!seagull.amd$getEffects().isEmpty()){
                     ItemStack meat = seagull.amd$getConsumedEternalFood() ? new ItemStack(ItemRegistry.ENCHANTED_ETERNAL_COOKED_SEAGULL.get()) : new ItemStack(ItemRegistry.ENCHANTED_COOKED_SEAGULL.get());
-                    CompoundTag tag = meat.getOrCreateTag();
                     ListTag listtag = new ListTag();
                     for (MobEffectInstance mobeffectinstance : seagull.amd$getEffects().values()) {
-                        listtag.add(mobeffectinstance.save(new CompoundTag()));
+                        listtag.add(mobeffectinstance.save());
                     }
-                    tag.put("AmdConsumedFoodEffects", listtag);
+                    CustomData.update(DataComponents.CUSTOM_DATA, meat,
+                            tag -> tag.put("AmdConsumedFoodEffects", listtag));
                     addEntityDrops(event, meat);
                 }else if(seagull.amd$getConsumedEternalFood()){
                     addEntityDrops(event, new ItemStack(ItemRegistry.ETERNAL_COOKED_SEAGULL.get()));
@@ -148,8 +144,8 @@ public class AttackEvents {
 
             if (event.getEntity().level() instanceof ServerLevel level && event.getSource().getEntity() instanceof LivingEntity attacker) {
                 if(attacker.getMainHandItem().is(ItemRegistry.DIMENSIONAL_SLICER.get())){
-                    ResourceLocation lootId = entity.getLootTable();
-                    LootTable lootTable = level.getServer().getLootData().getLootTable(lootId);
+                    ResourceKey<LootTable> lootId = entity.getLootTable();
+                    LootTable lootTable = level.getServer().reloadableRegistries().getLootTable(lootId);
                     List<ItemStack> allDrops = new ArrayList<>();
                     List<Item> actualDrops = new ArrayList<>();
                     LootContext ctx = new LootContext.Builder(
@@ -157,12 +153,10 @@ public class AttackEvents {
                                     .withParameter(LootContextParams.THIS_ENTITY, entity)
                                     .withParameter(LootContextParams.ORIGIN, entity.position())
                                     .withParameter(LootContextParams.DAMAGE_SOURCE, event.getSource())
-                                    .withOptionalParameter(LootContextParams.KILLER_ENTITY, attacker)
+                                    .withOptionalParameter(LootContextParams.ATTACKING_ENTITY, attacker)
                                     .create(LootContextParamSets.ENTITY)
-                    ).create(null);
-                    LootTableAccessor accessor = (LootTableAccessor) lootTable;
-                    List<LootPool> pools = accessor.amd$getLootTablePools();
-                    for (LootPool pool : pools) {
+                    ).create(Optional.empty());
+                    for (LootPool pool : lootTable.pools) {
                         for (LootPoolEntryContainer entry : pool.entries) {
                             if (entry instanceof LootPoolSingletonContainer singleton) {
                                 if(singleton instanceof LootItem lootItem){
@@ -194,12 +188,12 @@ public class AttackEvents {
     }
 
     @SubscribeEvent
-    public static void OnLivingAttackEvent(LivingAttackEvent event){
+    public static void OnLivingAttackEvent(LivingIncomingDamageEvent event){
         Level level = event.getEntity().level();
         if (!level.isClientSide()) {
             LivingEntity entity = event.getEntity();
-            if(entity.hasEffect(EffectRegistry.DODGE.get()) && event.getSource().getDirectEntity() instanceof Projectile){
-                if(entity.getRandom().nextInt(10) > Math.pow(0.5, (entity.getEffect(EffectRegistry.DODGE.get()).getAmplifier() + 1))){
+            if(entity.hasEffect(EffectRegistry.DODGE) && event.getSource().getDirectEntity() instanceof Projectile){
+                if(entity.getRandom().nextInt(10) > Math.pow(0.5, (entity.getEffect(EffectRegistry.DODGE).getAmplifier() + 1))){
                     level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.WOOL_PLACE, SoundSource.NEUTRAL, 1.0F, 0.3F);
                     event.setCanceled(true);
                 }

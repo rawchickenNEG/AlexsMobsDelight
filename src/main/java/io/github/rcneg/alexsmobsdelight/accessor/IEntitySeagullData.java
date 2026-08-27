@@ -1,10 +1,8 @@
 package io.github.rcneg.alexsmobsdelight.accessor;
 
-import com.ibm.icu.impl.Pair;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 
-import java.util.List;
 import java.util.Map;
 
 public interface IEntitySeagullData {

@@ -7,16 +7,16 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "alexsmobs:rainbow_jelly"
+      "item": "alexsmobsup:rainbow_jelly"
     },
     {
-      "item": "alexsmobs:rainbow_jelly"
+      "item": "alexsmobsup:rainbow_jelly"
     },
     {
-      "tag": "forge:milk"
+      "tag": "c:drinks/milk"
     },
     {
-      "tag": "forge:eggs"
+      "tag": "c:eggs"
     },
     {
       "item": "minecraft:sugar"

@@ -4,13 +4,16 @@ import com.alexsmobsup.entity.EntityMantisShrimp;
 import com.alexsmobsup.item.AMItemRegistry;
 import com.alexsmobsup.misc.AMTagRegistry;
 import io.github.rcneg.alexsmobsdelight.accessor.IEntityMantisShrimpData;
+import io.github.rcneg.alexsmobsdelight.helper.ItemStackDataCompat;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -40,7 +43,7 @@ public class EntityMantisShrimpMixin implements IEntityMantisShrimpData {
     )
     private void amd$CheckLastHoldItem(CallbackInfo ci) {
         EntityMantisShrimp shrimp = (EntityMantisShrimp) (Object) this;
-        if(amd$lastHoldItem.is(AMTagRegistry.SHRIMP_RICE_FRYABLES) && amd$lastHoldItem.is(ItemTags.create(new ResourceLocation("forge:eggs"))) && shrimp.getMainHandItem().is(AMItemRegistry.SHRIMP_FRIED_RICE.get())){
+        if(amd$lastHoldItem.is(AMTagRegistry.SHRIMP_RICE_FRYABLES) && amd$lastHoldItem.is(ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "eggs"))) && shrimp.getMainHandItem().is(AMItemRegistry.SHRIMP_FRIED_RICE.get())){
             shrimp.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(ItemRegistry.SHRIMP_FRIED_EGG.get()));
         }
         if(amd$lastHoldItem != shrimp.getMainHandItem()){
@@ -48,7 +51,7 @@ public class EntityMantisShrimpMixin implements IEntityMantisShrimpData {
         }
         if(shrimp.getMainHandItem().is(ItemRegistry.CROCODILE_KNIFE.get())){
             ItemStack stack = shrimp.getMainHandItem();
-            CompoundTag tag = stack.getOrCreateTag();
+            CompoundTag tag = ItemStackDataCompat.read(stack);
             int counter = tag.getInt("AMDCrocodileKnifeCounter");
             if(counter >= 3000){
                 Item tail;
@@ -63,6 +66,8 @@ public class EntityMantisShrimpMixin implements IEntityMantisShrimpData {
             }else{
                 tag.putInt("AMDCrocodileKnifeCounter", counter + 1);
             }
+            final CompoundTag updatedTag = tag;
+            CustomData.update(DataComponents.CUSTOM_DATA, stack, existing -> existing.merge(updatedTag));
         }
     }
 }

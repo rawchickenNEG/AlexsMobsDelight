@@ -4,7 +4,7 @@
   "cookingtime": 200,
   "experience": 0.35,
   "ingredient": {
-    "item": "alexsmobs:lost_tentacle"
+    "item": "alexsmobsup:lost_tentacle"
   },
   "result": "alexsmobsdelight:cooked_lost_tentacle"
 }

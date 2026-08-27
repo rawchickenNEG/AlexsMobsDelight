@@ -3,8 +3,8 @@
   "conditions":
   [
     {
-      "condition": "forge:loot_table_id",
-      "loot_table_id": "alexsmobs:entities/seagull"
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "alexsmobsup:entities/seagull"
     }
   ],
   "lootTable": "alexsmobsdelight:seagull_meat"

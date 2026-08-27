@@ -7,10 +7,10 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "tag": "forge:crops/rice"
+      "tag": "c:crops/rice"
     },
     {
-      "item": "alexsmobs:rattlesnake_rattle"
+      "item": "alexsmobsup:rattlesnake_rattle"
     },
     {
       "item": "minecraft:dried_kelp"

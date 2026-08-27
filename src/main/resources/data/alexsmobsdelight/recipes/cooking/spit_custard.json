@@ -7,22 +7,22 @@
   "experience": 1.0,
   "ingredients": [
     {
-      "item": "alexsmobs:komodo_spit"
+      "item": "alexsmobsup:komodo_spit"
     },
     {
-      "item": "alexsmobs:komodo_spit"
+      "item": "alexsmobsup:komodo_spit"
     },
     {
-      "tag": "forge:milk"
+      "tag": "c:drinks/milk"
     },
     {
-      "tag": "forge:eggs"
+      "tag": "c:eggs"
     },
     {
       "item": "minecraft:sugar"
     },
     {
-      "tag": "forge:bones"
+      "tag": "c:bones"
     }
   ],
   "recipe_book_tab": "misc",

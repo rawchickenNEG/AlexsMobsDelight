@@ -1,6 +1,6 @@
 package io.github.rcneg.alexsmobsdelight.blocks;
 
-import com.github.alexthe666.alexsmobs.item.AMItemRegistry;
+import com.alexsmobsup.item.AMItemRegistry;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.Item;

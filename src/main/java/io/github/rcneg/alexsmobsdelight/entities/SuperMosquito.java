@@ -1,13 +1,9 @@
 package io.github.rcneg.alexsmobsdelight.entities;
 
-import com.github.alexthe666.alexsmobs.entity.EntityCrimsonMosquito;
-import com.github.alexthe666.alexsmobs.entity.EntityHemolymph;
-import com.github.alexthe666.alexsmobs.entity.EntityMosquitoSpit;
+import com.alexsmobsup.entity.EntityCrimsonMosquito;
+import com.alexsmobsup.entity.EntityHemolymph;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;

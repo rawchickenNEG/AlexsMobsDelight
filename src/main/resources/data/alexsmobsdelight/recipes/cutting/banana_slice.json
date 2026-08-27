@@ -2,7 +2,7 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "alexsmobs:banana"
+      "item": "alexsmobsup:banana"
     }
   ],
   "result": [
@@ -11,10 +11,10 @@
       "item": "alexsmobsdelight:banana_slice"
     },
     {
-      "item": "alexsmobs:banana_peel"
+      "item": "alexsmobsup:banana_peel"
     }
   ],
   "tool": {
-    "tag": "forge:tools/knives"
+    "tag": "c:tools/knife"
   }
 }

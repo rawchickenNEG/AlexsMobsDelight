@@ -4,8 +4,6 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -17,7 +15,7 @@ public class CrocodileDeathRollEffect extends MobEffect {
         super(p_19451_, p_19452_);
     }
 
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
+    public boolean applyEffectTick(LivingEntity entity, int amplifier) {
         if(entity.isAutoSpinAttack()){
             entity.invulnerableTime = 20;
             AABB aabb = entity.getBoundingBox().inflate(0.5);
@@ -35,6 +33,7 @@ public class CrocodileDeathRollEffect extends MobEffect {
                 }
             }
         }
+        return true;
     }
 
     public boolean isDurationEffectTick(int duration, int amplifier) {

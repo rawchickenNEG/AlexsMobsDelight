@@ -1,7 +1,5 @@
 package io.github.rcneg.alexsmobsdelight.items;
 
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -29,7 +27,7 @@ public class CheeseItem extends ConsumableItem {
     public ItemStack finishUsingItem(ItemStack st, Level level, LivingEntity e) {
         List<MobEffectInstance> list = new ArrayList<>(e.getActiveEffects());
         for (MobEffectInstance ins : list) {
-            if (ins.getEffect().getCategory() == MobEffectCategory.BENEFICIAL || ins.getEffect().getCategory() == MobEffectCategory.NEUTRAL)
+            if (ins.getEffect().value().getCategory() == MobEffectCategory.BENEFICIAL || ins.getEffect().value().getCategory() == MobEffectCategory.NEUTRAL)
                 continue;
             e.removeEffect(ins.getEffect());
         }

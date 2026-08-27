@@ -7,15 +7,15 @@
   ],
   "result": [
     {
-      "item": "alexsmobs:spiked_scute"
+      "item": "alexsmobsup:spiked_scute"
     },
     {
       "chance": 0.65,
-      "item": "alexsmobs:spiked_scute"
+      "item": "alexsmobsup:spiked_scute"
     },
     {
       "chance": 0.15,
-      "item": "alexsmobs:spiked_scute"
+      "item": "alexsmobsup:spiked_scute"
     }
   ],
   "tool": {

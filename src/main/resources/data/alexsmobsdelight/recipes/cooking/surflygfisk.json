@@ -8,7 +8,7 @@
   "ingredients": [
     [
       {
-        "item": "alexsmobs:flying_fish"
+        "item": "alexsmobsup:flying_fish"
       },
       {
         "item": "alexsmobsdelight:raw_flying_fish_slice"
@@ -16,7 +16,7 @@
     ],
     [
       {
-        "item": "alexsmobs:flying_fish"
+        "item": "alexsmobsup:flying_fish"
       },
       {
         "item": "alexsmobsdelight:raw_flying_fish_slice"
@@ -24,14 +24,14 @@
     ],
     [
       {
-        "item": "alexsmobs:flying_fish"
+        "item": "alexsmobsup:flying_fish"
       },
       {
         "item": "alexsmobsdelight:raw_flying_fish_slice"
       }
     ],
     {
-      "item": "alexsmobs:stink_bottle"
+      "item": "alexsmobsup:stink_bottle"
     }
   ],
   "recipe_book_tab": "meals",

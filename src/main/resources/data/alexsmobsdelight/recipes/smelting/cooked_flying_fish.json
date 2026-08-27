@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "alexsmobs:flying_fish"
+    "item": "alexsmobsup:flying_fish"
   },
   "result": "alexsmobsdelight:cooked_flying_fish",
   "experience": 0.35,

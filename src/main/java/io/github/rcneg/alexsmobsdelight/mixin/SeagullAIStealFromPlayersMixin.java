@@ -30,7 +30,7 @@ public class SeagullAIStealFromPlayersMixin {
             cancellable = true)
 
     private void amd$seagullEffect(Player player, CallbackInfoReturnable<Boolean> cir) {
-        if(player.hasEffect(EffectRegistry.SEAGULL_ANOREXIA.get())){
+        if(player.hasEffect(EffectRegistry.SEAGULL_ANOREXIA)){
             cir.setReturnValue(false);
         }
     }

@@ -3,10 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:cheese"
+      "tag": "c:foods/cheese"
     },
     {
-      "tag": "forge:cheese"
+      "tag": "c:foods/cheese"
     },
     {
       "item": "alexsmobsdelight:cooked_seal_meat"

@@ -16,7 +16,7 @@
       "item": "minecraft:brown_mushroom"
     },
     {
-      "tag": "forge:milk"
+      "tag": "c:drinks/milk"
     }
   ],
   "recipe_book_tab": "meals",
