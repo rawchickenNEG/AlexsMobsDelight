@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "alexsmobsdelight:raw_turtle_meat"
+  },
+  "result": {
+    "id": "alexsmobsdelight:cooked_turtle_meat"
+  }
+}

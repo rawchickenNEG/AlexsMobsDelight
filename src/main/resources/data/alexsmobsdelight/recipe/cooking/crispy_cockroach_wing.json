@@ -1,0 +1,23 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "cookingtime": 100,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "alexsmobsup:cockroach_wing"
+    },
+    {
+      "item": "alexsmobsup:cockroach_wing"
+    },
+    {
+      "item": "alexsmobsup:fish_oil"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "alexsmobsdelight:crispy_cockroach_wing"
+  }
+}

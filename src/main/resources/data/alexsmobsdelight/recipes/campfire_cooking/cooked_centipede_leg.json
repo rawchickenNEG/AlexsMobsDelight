@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:campfire_cooking",
-  "ingredient": {
-    "item": "alexsmobsup:centipede_leg"
-  },
-  "result": "alexsmobsdelight:cooked_centipede_leg",
-  "experience": 0.35,
-  "cookingtime": 600
-}

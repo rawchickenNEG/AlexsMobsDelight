@@ -1,0 +1,50 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "id": "minecraft:bucket"
+  },
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "type": "neoforge:compound",
+      "children": [
+        {
+          "item": "alexsmobsup:flying_fish"
+        },
+        {
+          "item": "alexsmobsdelight:raw_flying_fish_slice"
+        }
+      ]
+    },
+    {
+      "type": "neoforge:compound",
+      "children": [
+        {
+          "item": "alexsmobsup:flying_fish"
+        },
+        {
+          "item": "alexsmobsdelight:raw_flying_fish_slice"
+        }
+      ]
+    },
+    {
+      "type": "neoforge:compound",
+      "children": [
+        {
+          "item": "alexsmobsup:flying_fish"
+        },
+        {
+          "item": "alexsmobsdelight:raw_flying_fish_slice"
+        }
+      ]
+    },
+    {
+      "item": "alexsmobsup:stink_bottle"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "alexsmobsdelight:surflygfisk"
+  }
+}
