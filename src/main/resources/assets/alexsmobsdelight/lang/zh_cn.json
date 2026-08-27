@@ -53,6 +53,8 @@
   "entity.alexsmobsdelight.thrown_banana": "射出的香蕉",
   "entity.alexsmobsdelight.super_seagull": "超级海鸥 (WIP)",
   "entity.alexsmobsdelight.super_seagull.display": "西格尔 天启饥荒",
+  "entity.alexsmobsdelight.super_mosquito": "超级蚊子",
+  "entity.alexsmobsdelight.super_mosquito.display": "蚊斯科 天启瘟疫",
 
   "item.alexsmobsdelight.big_mac": "巨无霸",
   "item.alexsmobsdelight.bison_tartare": "野牛鞑靼",
@@ -198,6 +200,7 @@
   "item.alexsmobsdelight.surflygfisk": "飞鱼罐头",
   "item.alexsmobsdelight.surflygfisk_open": "打开的飞鱼罐头",
   "item.alexsmobsdelight.dimensional_slicer": "维度切割者",
+  "item.alexsmobsdelight.dimensional_food": "维度食物",
   "item.alexsmobsdelight.ant_cookie": "蚂蚁饼干",
   "item.alexsmobsdelight.ants_climbing_a_tree": "蚂蚁上树",
   "item.alexsmobsdelight.braised_tarantula_hawk_larva": "红烧蛛蜂幼虫",

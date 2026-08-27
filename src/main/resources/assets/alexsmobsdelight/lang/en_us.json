@@ -53,6 +53,8 @@
   "entity.alexsmobsdelight.thrown_banana": "Thrown Banana",
   "entity.alexsmobsdelight.super_seagull": "Super Seagull (WIP)",
   "entity.alexsmobsdelight.super_seagull.display": "Seagull - The Profane",
+  "entity.alexsmobsdelight.super_mosquito": "Super Mosquito",
+  "entity.alexsmobsdelight.super_mosquito.display": "Mosquito, Apocalypse Pestilence",
 
   "item.alexsmobsdelight.big_mac": "Big Max",
   "item.alexsmobsdelight.bison_tartare": "Bison Tartare",
@@ -198,6 +200,7 @@
   "item.alexsmobsdelight.surflygfisk": "Surflygfisk",
   "item.alexsmobsdelight.surflygfisk_open": "Opened Surflygfisk",
   "item.alexsmobsdelight.dimensional_slicer": "Dimensional Slicer",
+  "item.alexsmobsdelight.dimensional_food": "Dimensional Food",
   "item.alexsmobsdelight.ant_cookie": "Ant Cookie",
   "item.alexsmobsdelight.ants_climbing_a_tree": "Ants Climbing A Tree",
   "item.alexsmobsdelight.braised_tarantula_hawk_larva": "Braised Tarantula Hawk Larva",
