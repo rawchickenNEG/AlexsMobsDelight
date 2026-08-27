@@ -18,7 +18,8 @@ public class LivingEntityMixin {
     @Inject(
             method = "checkAutoSpinAttack",
             at = @At("HEAD"),
-            cancellable = true)
+            cancellable = true,
+            remap = false)
 
     private void amd$spinningWithoutAttackCheck(AABB p_21072_, AABB p_21073_, CallbackInfo ci) {
         LivingEntity entity = (LivingEntity) (Object) this;
@@ -39,13 +40,14 @@ public class LivingEntityMixin {
 
     @Inject(
             method = "onChangedBlock",
-            at = @At("HEAD")
+            at = @At("HEAD"),
+            remap = false
     )
-    private void amd$onChangeBlock(BlockPos pos, CallbackInfo ci) {
+    private void amd$onChangeBlock(net.minecraft.server.level.ServerLevel level, BlockPos pos, CallbackInfo ci) {
         LivingEntity entity = (LivingEntity) (Object) this;
         if (entity.hasEffect(EffectRegistry.CRYSTALLIZE_WALKER.get())){
             int i = entity.getEffect(EffectRegistry.CRYSTALLIZE_WALKER.get()).getAmplifier() + 1;
-            CrystallizeWalkerEffect.onEntityMoved(entity, entity.level(), pos, i);
+            CrystallizeWalkerEffect.onEntityMoved(entity, level, pos, i);
         }
     }
 }

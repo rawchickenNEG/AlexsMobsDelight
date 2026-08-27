@@ -1,6 +1,6 @@
 package io.github.rcneg.alexsmobsdelight.mixin;
 
-import com.github.alexthe666.alexsmobs.entity.EntityRaccoon;
+import com.alexsmobsup.entity.EntityRaccoon;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;

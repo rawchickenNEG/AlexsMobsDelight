@@ -1,8 +1,8 @@
 package io.github.rcneg.alexsmobsdelight.mixin;
 
-import com.github.alexthe666.alexsmobs.entity.EntityMantisShrimp;
-import com.github.alexthe666.alexsmobs.item.AMItemRegistry;
-import com.github.alexthe666.alexsmobs.misc.AMTagRegistry;
+import com.alexsmobsup.entity.EntityMantisShrimp;
+import com.alexsmobsup.item.AMItemRegistry;
+import com.alexsmobsup.misc.AMTagRegistry;
 import io.github.rcneg.alexsmobsdelight.accessor.IEntityMantisShrimpData;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
 import net.minecraft.nbt.CompoundTag;
@@ -35,7 +35,8 @@ public class EntityMantisShrimpMixin implements IEntityMantisShrimpData {
 
     @Inject(
             method = "tick",
-            at = @At("TAIL")
+            at = @At("TAIL"),
+            remap = false
     )
     private void amd$CheckLastHoldItem(CallbackInfo ci) {
         EntityMantisShrimp shrimp = (EntityMantisShrimp) (Object) this;

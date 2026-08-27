@@ -1,6 +1,6 @@
 package io.github.rcneg.alexsmobsdelight.mixin;
 
-import com.github.alexthe666.alexsmobs.entity.ai.SeagullAIStealFromPlayers;
+import com.alexsmobsup.entity.ai.SeagullAIStealFromPlayers;
 import io.github.rcneg.alexsmobsdelight.init.EffectRegistry;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
 import net.minecraft.world.entity.player.Player;

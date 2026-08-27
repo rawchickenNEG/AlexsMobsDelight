@@ -1,6 +1,6 @@
 package io.github.rcneg.alexsmobsdelight.mixin;
 
-import com.github.alexthe666.alexsmobs.entity.EntitySeagull;
+import com.alexsmobsup.entity.EntitySeagull;
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
 import io.github.rcneg.alexsmobsdelight.accessor.IEntitySeagullData;
@@ -177,7 +177,7 @@ public class EntitySeagullMixin implements IEntitySeagullData {
 
     }
 
-    @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
+    @Inject(method = "addAdditionalSaveData", at = @At("TAIL"), remap = false)
     private void amd$save(CompoundTag tag, CallbackInfo ci) {
         tag.putBoolean("AmdConsumedEternalFood", this.amd$consumedEternalFood);
         if (!this.amd$consumedFoodEffects.isEmpty()) {
@@ -189,7 +189,7 @@ public class EntitySeagullMixin implements IEntitySeagullData {
         }
     }
 
-    @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
+    @Inject(method = "readAdditionalSaveData", at = @At("TAIL"), remap = false)
     private void amd$load(CompoundTag tag, CallbackInfo ci) {
         if (tag.contains("AmdConsumedEternalFood")){
             this.amd$consumedEternalFood = tag.getBoolean("AmdConsumedEternalFood");
