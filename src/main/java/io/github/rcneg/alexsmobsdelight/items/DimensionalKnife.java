@@ -18,6 +18,6 @@ public class DimensionalKnife extends KnifeItem {
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flagIn)
     {
         super.appendHoverText(stack, context, tooltip, flagIn);
-        tooltip.add(Component.translatable("tooltip.alexsmobsdelight." + stack.getItem()).withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(Component.translatable("tooltip.alexsmobsdelight.dimensional_slicer").withStyle(ChatFormatting.DARK_PURPLE));
     }
 }

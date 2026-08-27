@@ -3,6 +3,7 @@ package io.github.rcneg.alexsmobsdelight.effects;
 import com.alexsmobsup.block.AMBlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -15,13 +16,39 @@ import net.neoforged.neoforge.common.util.BlockSnapshot;
 import net.neoforged.neoforge.event.EventHooks;
 
 import java.util.Iterator;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 public class CrystallizeWalkerEffect extends MobEffect {
+    private final Map<LivingEntity, WalkerState> walkerStates = new WeakHashMap<>();
+
     public CrystallizeWalkerEffect(MobEffectCategory p_19451_, int p_19452_) {
         super(p_19451_, p_19452_);
     }
 
+    @Override
+    public void onEffectStarted(LivingEntity entity, int amplifier) {
+        super.onEffectStarted(entity, amplifier);
+        if (entity.level() instanceof ServerLevel) {
+            walkerStates.put(entity, new WalkerState(entity.blockPosition().immutable(), entity.onGround()));
+        }
+    }
+
+    @Override
     public boolean applyEffectTick(LivingEntity entity, int amplifier) {
+        if (entity.level() instanceof ServerLevel serverLevel) {
+            BlockPos currentPos = entity.blockPosition();
+            WalkerState previousState = walkerStates.put(
+                    entity,
+                    new WalkerState(currentPos.immutable(), entity.onGround())
+            );
+
+            boolean changedBlock = previousState != null && !previousState.pos().equals(currentPos);
+            boolean landed = previousState != null && !previousState.onGround() && entity.onGround();
+            if (changedBlock || landed) {
+                onEntityMoved(entity, serverLevel, currentPos, amplifier + 1);
+            }
+        }
         return true;
     }
 
@@ -50,7 +77,11 @@ public class CrystallizeWalkerEffect extends MobEffect {
 
     }
 
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    @Override
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return duration > 0;
+    }
+
+    private record WalkerState(BlockPos pos, boolean onGround) {
     }
 }

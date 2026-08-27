@@ -1,10 +1,12 @@
 package io.github.rcneg.alexsmobsdelight.events;
 
 import com.alexsmobsup.effect.AMEffectRegistry;
+import com.alexsmobsup.entity.EntitySeagull;
 import com.alexsmobsup.entity.EntityTarantulaHawk;
 import com.alexsmobsup.misc.AMSoundRegistry;
-import io.github.rcneg.alexsmobsdelight.accessor.IEntitySeagullData;
 import io.github.rcneg.alexsmobsdelight.config.Config;
+import io.github.rcneg.alexsmobsdelight.data.SeagullFoodData;
+import io.github.rcneg.alexsmobsdelight.init.AttachmentRegistry;
 import io.github.rcneg.alexsmobsdelight.init.EffectRegistry;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
 import net.minecraft.ChatFormatting;
@@ -117,17 +119,18 @@ public class AttackEvents {
     public static void onEntityLoot(LivingDropsEvent event) {
         if (!event.getEntity().level().isClientSide()) {
             LivingEntity entity = event.getEntity();
-            if (entity instanceof IEntitySeagullData seagull){
-                if(!seagull.amd$getEffects().isEmpty()){
-                    ItemStack meat = seagull.amd$getConsumedEternalFood() ? new ItemStack(ItemRegistry.ENCHANTED_ETERNAL_COOKED_SEAGULL.get()) : new ItemStack(ItemRegistry.ENCHANTED_COOKED_SEAGULL.get());
+            if (entity instanceof EntitySeagull seagull){
+                SeagullFoodData data = seagull.getExistingData(AttachmentRegistry.SEAGULL_FOOD_DATA).orElse(null);
+                if(data != null && !data.getEffects().isEmpty()){
+                    ItemStack meat = data.isConsumedEternalFood() ? new ItemStack(ItemRegistry.ENCHANTED_ETERNAL_COOKED_SEAGULL.get()) : new ItemStack(ItemRegistry.ENCHANTED_COOKED_SEAGULL.get());
                     ListTag listtag = new ListTag();
-                    for (MobEffectInstance mobeffectinstance : seagull.amd$getEffects().values()) {
+                    for (MobEffectInstance mobeffectinstance : data.getEffects().values()) {
                         listtag.add(mobeffectinstance.save());
                     }
                     CustomData.update(DataComponents.CUSTOM_DATA, meat,
                             tag -> tag.put("AmdConsumedFoodEffects", listtag));
                     addEntityDrops(event, meat);
-                }else if(seagull.amd$getConsumedEternalFood()){
+                }else if(data != null && data.isConsumedEternalFood()){
                     addEntityDrops(event, new ItemStack(ItemRegistry.ETERNAL_COOKED_SEAGULL.get()));
                 }
             }

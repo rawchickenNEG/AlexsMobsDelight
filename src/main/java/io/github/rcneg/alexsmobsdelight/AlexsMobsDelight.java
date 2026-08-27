@@ -1,5 +1,6 @@
 package io.github.rcneg.alexsmobsdelight;
 
+import com.alexsmobsup.config.AMConfig;
 import io.github.rcneg.alexsmobsdelight.blocks.MaggotFarmBlock;
 import io.github.rcneg.alexsmobsdelight.config.Config;
 import io.github.rcneg.alexsmobsdelight.init.*;
@@ -11,6 +12,9 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mod(AlexsMobsDelight.MODID)
 public class AlexsMobsDelight
@@ -28,6 +32,7 @@ public class AlexsMobsDelight
         BlockRegistry.BLOCKS.register(modEventBus);
         RecipeRegistry.DEF_REG.register(modEventBus);
         EffectRegistry.MOB_EFFECTS.register(modEventBus);
+        AttachmentRegistry.ATTACHMENT_TYPES.register(modEventBus);
         EntityTypeRegistry.ENTITY_TYPES.register(modEventBus);
         LootModifierRegistry.LOOT_MODIFIER.register(modEventBus);
         TabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
@@ -42,9 +47,6 @@ public class AlexsMobsDelight
     }
 
     private void modifyDefaultComponents(ModifyDefaultComponentsEvent event) {
-        // Datagen fires this event before NeoForge has loaded the common config.  Use
-        // the declared default in that phase, while retaining the configured value
-        // during a normal client/server launch.
         boolean stackableSoupItems;
         try {
             stackableSoupItems = Config.STACKABLE_SOUP_ITEMS.get();

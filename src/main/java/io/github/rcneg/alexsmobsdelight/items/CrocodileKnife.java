@@ -18,6 +18,6 @@ public class CrocodileKnife extends KnifeItem {
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flagIn)
     {
         super.appendHoverText(stack, context, tooltip, flagIn);
-        tooltip.add(Component.translatable("tooltip.alexsmobsdelight." + stack.getItem()).withStyle(ChatFormatting.GREEN));
+        tooltip.add(Component.translatable("tooltip.alexsmobsdelight.crocodile_knife").withStyle(ChatFormatting.GREEN));
     }
 }
