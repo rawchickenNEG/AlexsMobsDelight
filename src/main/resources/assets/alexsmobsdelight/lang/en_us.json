@@ -301,12 +301,20 @@
   "tooltip.alexsmobsdelight.surflygfisk_open": "Smells extremely bad! Put it into a container to stop Raccoon stealing foods.",
   "tooltip.alexsmobsdelight.dimensional_slicer": "All loots will be dropped unconditionally upon killing.",
 
+  "farmersdelight.tooltip.mimicandy": "Using similar to Mimicream, but it duplicate food items.",
+  "farmersdelight.tooltip.seal_meat": "Orca's favorite.",
+  "farmersdelight.tooltip.orcas_leap_soup": "Supreme present from orca!",
+  "farmersdelight.tooltip.sea_bear_stew": "Try feeding the bear in water with this?",
+  "farmersdelight.tooltip.cheese": "Remove all bad effects.",
+  "farmersdelight.tooltip.tiger_cake_roll": "The deliciousness obtained by exchanging with cake when you have tiger blessing.",
+
   "tooltip.farmersdelight.mimicandy": "Using similar to Mimicream, but it duplicate food items.",
   "tooltip.farmersdelight.seal_meat": "Orca's favorite.",
   "tooltip.farmersdelight.orcas_leap_soup": "Supreme present from orca!",
   "tooltip.farmersdelight.sea_bear_stew": "Try feeding the bear in water with this?",
   "tooltip.farmersdelight.cheese": "Remove all bad effects.",
   "tooltip.farmersdelight.tiger_cake_roll": "The deliciousness obtained by exchanging with cake when you have tiger blessing.",
+
 
   "message.alexsmobsdelight.crocodile_knife": "Target is too strong for you, you can not loot from it.",
   "message.alexsmobsdelight.crocodile_knife_1": "Target is strong for you, you got lower chance to loot from it.",
