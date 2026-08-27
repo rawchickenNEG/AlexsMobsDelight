@@ -1,39 +1,39 @@
 package io.github.rcneg.alexsmobsdelight.config;
 
 import io.github.rcneg.alexsmobsdelight.AlexsMobsDelight;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = AlexsMobsDelight.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = AlexsMobsDelight.MODID)
 public class Config
 {
-    public static ForgeConfigSpec COMMON_CONFIG;
+    public static ModConfigSpec COMMON_CONFIG;
     // COMMON
-    public static ForgeConfigSpec.IntValue ETERNAL_SEAGULL_COOLDOWN;
-    public static ForgeConfigSpec.IntValue CROCODILE_KNIFE_LOOT;
-    public static ForgeConfigSpec.DoubleValue CROCODILE_KNIFE_HEALTH;
-    public static ForgeConfigSpec.BooleanValue CROCODILE_KNIFE_FULL_DROP;
-    public static ForgeConfigSpec.IntValue ORCA_GIFT_CHANCE;
-    public static ForgeConfigSpec.BooleanValue STACKABLE_SOUP_ITEMS;
-    public static ForgeConfigSpec.BooleanValue PUPFISH_BREAK;
-    public static ForgeConfigSpec.IntValue TIGER_SUMMON_RANGE;
+    public static ModConfigSpec.IntValue ETERNAL_SEAGULL_COOLDOWN;
+    public static ModConfigSpec.IntValue CROCODILE_KNIFE_LOOT;
+    public static ModConfigSpec.DoubleValue CROCODILE_KNIFE_HEALTH;
+    public static ModConfigSpec.BooleanValue CROCODILE_KNIFE_FULL_DROP;
+    public static ModConfigSpec.IntValue ORCA_GIFT_CHANCE;
+    public static ModConfigSpec.BooleanValue STACKABLE_SOUP_ITEMS;
+    public static ModConfigSpec.BooleanValue PUPFISH_BREAK;
+    public static ModConfigSpec.IntValue TIGER_SUMMON_RANGE;
 
-    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ETERNAL_FOODS;
-    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ENCHANTED_SEAGULL_BLACKLIST;
-    private static final ForgeConfigSpec.ConfigValue<List<? extends String>> LOOTING_ENTITIES_BLACKLIST;
+    private static final ModConfigSpec.ConfigValue<List<? extends String>> ETERNAL_FOODS;
+    private static final ModConfigSpec.ConfigValue<List<? extends String>> ENCHANTED_SEAGULL_BLACKLIST;
+    private static final ModConfigSpec.ConfigValue<List<? extends String>> LOOTING_ENTITIES_BLACKLIST;
     public static List<Item> ETERNAL_FOODS_ITEMS;
     public static List<Item> ENCHANTED_SEAGULL_BLACKLIST_ITEMS;
     public static List<? extends EntityType<?>> LOOTING_BLACKLIST;
     static {
-        ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
+        ModConfigSpec.Builder COMMON_BUILDER = new ModConfigSpec.Builder();
 
         COMMON_BUILDER.push("Eternal Seagull");
         ETERNAL_SEAGULL_COOLDOWN = COMMON_BUILDER.comment("Define the cooldown of Eternal Cooked Seagull in tick.")
@@ -64,7 +64,7 @@ public class Config
         LOOTING_ENTITIES_BLACKLIST = COMMON_BUILDER
                 .comment("A list of entities which can never be looted by Crocodile Karambit.")
                 .defineListAllowEmpty("LootingEntitiesBlacklist",
-                        List.of("alexsmobs:void_worm"
+                        List.of("alexsmobsup:void_worm"
                         ), Config::validateEntityTypeName);
         COMMON_BUILDER.pop();
 
@@ -89,19 +89,37 @@ public class Config
 
     private static boolean validateItemName(final Object obj)
     {
-        return obj instanceof final String itemName && ForgeRegistries.ITEMS.containsKey(new ResourceLocation(itemName));
+        return isResourceLocation(obj);
     }
     private static boolean validateEntityTypeName(final Object obj)
     {
-        return obj instanceof final String entityName && ForgeRegistries.ENTITY_TYPES.containsKey(new ResourceLocation(entityName));
+        return isResourceLocation(obj);
+    }
+    private static boolean isResourceLocation(final Object obj)
+    {
+        if (!(obj instanceof final String name)) {
+            return false;
+        }
+        try {
+            ResourceLocation.parse(name);
+            return true;
+        } catch (IllegalArgumentException ignored) {
+            return false;
+        }
     }
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
-        ETERNAL_FOODS_ITEMS = ETERNAL_FOODS.get().stream().map(name -> ForgeRegistries.ITEMS.getValue(new ResourceLocation(name))).toList();
-        ENCHANTED_SEAGULL_BLACKLIST_ITEMS = ENCHANTED_SEAGULL_BLACKLIST.get().stream().map(name -> ForgeRegistries.ITEMS.getValue(new ResourceLocation(name))).toList();
+        ETERNAL_FOODS_ITEMS = ETERNAL_FOODS.get().stream()
+                .flatMap(name -> BuiltInRegistries.ITEM.getOptional(ResourceLocation.parse(name)).stream())
+                .toList();
+        ENCHANTED_SEAGULL_BLACKLIST_ITEMS = ENCHANTED_SEAGULL_BLACKLIST.get().stream()
+                .flatMap(name -> BuiltInRegistries.ITEM.getOptional(ResourceLocation.parse(name)).stream())
+                .toList();
 
-        LOOTING_BLACKLIST = LOOTING_ENTITIES_BLACKLIST.get().stream().map(name -> ForgeRegistries.ENTITY_TYPES.getValue(new ResourceLocation(name))).toList();
+        LOOTING_BLACKLIST = LOOTING_ENTITIES_BLACKLIST.get().stream()
+                .flatMap(name -> BuiltInRegistries.ENTITY_TYPE.getOptional(ResourceLocation.parse(name)).stream())
+                .toList();
     }
 }

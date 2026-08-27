@@ -1,7 +1,7 @@
 package io.github.rcneg.alexsmobsdelight.mixin;
 
-import com.github.alexthe666.alexsmobs.entity.EntityDevilsHolePupfish;
-import com.github.alexthe666.alexsmobs.misc.AMTagRegistry;
+import com.alexsmobsup.entity.EntityDevilsHolePupfish;
+import com.alexsmobsup.misc.AMTagRegistry;
 import io.github.rcneg.alexsmobsdelight.config.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

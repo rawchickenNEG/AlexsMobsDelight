@@ -1,20 +1,11 @@
 package io.github.rcneg.alexsmobsdelight.items;
 
-import com.github.alexthe666.alexsmobs.entity.util.RainbowUtil;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import vectorwing.farmersdelight.common.Configuration;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
-import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import javax.annotation.Nullable;
-import java.util.List;
 
 public class SlowEatConsumableItem extends ConsumableItem {
 
@@ -30,8 +21,9 @@ public class SlowEatConsumableItem extends ConsumableItem {
         super(properties, hasFoodEffectTooltip, hasCustomTooltip);
     }
 
-    public int getUseDuration(ItemStack p_41454_) {
-        if (p_41454_.getItem().isEdible()) {
+    @Override
+    public int getUseDuration(ItemStack p_41454_, @Nullable LivingEntity entity) {
+        if (p_41454_.getFoodProperties(entity) != null) {
             return 64;
         }
         return 0;

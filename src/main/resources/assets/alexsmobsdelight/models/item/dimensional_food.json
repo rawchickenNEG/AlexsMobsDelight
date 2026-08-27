@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
-  "forge:is_custom_renderer": true,
+  "neoforge:is_custom_renderer": true,
   "gui_light": "front",
   "ambientocclusion": true,
   "textures": {

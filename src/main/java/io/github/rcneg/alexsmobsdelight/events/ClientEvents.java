@@ -8,29 +8,29 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ModelEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.ModelEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
-@Mod.EventBusSubscriber(modid = AlexsMobsDelight.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = AlexsMobsDelight.MODID, value = Dist.CLIENT)
 public class ClientEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event)
     {
-        for(RegistryObject<Block> blocks: BlockRegistry.BLOCKS.getEntries()){
+        for(DeferredHolder<Block, ? extends Block> blocks: BlockRegistry.BLOCKS.getEntries()){
             ItemBlockRenderTypes.setRenderLayer(blocks.get(), RenderType.cutout());
         }
     }
 
     @SubscribeEvent
     public static void onModelBake(ModelEvent.ModifyBakingResult event) {
-        ResourceLocation id = new ResourceLocation(AlexsMobsDelight.MODID, ForgeRegistries.ITEMS.getKey(ItemRegistry.DIMENSIONAL_FOOD.get()).getPath());
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(AlexsMobsDelight.MODID, BuiltInRegistries.ITEM.getKey(ItemRegistry.DIMENSIONAL_FOOD.get()).getPath());
         ModelResourceLocation location = new ModelResourceLocation(id, "inventory");
 
         BakedModel original = event.getModels().get(location);

@@ -16,9 +16,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.ItemSupplier;
-import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
@@ -38,17 +38,16 @@ public class ThrownDartEntity extends AbstractArrow implements ItemSupplier {
     }
 
     public ThrownDartEntity(Level p_37569_, LivingEntity p_37570_, ItemStack p_37571_) {
-        super(EntityTypeRegistry.THROWN_DART.get(), p_37570_, p_37569_);
-        this.tridentItem = new ItemStack(ItemRegistry.LOBSTER_DART.get());
+        super(EntityTypeRegistry.THROWN_DART.get(), p_37570_, p_37569_, p_37571_.copy(), null);
         this.tridentItem = p_37571_.copy();
-        this.entityData.set(ID_LOYALTY, (byte) EnchantmentHelper.getLoyalty(p_37571_));
+        this.entityData.set(ID_LOYALTY, (byte) getLoyalty(p_37571_));
         this.entityData.set(ID_FOIL, p_37571_.hasFoil());
     }
 
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(ID_LOYALTY, (byte)0);
-        this.entityData.define(ID_FOIL, false);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(ID_LOYALTY, (byte)0);
+        builder.define(ID_FOIL, false);
     }
 
     public void tick() {
@@ -111,13 +110,13 @@ public class ThrownDartEntity extends AbstractArrow implements ItemSupplier {
     protected void onHitEntity(EntityHitResult p_37573_) {
         Entity $$1 = p_37573_.getEntity();
         float $$2 = 6.0F;
-        if ($$1 instanceof LivingEntity $$3) {
-            $$2 += EnchantmentHelper.getDamageBonus(this.tridentItem, $$3.getMobType());
-        }
 
         Entity $$4 = this.getOwner();
         DamageSource $$5 = this.damageSources().trident(this, (Entity)($$4 == null ? this : $$4));
         this.dealtDamage = true;
+        if (this.level() instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+            $$2 = EnchantmentHelper.modifyDamage(serverLevel, this.tridentItem, $$1, $$5, $$2);
+        }
         if ($$1.hurt($$5, $$2)) {
             if ($$1.getType() == EntityType.ENDERMAN) {
                 return;
@@ -126,8 +125,9 @@ public class ThrownDartEntity extends AbstractArrow implements ItemSupplier {
             if ($$1 instanceof LivingEntity) {
                 LivingEntity $$7 = (LivingEntity)$$1;
                 if ($$4 instanceof LivingEntity) {
-                    EnchantmentHelper.doPostHurtEffects($$7, $$4);
-                    EnchantmentHelper.doPostDamageEffects((LivingEntity)$$4, $$7);
+                    if (this.level() instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+                        EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, $$7, $$5, this.tridentItem);
+                    }
                 }
 
                 this.doPostHurtEffects($$7);
@@ -145,6 +145,10 @@ public class ThrownDartEntity extends AbstractArrow implements ItemSupplier {
         return SoundEvents.POINTED_DRIPSTONE_HIT;
     }
 
+    protected ItemStack getDefaultPickupItem() {
+        return new ItemStack(ItemRegistry.LOBSTER_DART.get());
+    }
+
     public void playerTouch(Player p_37580_) {
         if (this.ownedBy(p_37580_) || this.getOwner() == null) {
             super.playerTouch(p_37580_);
@@ -155,16 +159,16 @@ public class ThrownDartEntity extends AbstractArrow implements ItemSupplier {
     public void readAdditionalSaveData(CompoundTag p_37578_) {
         super.readAdditionalSaveData(p_37578_);
         if (p_37578_.contains("Trident", 10)) {
-            this.tridentItem = ItemStack.of(p_37578_.getCompound("Trident"));
+            this.tridentItem = ItemStack.parseOptional(this.registryAccess(), p_37578_.getCompound("Trident"));
         }
 
         this.dealtDamage = p_37578_.getBoolean("DealtDamage");
-        this.entityData.set(ID_LOYALTY, (byte)EnchantmentHelper.getLoyalty(this.tridentItem));
+        this.entityData.set(ID_LOYALTY, (byte)getLoyalty(this.tridentItem));
     }
 
     public void addAdditionalSaveData(CompoundTag p_37582_) {
         super.addAdditionalSaveData(p_37582_);
-        p_37582_.put("Trident", this.tridentItem.save(new CompoundTag()));
+        p_37582_.put("Trident", this.tridentItem.save(this.registryAccess()));
         p_37582_.putBoolean("DealtDamage", this.dealtDamage);
     }
 
@@ -187,6 +191,15 @@ public class ThrownDartEntity extends AbstractArrow implements ItemSupplier {
     @Override
     public ItemStack getItem() {
         return new ItemStack(ItemRegistry.LOBSTER_DART.get());
+    }
+
+    private static int getLoyalty(ItemStack stack) {
+        for (var entry : stack.getEnchantments().entrySet()) {
+            if (entry.getKey().is(Enchantments.LOYALTY)) {
+                return entry.getIntValue();
+            }
+        }
+        return 0;
     }
 
     static {

@@ -1,0 +1,23 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "cookingtime": 100,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "alexsmobsup:tarantula_hawk_wing"
+    },
+    {
+      "item": "alexsmobsup:tarantula_hawk_wing"
+    },
+    {
+      "item": "alexsmobsup:fish_oil"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "alexsmobsdelight:crispy_tarantula_hawk_wing"
+  }
+}

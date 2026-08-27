@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "ingredient": {
+    "item": "alexsmobsdelight:raw_emu"
+  },
+  "result": {
+    "id": "alexsmobsdelight:cooked_emu"
+  },
+  "experience": 0.35,
+  "cookingtime": 600
+}

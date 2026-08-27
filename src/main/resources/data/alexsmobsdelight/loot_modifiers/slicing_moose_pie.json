@@ -1,0 +1,16 @@
+{
+  "type": "farmersdelight:pastry_slicing",
+  "conditions": [
+    {
+      "condition": "minecraft:match_tool",
+      "predicate": {
+        "items": "#farmersdelight:tools/knives"
+      }
+    },
+    {
+      "block": "alexsmobsdelight:moose_pie",
+      "condition": "minecraft:block_state_property"
+    }
+  ],
+  "slice": "alexsmobsdelight:slice_of_moose_pie"
+}

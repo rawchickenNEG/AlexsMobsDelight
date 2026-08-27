@@ -16,20 +16,20 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
 import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.common.utility.ClientRenderUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
@@ -44,7 +44,7 @@ public class KiviakDecompositionRecipeCategory implements IRecipeCategory<Kiviak
 
     public KiviakDecompositionRecipeCategory(IGuiHelper helper) {
         title = Component.translatable(AlexsMobsDelight.MODID + ".jei.kiviak_decomposition");
-        ResourceLocation backgroundImage = new ResourceLocation(AlexsMobsDelight.MODID, "textures/gui/jei/kiviak_decomposition.png");
+        ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(AlexsMobsDelight.MODID, "textures/gui/jei/kiviak_decomposition.png");
         background = helper.createDrawable(backgroundImage, 0, 0, 118, 80);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ItemRegistry.POLAR_KIVIAK.get()));
         slotIcon = helper.createDrawable(backgroundImage, 119, 0, slotSize, slotSize);
@@ -74,8 +74,12 @@ public class KiviakDecompositionRecipeCategory implements IRecipeCategory<Kiviak
     @Override
     @SuppressWarnings("removal")
     public void setRecipe(IRecipeLayoutBuilder builder, KiviakDecompositionDummy recipe, IFocusGroup focusGroup) {
-        List<ItemStack> accelerators = ForgeRegistries.BLOCKS.tags().getTag(BlockTags.ICE).stream().map(ItemStack::new).collect(Collectors.toList());
-        List<ItemStack> knives = ForgeRegistries.ITEMS.tags().getTag(ModTags.KNIVES).stream().map(ItemStack::new).toList();
+        List<ItemStack> accelerators = new ArrayList<>();
+        BuiltInRegistries.BLOCK.getTagOrEmpty(BlockTags.ICE)
+                .forEach(holder -> accelerators.add(new ItemStack(holder.value())));
+        List<ItemStack> knives = new ArrayList<>();
+        BuiltInRegistries.ITEM.getTagOrEmpty(ModTags.KNIVES)
+                .forEach(holder -> knives.add(new ItemStack(holder.value())));
 
         List<ItemStack> inputs = List.of(new ItemStack(ItemRegistry.COASTAL_KIVIAK.get()), new ItemStack(ItemRegistry.POLAR_KIVIAK.get()));
         ItemStack result = new ItemStack(ItemRegistry.KIVIAK.get(), 6);

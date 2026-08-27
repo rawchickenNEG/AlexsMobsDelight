@@ -1,29 +1,55 @@
 package io.github.rcneg.alexsmobsdelight.effects;
 
-import com.github.alexthe666.alexsmobs.block.AMBlockRegistry;
+import com.alexsmobsup.block.AMBlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BucketPickup;
-import net.minecraft.world.level.block.FrostedIceBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraftforge.common.util.BlockSnapshot;
-import net.minecraftforge.event.ForgeEventFactory;
+import net.neoforged.neoforge.common.util.BlockSnapshot;
+import net.neoforged.neoforge.event.EventHooks;
 
 import java.util.Iterator;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 public class CrystallizeWalkerEffect extends MobEffect {
+    private final Map<LivingEntity, WalkerState> walkerStates = new WeakHashMap<>();
+
     public CrystallizeWalkerEffect(MobEffectCategory p_19451_, int p_19452_) {
         super(p_19451_, p_19452_);
     }
 
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
+    @Override
+    public void onEffectStarted(LivingEntity entity, int amplifier) {
+        super.onEffectStarted(entity, amplifier);
+        if (entity.level() instanceof ServerLevel) {
+            walkerStates.put(entity, new WalkerState(entity.blockPosition().immutable(), entity.onGround()));
+        }
+    }
+
+    @Override
+    public boolean applyEffectTick(LivingEntity entity, int amplifier) {
+        if (entity.level() instanceof ServerLevel serverLevel) {
+            BlockPos currentPos = entity.blockPosition();
+            WalkerState previousState = walkerStates.put(
+                    entity,
+                    new WalkerState(currentPos.immutable(), entity.onGround())
+            );
+
+            boolean changedBlock = previousState != null && !previousState.pos().equals(currentPos);
+            boolean landed = previousState != null && !previousState.onGround() && entity.onGround();
+            if (changedBlock || landed) {
+                onEntityMoved(entity, serverLevel, currentPos, amplifier + 1);
+            }
+        }
+        return true;
     }
 
     public static void onEntityMoved(LivingEntity p_45019_, Level p_45020_, BlockPos p_45021_, int p_45022_) {
@@ -40,7 +66,7 @@ public class CrystallizeWalkerEffect extends MobEffect {
                     BlockState blockstate1 = p_45020_.getBlockState(blockpos$mutableblockpos);
                     if (blockstate1.isAir()) {
                         BlockState blockstate2 = p_45020_.getBlockState(blockpos);
-                        if (blockstate2.getBlock() instanceof BucketPickup && blockstate.canSurvive(p_45020_, blockpos) && p_45020_.isUnobstructed(blockstate, blockpos, CollisionContext.empty()) && !ForgeEventFactory.onBlockPlace(p_45019_, BlockSnapshot.create(p_45020_.dimension(), p_45020_, blockpos), Direction.UP)) {
+                        if (blockstate2.getBlock() instanceof BucketPickup && blockstate.canSurvive(p_45020_, blockpos) && p_45020_.isUnobstructed(blockstate, blockpos, CollisionContext.empty()) && !EventHooks.onBlockPlace(p_45019_, BlockSnapshot.create(p_45020_.dimension(), p_45020_, blockpos), Direction.UP)) {
                             p_45020_.setBlockAndUpdate(blockpos, blockstate);
                             p_45020_.scheduleTick(blockpos, AMBlockRegistry.CRYSTALIZED_BANANA_SLUG_MUCUS.get(), Mth.nextInt(p_45019_.getRandom(), 60, 120));
                         }
@@ -51,7 +77,11 @@ public class CrystallizeWalkerEffect extends MobEffect {
 
     }
 
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    @Override
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return duration > 0;
+    }
+
+    private record WalkerState(BlockPos pos, boolean onGround) {
     }
 }

@@ -1,15 +1,15 @@
 package io.github.rcneg.alexsmobsdelight.init;
 
-import com.github.alexthe666.alexsmobs.client.render.RenderCrimsonMosquito;
+import com.alexsmobsup.client.render.RenderCrimsonMosquito;
 import io.github.rcneg.alexsmobsdelight.client.renderer.SuperSeagullRenderer;
 import io.github.rcneg.alexsmobsdelight.client.renderer.ThrownDartRenderer;
 import io.github.rcneg.alexsmobsdelight.client.renderer.ThrownPointedItemRenderer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(value = Dist.CLIENT)
 public class RendererRegistry {
 
     @SubscribeEvent

@@ -1,0 +1,29 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "tag": "c:drinks/milk"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "alexsmobsup:emu_egg"
+    },
+    {
+      "item": "alexsmobsup:acacia_blossom"
+    },
+    {
+      "item": "alexsmobsup:acacia_blossom"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "id": "alexsmobsdelight:emu_custard"
+  }
+}

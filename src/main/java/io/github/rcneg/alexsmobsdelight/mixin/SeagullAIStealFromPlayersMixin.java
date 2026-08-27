@@ -1,6 +1,6 @@
 package io.github.rcneg.alexsmobsdelight.mixin;
 
-import com.github.alexthe666.alexsmobs.entity.ai.SeagullAIStealFromPlayers;
+import com.alexsmobsup.entity.ai.SeagullAIStealFromPlayers;
 import io.github.rcneg.alexsmobsdelight.init.EffectRegistry;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
 import net.minecraft.world.entity.player.Player;
@@ -30,7 +30,7 @@ public class SeagullAIStealFromPlayersMixin {
             cancellable = true)
 
     private void amd$seagullEffect(Player player, CallbackInfoReturnable<Boolean> cir) {
-        if(player.hasEffect(EffectRegistry.SEAGULL_ANOREXIA.get())){
+        if(player.hasEffect(EffectRegistry.SEAGULL_ANOREXIA)){
             cir.setReturnValue(false);
         }
     }

@@ -3,8 +3,8 @@
   "conditions":
   [
     {
-      "condition": "forge:loot_table_id",
-      "loot_table_id": "alexsmobs:entities/crocodile"
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "alexsmobsup:entities/crocodile"
     }
   ],
   "lootTable": "alexsmobsdelight:crocodile_meats"

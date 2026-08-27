@@ -1,49 +1,24 @@
 package io.github.rcneg.alexsmobsdelight.items;
 
-import com.github.alexthe666.alexsmobs.client.particle.AMParticleRegistry;
-import com.github.alexthe666.alexsmobs.effect.AMEffectRegistry;
-import com.github.alexthe666.alexsmobs.entity.EntityCrimsonMosquito;
-import com.github.alexthe666.alexsmobs.entity.EntityRaccoon;
-import com.github.alexthe666.alexsmobs.entity.EntitySeagull;
-import com.github.alexthe666.alexsmobs.entity.IHurtableMultipart;
-import io.github.rcneg.alexsmobsdelight.helper.ItemHelper;
+import com.alexsmobsup.effect.AMEffectRegistry;
 import io.github.rcneg.alexsmobsdelight.init.EffectRegistry;
-import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
 import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.world.entity.monster.Phantom;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 
-import javax.annotation.Nullable;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class FlyingFishCanOpened extends ConsumableItem {
 
@@ -67,16 +42,16 @@ public class FlyingFishCanOpened extends ConsumableItem {
                 nearby.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 80, 0));
             }
             if(entity instanceof LivingEntity living){
-                living.addEffect(new MobEffectInstance(EffectRegistry.SEAGULL_ANOREXIA.get(), 80, 0));
-                living.addEffect(new MobEffectInstance(AMEffectRegistry.MOSQUITO_REPELLENT.get(), 80, 0));
+                living.addEffect(new MobEffectInstance(EffectRegistry.SEAGULL_ANOREXIA, 80, 0));
+                living.addEffect(new MobEffectInstance(AMEffectRegistry.MOSQUITO_REPELLENT, 80, 0));
             }
         }
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flagIn)
     {
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, context, tooltip, flagIn);
         tooltip.add(Component.translatable("tooltip.alexsmobsdelight.surflygfisk_open").withStyle(ChatFormatting.DARK_AQUA));
     }
 }

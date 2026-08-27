@@ -1,17 +1,17 @@
 package io.github.rcneg.alexsmobsdelight.init;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import io.github.rcneg.alexsmobsdelight.AlexsMobsDelight;
 import io.github.rcneg.alexsmobsdelight.loot.ModAddLootModifier;
 import io.github.rcneg.alexsmobsdelight.loot.ModLootModifier;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class LootModifierRegistry {
-    public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIER = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS , AlexsMobsDelight.MODID);
+    public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIER = DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, AlexsMobsDelight.MODID);
 
-    public static final RegistryObject<Codec<? extends IGlobalLootModifier>> ADD_ITEM = LOOT_MODIFIER.register("add_item", ModLootModifier.CODEC);
-    public static final RegistryObject<Codec<? extends IGlobalLootModifier>> ADD_LOOT_TABLE = LOOT_MODIFIER.register("add_loot_table", ModAddLootModifier.CODEC);
+    public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<ModLootModifier>> ADD_ITEM = LOOT_MODIFIER.register("add_item", () -> ModLootModifier.CODEC);
+    public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<ModAddLootModifier>> ADD_LOOT_TABLE = LOOT_MODIFIER.register("add_loot_table", () -> ModAddLootModifier.CODEC);
 }

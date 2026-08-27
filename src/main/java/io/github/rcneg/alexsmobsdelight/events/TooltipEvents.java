@@ -1,16 +1,16 @@
 package io.github.rcneg.alexsmobsdelight.events;
 
-import com.github.alexthe666.alexsmobs.item.AMItemRegistry;
+import com.alexsmobsup.item.AMItemRegistry;
 import io.github.rcneg.alexsmobsdelight.AlexsMobsDelight;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
-@Mod.EventBusSubscriber(modid = AlexsMobsDelight.MODID, value = {Dist.CLIENT})
+@EventBusSubscriber(modid = AlexsMobsDelight.MODID, value = {Dist.CLIENT})
 public class TooltipEvents {
     public TooltipEvents() {
     }

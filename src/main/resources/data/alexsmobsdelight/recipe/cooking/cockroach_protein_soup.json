@@ -1,0 +1,20 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "alexsmobsup:cockroach_ootheca"
+    },
+    {
+      "item": "alexsmobsup:cockroach_ootheca"
+    },
+    {
+      "item": "alexsmobsup:cockroach_wing"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "alexsmobsdelight:cockroach_protein_soup"
+  }
+}

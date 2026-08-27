@@ -1,6 +1,6 @@
 package io.github.rcneg.alexsmobsdelight.items;
 
-import com.github.alexthe666.alexsmobs.entity.util.RainbowUtil;
+import com.alexsmobsup.entity.util.RainbowUtil;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

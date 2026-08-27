@@ -1,7 +1,7 @@
 package io.github.rcneg.alexsmobsdelight.client.renderer;
 
-import com.github.alexthe666.alexsmobs.client.model.ModelSeagull;
-import com.github.alexthe666.alexsmobs.entity.EntitySeagull;
+import com.alexsmobsup.client.model.ModelSeagull;
+import com.alexsmobsup.entity.EntitySeagull;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import io.github.rcneg.alexsmobsdelight.client.renderer.layers.SuperSeagullArmorLayer;
@@ -14,12 +14,11 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 public class SuperSeagullRenderer extends MobRenderer<EntitySeagull, ModelSeagull> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation("alexsmobsdelight:textures/entity/super_seagull.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.parse("alexsmobsdelight:textures/entity/super_seagull.png");
 
     public SuperSeagullRenderer(EntityRendererProvider.Context renderManagerIn) {
         super(renderManagerIn, new ModelSeagull(), 0.6F);

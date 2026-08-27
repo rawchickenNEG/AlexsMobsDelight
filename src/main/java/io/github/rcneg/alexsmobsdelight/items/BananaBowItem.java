@@ -1,7 +1,9 @@
 package io.github.rcneg.alexsmobsdelight.items;
 
-import com.github.alexthe666.alexsmobs.item.AMItemRegistry;
+import com.alexsmobsup.item.AMItemRegistry;
 import io.github.rcneg.alexsmobsdelight.entities.ThrownBananaEntity;
+import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -9,12 +11,14 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BowItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.ForgeEventFactory;
+import net.neoforged.neoforge.event.EventHooks;
 
 import java.util.function.Predicate;
 
@@ -26,10 +30,10 @@ public class BananaBowItem extends BowItem {
 
     public void releaseUsing(ItemStack p_40667_, Level p_40668_, LivingEntity p_40669_, int p_40670_) {
         if (p_40669_ instanceof Player player) {
-            boolean flag = player.getAbilities().instabuild || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, p_40667_) > 0;
+            boolean flag = player.getAbilities().instabuild || hasEnchantment(p_40667_, Enchantments.INFINITY);
             ItemStack itemstack = player.getProjectile(p_40667_);
-            int i = this.getUseDuration(p_40667_) - p_40670_;
-            i = ForgeEventFactory.onArrowLoose(p_40667_, p_40668_, player, i, !itemstack.isEmpty() || flag);
+            int i = this.getUseDuration(p_40667_, p_40669_) - p_40670_;
+            i = EventHooks.onArrowLoose(p_40667_, p_40668_, player, i, !itemstack.isEmpty() || flag);
             if (i < 0) {
                 return;
             }
@@ -45,13 +49,11 @@ public class BananaBowItem extends BowItem {
                         ThrownBananaEntity banana = new ThrownBananaEntity(p_40668_, player);
                         banana.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
 
-                        if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, p_40667_) > 0) {
-                            banana.setSecondsOnFire(100);
+                        if (hasEnchantment(p_40667_, Enchantments.FLAME)) {
+                            banana.setRemainingFireTicks(100);
                         }
 
-                        p_40667_.hurtAndBreak(1, player, (p_289501_) -> {
-                            p_289501_.broadcastBreakEvent(player.getUsedItemHand());
-                        });
+                        p_40667_.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
 
                         p_40668_.addFreshEntity(banana);
                     }
@@ -81,7 +83,8 @@ public class BananaBowItem extends BowItem {
         return f;
     }
 
-    public int getUseDuration(ItemStack p_40680_) {
+    @Override
+    public int getUseDuration(ItemStack p_40680_, LivingEntity entity) {
         return 72000;
     }
 
@@ -92,7 +95,7 @@ public class BananaBowItem extends BowItem {
     public InteractionResultHolder<ItemStack> use(Level p_40672_, Player p_40673_, InteractionHand p_40674_) {
         ItemStack itemstack = p_40673_.getItemInHand(p_40674_);
         boolean flag = !p_40673_.getProjectile(itemstack).isEmpty();
-        InteractionResultHolder<ItemStack> ret = ForgeEventFactory.onArrowNock(itemstack, p_40672_, p_40673_, p_40674_, flag);
+        InteractionResultHolder<ItemStack> ret = EventHooks.onArrowNock(itemstack, p_40672_, p_40673_, p_40674_, flag);
         if (ret != null) {
             return ret;
         } else if (!p_40673_.getAbilities().instabuild && !flag) {
@@ -113,15 +116,13 @@ public class BananaBowItem extends BowItem {
     }
 
     @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return this.canApplyEnchantment(enchantment);
+    public boolean supportsEnchantment(ItemStack stack, Holder<Enchantment> enchantment) {
+        return super.supportsEnchantment(stack, enchantment)
+                && !enchantment.is(Enchantments.POWER)
+                && !enchantment.is(Enchantments.PUNCH);
     }
 
-    private boolean canApplyEnchantment(Enchantment... enchantments) {
-        for (Enchantment enchantment : enchantments) {
-            if (enchantment.canEnchant(new ItemStack(Items.BOW)) && enchantment != Enchantments.POWER_ARROWS && enchantment != Enchantments.PUNCH_ARROWS)
-                return true;
-        }
-        return false;
+    private static boolean hasEnchantment(ItemStack stack, ResourceKey<Enchantment> key) {
+        return stack.getTagEnchantments().entrySet().stream().anyMatch(entry -> entry.getKey().is(key) && entry.getIntValue() > 0);
     }
 }

@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "miners_delight"
+    }
+  ],
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "alexsmobsup:centipede_leg"
+    },
+    {
+      "item": "miners_delight:cave_carrot"
+    },
+    {
+      "item": "miners_delight:cave_carrot"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "id": "alexsmobsdelight:cave_centipede_soup"
+  }
+}

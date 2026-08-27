@@ -1,11 +1,11 @@
 package io.github.rcneg.alexsmobsdelight.entities.ai;
 
-import com.github.alexthe666.alexsmobs.config.AMConfig;
-import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
-import com.github.alexthe666.alexsmobs.entity.EntityCrimsonMosquito;
-import com.github.alexthe666.alexsmobs.entity.EntityStradpole;
-import com.github.alexthe666.alexsmobs.misc.AMAdvancementTriggerRegistry;
+import com.alexsmobsup.config.AMConfig;
+import com.alexsmobsup.entity.AMEntityRegistry;
+import com.alexsmobsup.entity.EntityCrimsonMosquito;
+import com.alexsmobsup.misc.AMAdvancementTriggerRegistry;
 import io.github.rcneg.alexsmobsdelight.entities.SuperSeagull;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -15,7 +15,6 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -89,7 +88,7 @@ public class SuperSeagullAIStealFromPlayers extends Goal {
                     this.seagull.level().addFreshEntity(mosquito);
 
                     if (this.target instanceof ServerPlayer) {
-                        AMAdvancementTriggerRegistry.SEAGULL_STEAL.trigger((ServerPlayer)this.target);
+                        AMAdvancementTriggerRegistry.SEAGULL_STEAL.get().trigger((ServerPlayer)this.target);
                     }
                 } else {
                     this.stop();
@@ -154,7 +153,7 @@ public class SuperSeagullAIStealFromPlayers extends Goal {
     }
 
     private boolean isBlacklisted(ItemStack stack) {
-        ResourceLocation loc = ForgeRegistries.ITEMS.getKey(stack.getItem());
+        ResourceLocation loc = BuiltInRegistries.ITEM.getKey(stack.getItem());
         if (loc != null) {
 
             for (String str : AMConfig.seagullStealingBlacklist) {
@@ -171,7 +170,7 @@ public class SuperSeagullAIStealFromPlayers extends Goal {
         List<ItemStack> foods = new ArrayList<>();
         for(int i = 0; i < 9; ++i) {
             ItemStack stackIn = player.getInventory().items.get(i);
-            if (stackIn.isEdible() && !isBlacklisted(stackIn)) {
+            if (stackIn.getItem().getFoodProperties(stackIn, this.seagull) != null && !isBlacklisted(stackIn)) {
                 foods.add(stackIn);
             }
         }

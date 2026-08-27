@@ -54,7 +54,7 @@ public class AMDItemstackRenderer extends BlockEntityWithoutLevelRenderer {
         List mobIcons;
         if (itemStackIn.getItem() == ItemRegistry.DIMENSIONAL_FOOD.get()) {
             matrixStackIn.translate(0.5F, 0.5F, 0.5F);
-            float f = (float)tick + Minecraft.getInstance().getFrameTime();
+            float f = (float)tick + Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(true);
             mobIcons = getShards();
             matrixStackIn.pushPose();
             if (transformType == ItemDisplayContext.FIRST_PERSON_LEFT_HAND) {

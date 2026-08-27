@@ -1,16 +1,13 @@
 {
   "required": true,
   "package": "io.github.rcneg.alexsmobsdelight.mixin",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
-  "refmap": "alexsmobsdelight.refmap.json",
   "mixins": [
     "EntityDevilsHolePupfishMixin",
-    "EntityMantisShrimpMixin",
     "EntityRaccoonMixin",
     "EntitySeagullMixin",
     "LivingEntityMixin",
-    "LootTableAccessor",
     "SeagullAIStealFromPlayersMixin"
   ],
   "injectors": {

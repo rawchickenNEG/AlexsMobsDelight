@@ -1,7 +1,7 @@
 package io.github.rcneg.alexsmobsdelight.items;
 
-import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
-import com.github.alexthe666.alexsmobs.entity.EntityTiger;
+import com.alexsmobsup.entity.AMEntityRegistry;
+import com.alexsmobsup.entity.EntityTiger;
 import io.github.rcneg.alexsmobsdelight.config.Config;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;

@@ -1,11 +1,10 @@
 package io.github.rcneg.alexsmobsdelight.blocks;
 
-import com.github.alexthe666.alexsmobs.client.particle.AMParticleRegistry;
-import com.github.alexthe666.alexsmobs.entity.IHurtableMultipart;
+import com.alexsmobsup.client.particle.AMParticleRegistry;
+import com.alexsmobsup.entity.IHurtableMultipart;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -18,7 +17,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -40,8 +38,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import vectorwing.farmersdelight.common.tag.ModTags;
-
-import java.util.Iterator;
 
 public class KiviakBlock extends Block {
     public static IntegerProperty COMPOSTING = IntegerProperty.create("composting", 0, 7);

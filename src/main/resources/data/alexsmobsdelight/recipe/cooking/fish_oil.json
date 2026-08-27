@@ -1,0 +1,24 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "id": "minecraft:glass_bottle"
+  },
+  "cookingtime": 100,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "alexsmobsup:blobfish"
+    },
+    {
+      "item": "alexsmobsup:blobfish"
+    },
+    {
+      "item": "alexsmobsup:blobfish"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "id": "alexsmobsup:fish_oil",
+    "count": 3
+  }
+}

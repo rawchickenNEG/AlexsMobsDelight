@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:foods/bread"
+    },
+    {
+      "tag": "c:foods/vegetable"
+    },
+    {
+      "item": "alexsmobsup:gongylidia"
+    },
+    {
+      "item": "alexsmobsup:gongylidia"
+    }
+  ],
+  "result": {
+    "id": "alexsmobsdelight:gongylidia_sandwich"
+  }
+}

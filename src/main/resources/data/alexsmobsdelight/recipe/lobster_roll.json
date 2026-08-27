@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "alexsmobsup:cooked_lobster_tail"
+    },
+    {
+      "item": "alexsmobsup:cooked_lobster_tail"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "item": "farmersdelight:cooked_rice"
+    }
+  ],
+  "result": {
+    "id": "alexsmobsdelight:lobster_roll",
+    "count": 2
+  }
+}

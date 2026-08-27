@@ -1,8 +1,8 @@
 package io.github.rcneg.alexsmobsdelight.entities;
 
-import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
-import com.github.alexthe666.alexsmobs.entity.EntitySeagull;
-import com.github.alexthe666.alexsmobs.entity.EntityStradpole;
+import com.alexsmobsup.entity.AMEntityRegistry;
+import com.alexsmobsup.entity.EntitySeagull;
+import com.alexsmobsup.entity.EntityStradpole;
 import io.github.rcneg.alexsmobsdelight.entities.ai.SuperSeagullAIStealFromPlayers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
@@ -11,21 +11,24 @@ import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.PowerableMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.common.ForgeHooks;
 
 import java.util.List;
 
@@ -145,7 +148,7 @@ public class SuperSeagull extends EntitySeagull implements PowerableMob {
                 double d3 = this.getTarget().getZ() - this.getZ();
                 float f3 = Mth.sqrt((float)(d1 * d1 + d2 * d2 + d3 * d3)) * 0.2F;
                 this.gameEvent(GameEvent.PROJECTILE_SHOOT);
-                this.playSound(SoundEvents.CROSSBOW_LOADING_END, 2.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
+                this.playSound(SoundEvents.CROSSBOW_LOADING_END.value(), 2.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
                 pole.shoot(d1, d2 + (double)f3, d3, 2.0F, 0.0F);
                 pole.setYRot(this.getYRot() % 360.0F);
                 pole.setXRot(Mth.clamp(this.getYRot(), -90.0F, 90.0F) % 360.0F);
@@ -177,32 +180,13 @@ public class SuperSeagull extends EntitySeagull implements PowerableMob {
 
     @Override
     protected void actuallyHurt(DamageSource source, float damage) {
-        if (!this.isInvulnerableTo(source)) {
-            damage = ForgeHooks.onLivingHurt(this, source, damage);
-            if (damage <= 0.0F) {
-                return;
-            }
-            damage = this.getDamageAfterArmorAbsorb(source, damage);
-            damage = this.getDamageAfterMagicAbsorb(source, damage);
-            float f1 = Math.max(damage - this.getAbsorptionAmount(), 0.0F);
-            this.setAbsorptionAmount(this.getAbsorptionAmount() - (damage - f1));
-            float f = damage - f1;
-            if (f > 0.0F && f < 3.4028235E37F) {
-                Entity entity = source.getEntity();
-                if (entity instanceof ServerPlayer) {
-                    ServerPlayer serverplayer = (ServerPlayer)entity;
-                    serverplayer.awardStat(Stats.DAMAGE_DEALT_ABSORBED, Math.round(f * 10.0F));
-                }
-            }
-
-            f1 = ForgeHooks.onLivingDamage(this, source, f1);
-            if (f1 != 0.0F) {
-                this.getCombatTracker().recordDamage(source, f1);
-
-                this.setHealth(this.isHalfLife() ? this.getHealth() - f1 : Math.max(this.getMaxHealth() / 2, this.getHealth() - f1));
-                this.setAbsorptionAmount(this.getAbsorptionAmount() - f1);
-                this.gameEvent(GameEvent.ENTITY_DAMAGE);
-            }
+        if (this.isInvulnerableTo(source)) {
+            return;
+        }
+        boolean wasHalfLife = this.isHalfLife();
+        super.actuallyHurt(source, damage);
+        if (!wasHalfLife && this.getHealth() < this.getMaxHealth() / 2.0F) {
+            this.setHealth(this.getMaxHealth() / 2.0F);
         }
     }
 
