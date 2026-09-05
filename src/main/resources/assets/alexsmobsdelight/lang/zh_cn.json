@@ -320,6 +320,7 @@
   "alexsmobsdelight.jei.kiviak_decomposition.light": "无光时加快",
   "alexsmobsdelight.jei.kiviak_decomposition.biome": "寒冷群系中加快",
   "alexsmobsdelight.jei.kiviak_decomposition.accelerators": "周围有以下催化物时加快",
-  "alexsmobsdelight.jei.kiviak_decomposition.tips": "发酵完成后用刀切开，然后打破这个方块就可以获取它们。"
+  "alexsmobsdelight.jei.kiviak_decomposition.tips": "发酵完成后用刀切开，然后打破这个方块就可以获取它们。",
 
+  "alexsmobsdelight.block.feast.use_container": "你需要一个%s以食用它。"
 }

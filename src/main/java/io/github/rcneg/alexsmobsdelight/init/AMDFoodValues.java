@@ -226,16 +226,16 @@ public class AMDFoodValues {
     public static final FoodProperties BISON_TARTARE = (new FoodProperties.Builder()).nutrition(7).saturationMod(0.5F).effect(() -> {
         return new MobEffectInstance((MobEffect)MobEffects.CONFUSION, 100, 0);
     }, 0.2F).effect(() -> {
-        return new MobEffectInstance((MobEffect)ModEffects.NOURISHMENT.get(), 3000, 0);
+        return new MobEffectInstance((MobEffect)ModEffects.NOURISHMENT.get(), 6000, 0);
     }, 1.0F).build();
     public static final FoodProperties BREASTED_KANGAROO_MEATBALLS = (new FoodProperties.Builder()).nutrition(10).saturationMod(0.6F).effect(() -> {
         return new MobEffectInstance((MobEffect)ModEffects.NOURISHMENT.get(), 3000, 0);
     }, 1.0F).build();
     public static final FoodProperties GRAVY_KANGAROO_MEAT = (new FoodProperties.Builder()).nutrition(12).saturationMod(0.7F).effect(() -> {
-        return new MobEffectInstance((MobEffect)ModEffects.NOURISHMENT.get(), 3000, 0);
+        return new MobEffectInstance((MobEffect)ModEffects.NOURISHMENT.get(), 6000, 0);
     }, 1.0F).build();
     public static final FoodProperties BOWL_OF_HONEY_GLAZED_BEAR_MEAT_WITH_SALMON = (new FoodProperties.Builder()).nutrition(16).saturationMod(0.85F).effect(() -> {
-        return new MobEffectInstance((MobEffect)ModEffects.NOURISHMENT.get(), 3000, 0);
+        return new MobEffectInstance((MobEffect)ModEffects.NOURISHMENT.get(), 6000, 0);
     }, 1.0F).effect(() -> {
         return new MobEffectInstance((MobEffect) AMEffectRegistry.KNOCKBACK_RESISTANCE.get(), 1800, 0);
     }, 1.0F).build();

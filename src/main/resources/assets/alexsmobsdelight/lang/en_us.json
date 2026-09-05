@@ -321,5 +321,7 @@
   "alexsmobsdelight.jei.kiviak_decomposition.light": "Sped up when no light",
   "alexsmobsdelight.jei.kiviak_decomposition.biome": "Sped up in cold biome",
   "alexsmobsdelight.jei.kiviak_decomposition.accelerators": "Sped up by adjacent activators (see below)",
-  "alexsmobsdelight.jei.kiviak_decomposition.tips": "Use knife to cut when it's completely ferment, then break this block to get them."
+  "alexsmobsdelight.jei.kiviak_decomposition.tips": "Use knife to cut when it's completely ferment, then break this block to get them.",
+
+  "alexsmobsdelight.block.feast.use_container": "You need a %s to eat this."
 }

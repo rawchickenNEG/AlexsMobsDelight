@@ -290,5 +290,7 @@
   "alexsmobsdelight.jei.kiviak_decomposition.light": "Прискорюється за відсутності світла",
   "alexsmobsdelight.jei.kiviak_decomposition.biome": "Прискорюється в холодному біомі",
   "alexsmobsdelight.jei.kiviak_decomposition.accelerators": "Прискорюється сусідніми активаторами (див. нижче)",
-  "alexsmobsdelight.jei.kiviak_decomposition.tips": "Використовуйте ніж для розрізання, коли він повністю заферментується, а потім зламайте цей блок, щоб отримати їх."
+  "alexsmobsdelight.jei.kiviak_decomposition.tips": "Використовуйте ніж для розрізання, коли він повністю заферментується, а потім зламайте цей блок, щоб отримати їх.",
+
+  "alexsmobsdelight.block.feast.use_container": "Вам потрібна %s, щоб з'їсти це."
 }

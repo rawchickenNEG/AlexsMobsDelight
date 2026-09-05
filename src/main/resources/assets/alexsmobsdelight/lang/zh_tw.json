@@ -256,5 +256,7 @@
   "item.alexsmobsdelight.true_ants_climbing_a_tree": "真正的螞蟻上樹",
   "item.alexsmobsdelight.tempura": "龍蝦天婦羅",
   "item.alexsmobsdelight.maggot_farm": "蛆農場",
-  "tooltip.alexsmobsdelight.seagull_wand_1": "可以從村民的交易清單中偷取食物。"
+  "tooltip.alexsmobsdelight.seagull_wand_1": "可以從村民的交易清單中偷取食物。",
+
+  "alexsmobsdelight.block.feast.use_container": "你需要 %s 才能吃他。"
 }

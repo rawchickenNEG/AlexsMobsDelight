@@ -1,3 +1,7 @@
+- 1.0.9
+    Add uk_ua and zh_tw translations.
+    Change Nourishment effect duration for some foods.
+    Fix Steamed Stuffed Crocodile feast block has incorrect message translation issue.
 - 1.0.8
     Change Whale Burger recipe from minecraft bread to forge tag breads.
     Fix tooltip issue in farmers delight 1.3+.
