@@ -1,3 +1,17 @@
+- 1.1.0
+    Add Acacia Blossom, Bunfungus, Froststalker, Skelewag and Mungal foods.
+    Add Nourish Supplement effect and change some Whale foods effect to this.
+    Add using knives loot table for Mimicube.
+    Add placeable tooltip for feast food block items.
+    Add Ghost Burger.
+    Add Cheese Ore.
+    Change kebab food items model to handheld.
+    Change some soup food items sequence in creative mode tab.
+    Change all Comfort effect to Norishment effect, unless the food uses food value in FD.
+    Change Sea Bear Stew food level and effect duration.
+    Change effect color.
+    Fix some meat items is not meat issue.
+    Fix Posion Fang effect not working issue when effect level is 1.
 - 1.0.9
     Add uk_ua and zh_tw translations.
     Change Nourishment effect duration for some foods.

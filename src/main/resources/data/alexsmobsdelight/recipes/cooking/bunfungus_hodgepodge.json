@@ -1,0 +1,32 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "alexsmobsdelight:mushroom_hat"
+  },
+  "cookingtime": 400,
+  "experience": 3.0,
+  "ingredients": [
+    {
+      "item": "alexsmobsdelight:raw_bunfungus_ear"
+    },
+    {
+      "item": "alexsmobsdelight:raw_bunfungus_ear"
+    },
+    {
+      "item": "alexsmobsdelight:raw_bunfungus_leg"
+    },
+    {
+      "item": "alexsmobsdelight:raw_bunfungus_leg"
+    },
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "minecraft:suspicious_stew"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "alexsmobsdelight:bunfungus_hodgepodge"
+  }
+}

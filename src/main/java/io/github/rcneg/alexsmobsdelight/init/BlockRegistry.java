@@ -2,10 +2,14 @@ package io.github.rcneg.alexsmobsdelight.init;
 
 import io.github.rcneg.alexsmobsdelight.AlexsMobsDelight;
 import io.github.rcneg.alexsmobsdelight.blocks.*;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -22,6 +26,9 @@ public class BlockRegistry {
     });
     public static final RegistryObject<Block> MOOSE_PIE_BLOCK = BLOCKS.register("moose_pie", () -> {
         return new PieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ItemRegistry.MOOSE_PIE_SLICE);
+    });
+    public static final RegistryObject<Block> MUSHROOM_BUNFUNGUS_EAR_PIE = BLOCKS.register("mushroom_bunfungus_ear_pie", () -> {
+        return new PieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ItemRegistry.MUSHROOM_BUNFUNGUS_EAR_PIE_SLICE);
     });
     public static final RegistryObject<Block> WILD_STEW = BLOCKS.register("wild_stew", () -> {
         return new WildStewBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).sound(SoundType.LANTERN), ItemRegistry.BOWL_OF_WILD_STEW, true);
@@ -53,6 +60,12 @@ public class BlockRegistry {
     public static final RegistryObject<Block> BEGGARS_EMU_IN_THE_MUD = BLOCKS.register("beggars_emu_in_the_mud", () -> {
         return new BeggarsEmuInTheMudBlock(BlockBehaviour.Properties.copy(Blocks.PACKED_MUD).randomTicks());
     });
+    public static final RegistryObject<Block> BUNFUNGUS_HODGEPODGE = BLOCKS.register("bunfungus_hodgepodge", () -> {
+        return new BunfungusHodgepodgeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE), ItemRegistry.BOWL_OF_BUNFUNGUS_HODGEPODGE, true);
+    });
+    public static final RegistryObject<Block> COLD_ROASTED_FROSTSTALKER_MEAT = BLOCKS.register("cold_roasted_froststalker_meat", () -> {
+        return new WildStewBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).sound(SoundType.LANTERN), ItemRegistry.BOWL_OF_COLD_ROASTED_FROSTSTALKER_MEAT, true);
+    });
     public static final RegistryObject<Block> BANANA_BLOCK = BLOCKS.register("banana_block", () -> {
         return new BananaBlock(BlockBehaviour.Properties.copy(Blocks.COCOA).sound(SoundType.BIG_DRIPLEAF).noCollission());
     });
@@ -71,7 +84,10 @@ public class BlockRegistry {
     public static final RegistryObject<Block> SEAL_FUR_CARPET_GRAY = BLOCKS.register("seal_fur_carpet_gray", () -> {
         return new SealCarpet(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_CARPET));
     });
+    public static final RegistryObject<Block> ACACIA_BLOSSOM_CAKE = BLOCKS.register("acacia_blossom_cake", () -> new CommonCakeBlock(Block.Properties.copy(Blocks.CAKE), ItemRegistry.ACACIA_BLOSSOM_CAKE_SLICE));
+    public static final RegistryObject<Block> MUNGAL_SPORES_CAKE = BLOCKS.register("mungal_spores_cake", () -> new CommonCakeBlock(Block.Properties.copy(Blocks.CAKE), ItemRegistry.MUNGAL_SPORES_CAKE_SLICE));
 
     public static final RegistryObject<Block> MAGGOT_FARM_BLOCK = BLOCKS.register("maggot_farm", () -> new MaggotFarmBlock(Block.Properties.copy(Blocks.COMPOSTER)));
+    public static final RegistryObject<Block> END_CHEESE_ORE = BLOCKS.register("end_cheese_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of().strength(1.0F, 1.0F), UniformInt.of(1, 3)));
 
 }

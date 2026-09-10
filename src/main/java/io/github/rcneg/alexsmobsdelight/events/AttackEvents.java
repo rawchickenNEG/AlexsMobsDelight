@@ -1,12 +1,16 @@
 package io.github.rcneg.alexsmobsdelight.events;
 
 import com.github.alexthe666.alexsmobs.effect.AMEffectRegistry;
+import com.github.alexthe666.alexsmobs.entity.EntityFroststalker;
 import com.github.alexthe666.alexsmobs.entity.EntityTarantulaHawk;
+import com.github.alexthe666.alexsmobs.item.ItemRainbowJelly;
 import com.github.alexthe666.alexsmobs.misc.AMSoundRegistry;
 import io.github.rcneg.alexsmobsdelight.accessor.IEntitySeagullData;
 import io.github.rcneg.alexsmobsdelight.config.Config;
 import io.github.rcneg.alexsmobsdelight.init.EffectRegistry;
 import io.github.rcneg.alexsmobsdelight.init.ItemRegistry;
+import io.github.rcneg.alexsmobsdelight.items.FroststalkerHornKnife;
+import io.github.rcneg.alexsmobsdelight.mixin.FroststalkerAccessor;
 import io.github.rcneg.alexsmobsdelight.mixin.LootTableAccessor;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
@@ -24,6 +28,8 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -102,6 +108,9 @@ public class AttackEvents {
                 entity.setSecondsOnFire(20);
                 level.playSound((Player)null, entity.getOnPos(), AMSoundRegistry.MANTIS_SHRIMP_SNAP.get(), SoundSource.PLAYERS);
             }
+            if(attacker.getMainHandItem().is(ItemRegistry.SKELEWAG_KNIFE.get())&&entity.getMobType() == MobType.UNDEAD){
+                event.setAmount(event.getAmount() + 10);
+            }
             if(attacker instanceof Player player && player.hasEffect(EffectRegistry.CROCODILE_DEATH_ROLL.get()) && player.getFoodData().getFoodLevel() > 0){
                 player.startAutoSpinAttack(20);
                 level.playSound((Player)null, entity.getOnPos(), AMSoundRegistry.CROCODILE_BITE.get(), SoundSource.PLAYERS);
@@ -113,7 +122,30 @@ public class AttackEvents {
 
             if(attacker.hasEffect(EffectRegistry.POISON_FANGS.get())){
                 int amp = attacker.getEffect(EffectRegistry.POISON_FANGS.get()).getAmplifier();
-                entity.addEffect(new MobEffectInstance(MobEffects.POISON, 100 * amp, 1));
+                entity.addEffect(new MobEffectInstance(MobEffects.POISON, 100 * (amp + 1), 1));
+            }
+            if(attacker.hasEffect(EffectRegistry.NOCTURNAL.get()) && level.isNight()){
+                int amp = attacker.getEffect(EffectRegistry.NOCTURNAL.get()).getAmplifier();
+                event.setAmount(event.getAmount() * (1 + 0.2F * (amp + 1)));
+            }
+            if(entity.hasEffect(EffectRegistry.NOCTURNAL.get()) && level.isDay()){
+                int amp = entity.getEffect(EffectRegistry.NOCTURNAL.get()).getAmplifier();
+                event.setAmount(event.getAmount() * Math.max((1 - 0.2F * (amp + 1)), 0.2F));
+            }
+
+            if(attacker instanceof EntityFroststalker froststalker){
+                FroststalkerAccessor accessor = (FroststalkerAccessor) froststalker;
+                LivingEntity leader = accessor.amd$getLeader();
+                if(leader != null && leader.isAlive() && leader.getMainHandItem().is(ItemRegistry.FROSTSTALKER_HORN_KNIFE.get())){
+                    event.setCanceled(true);
+                    entity.invulnerableTime = 0;
+                    if(leader instanceof Player player){
+                        entity.hurt(level.damageSources().playerAttack(player), event.getAmount());
+                    }
+                    if(leader instanceof Mob mob){
+                        entity.hurt(level.damageSources().mobAttack(mob), event.getAmount());
+                    }
+                }
             }
         }
     }

@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:ice",
+    {
+      "id":"neapolitan:ice_cubes",
+      "required": false
+    }
+  ]
+}

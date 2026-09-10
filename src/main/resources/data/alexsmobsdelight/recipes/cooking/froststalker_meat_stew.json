@@ -1,0 +1,26 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:suspicious_stew"
+  },
+  "cookingtime": 400,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "tag": "alexsmobsdelight:raw_froststalker_meat"
+    },
+    {
+      "tag": "alexsmobsdelight:raw_froststalker_meat"
+    },
+    {
+      "item": "minecraft:fern"
+    },
+    {
+      "tag": "forge:mushrooms"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "alexsmobsdelight:froststalker_meat_stew"
+  }
+}

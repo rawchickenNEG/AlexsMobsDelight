@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "alexsmobsdelight:raw_froststalker_leg"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "item": "alexsmobsdelight:raw_froststalker_meat"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

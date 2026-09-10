@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "minecraft:item/handheld",
   "textures": {
     "layer0": "alexsmobsdelight:item/centipede_leg_with_carrot_stick"
   }

@@ -9,6 +9,7 @@
     "EntityMantisShrimpMixin",
     "EntityRaccoonMixin",
     "EntitySeagullMixin",
+    "FroststalkerAccessor",
     "LivingEntityMixin",
     "LootTableAccessor",
     "SeagullAIStealFromPlayersMixin"

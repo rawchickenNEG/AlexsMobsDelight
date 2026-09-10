@@ -1,0 +1,29 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 400,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "tag": "alexsmobsdelight:raw_froststalker_meat"
+    },
+    {
+      "tag": "alexsmobsdelight:raw_froststalker_meat"
+    },
+    {
+      "tag": "alexsmobsdelight:raw_froststalker_meat"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:fern"
+    },
+    {
+      "tag": "forge:slimeballs"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "alexsmobsdelight:froststalker_meat_jelly"
+  }
+}

@@ -17,4 +17,8 @@ public class ItemTier {
             BlockTags.NEEDS_IRON_TOOL, () -> Ingredient.of(ItemRegistry.LOBSTER_HEAD.get()));
     public static final Tier WHALE_TOOTH = new ForgeTier(2, 400, 7.5F, 2.0F, 5,
             BlockTags.NEEDS_IRON_TOOL, () -> Ingredient.of(AMItemRegistry.CACHALOT_WHALE_TOOTH.get()));
+    public static final Tier SKELEWAG = new ForgeTier(1, 430, 7.5F, 2.0F, 1,
+            BlockTags.NEEDS_STONE_TOOL, () -> Ingredient.EMPTY);
+    public static final Tier FROSTSTALKER_HORN = new ForgeTier(1, 160, 7.5F, 2.0F, 5,
+            BlockTags.NEEDS_STONE_TOOL, () -> Ingredient.of(AMItemRegistry.FROSTSTALKER_HORN.get()));
 }
